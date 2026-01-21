@@ -1,70 +1,127 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Administrativo - PNS do Carmo</title>
+    <title>Painel Administrativo | PNSC </title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/admin.css">
 </head>
+
 <body>
 
     <aside class="sidebar">
-        <h2>PNS do Carmo Admin</h2>
-        <div class="menu-item active"><span>📊 Dashboard</span></div>
-        <div class="menu-item"><span>⛪ Horários de Missas</span></div>
-        <div class="menu-item"><span>💰 Dízimo/Financeiro</span></div>
-        <div class="menu-item"><span>📢 Avisos Paroquiais</span></div>
-        <div class="menu-item" style="margin-top: 50px; color: #ff4d4d;"><span>🚪 Sair</span></div>
+        <h3>PNS do Carmo</h3>
+        <p>Painel de Controle</p>
+
+        <button onclick="fazerLogout()"
+            style="background: #ff4d4d; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 30px; font-weight: bold;">
+            🚪 Sair do Sistema
+        </button>
     </aside>
 
-    <main class="main-content">
-        <div class="header-admin">
-            <h1>Dashboard da Secretaria</h1>
-            <p>Bem-vindo, Secretário(a)</p>
-        </div>
-
-        <div class="stats-grid">
-            <div class="card-stat">
-                <h3>Dizimistas Ativos</h3>
-                <p>142</p>
-            </div>
-            <div class="card-stat">
-                <h3>Arrecadação Mês (PIX)</h3>
-                <p>R$ 4.250,00</p>
-            </div>
-            <div class="card-stat">
-                <h3>Pedidos de Oração</h3>
-                <p>12 novos</p>
-            </div>
-        </div>
-
-        <div class="admin-section">
-            <h2>Atualizar Horários de Missa</h2>
-            <p style="margin-bottom: 20px; color: #666;">As alterações feitas aqui aparecerão instantaneamente no site principal.</p>
-            
-            <form id="form-missas">
+    <main class="main">
+        <h1>Gerenciar Site</h1>
+        <div class="card">
+            <form id="form-admin">
                 <div class="form-group">
-                    <label>Missas de Domingo</label>
-                    <input type="text" placeholder="Ex: 07h, 09h e 19h" value="07h00 | 09h00 | 18h00">
+                    <label>Aviso Paroquial</label>
+                    <textarea id="aviso-texto" rows="4"></textarea>
                 </div>
-                
+                <div class="form-group" style="margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px;">
+                    <label style="color: var(--azul)">💰 Configuração do Dízimo</label>
+                    <label for="chave-pix">Chave PIX da Paróquia</label>
+                    <input type="text" id="chave-pix" placeholder="CNPJ, E-mail ou Celular">
+                </div>
                 <div class="form-group">
-                    <label>Missas durante a Semana</label>
-                    <input type="text" placeholder="Ex: Terça a Sexta às 19h" value="Terça a Sexta: 19h00">
+                    <label for="beneficiario">Nome do Beneficiário</label>
+                    <input type="text" id="beneficiario" placeholder="Ex: Paróquia N. S. do Carmo">
                 </div>
-
-                <div class="form-group">
-                    <label>Aviso em Destaque (Banner)</label>
-                    <textarea rows="3">Este final de semana teremos a festa da padroeira. Venha participar!</textarea>
-                </div>
-
-                <button type="submit" class="btn-save">Salvar Alterações</button>
+                <button type="submit" class="btn" id="btn-salvar">Salvar no Site</button>
             </form>
         </div>
     </main>
 
-    <script src="JS/admin.js"></script>
 
+
+    <script type="module">
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const auth = getAuth(app);
+
+        // VERIFICAÇÃO DE SEGURANÇA: Se não estiver logado, volta para o login
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                window.location.href = "login.html";
+            }
+        });
+
+        // Função para Sair (Logout)
+        window.fazerLogout = () => {
+            signOut(auth).then(() => {
+                window.location.href = "login.html";
+            });
+        };
+
+
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // Suas chaves reais extraídas da imagem
+        const firebaseConfig = {
+            apiKey: "AIzaSyA_tVDmvcRHRBr-aLoVZU9bhRO2SUMJMOU",
+            authDomain: "paroquia-pns-do-carmo.firebaseapp.com",
+            projectId: "paroquia-pns-do-carmo",
+            storageBucket: "paroquia-pns-do-carmo.firebasestorage.app",
+            messagingSenderId: "454506351447",
+            appId: "1:454506351447:web:58eaf7b84c119886ebcc12",
+            measurementId: "G-5BSGXTLWHZ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Carregar dados atuais ao abrir a página
+        async function carregarDados() {
+            const docRef = doc(db, "site_content", "geral");
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                const d = docSnap.data();
+                // document.getElementById('missa-domingo').value = d.domingo; 
+                // document.getElementById('missa-semana').value = d.semana;
+                document.getElementById('aviso-texto').value = d.aviso;
+            }
+        }
+        carregarDados();
+
+        // Salvar novos dados
+        document.getElementById('form-admin').onsubmit = async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('btn-salvar');
+            btn.disabled = true;
+            btn.innerText = "Salvando...";
+
+            try {
+                await setDoc(doc(db, "site_content", "geral"), {
+                    // domingo: document.getElementById('missa-domingo').value,
+                    // semana: document.getElementById('missa-semana').value,
+                    aviso: document.getElementById('aviso-texto').value,
+                    pix_chave: document.getElementById('chave-pix').value,
+                    pix_nome: document.getElementById('beneficiario').value,
+                    ultima_atualizacao: new Date()
+                });
+                alert("Site atualizado com sucesso!");
+            } catch (err) {
+                console.error(err);
+                alert("Erro ao salvar dados.");
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "Salvar no Site";
+            }
+        };
+    </script>
 </body>
+
 </html>
