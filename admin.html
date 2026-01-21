@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - PNS do Carmo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/admin.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2>PNS do Carmo Admin</h2>
+        <div class="menu-item active"><span>📊 Dashboard</span></div>
+        <div class="menu-item"><span>⛪ Horários de Missas</span></div>
+        <div class="menu-item"><span>💰 Dízimo/Financeiro</span></div>
+        <div class="menu-item"><span>📢 Avisos Paroquiais</span></div>
+        <div class="menu-item" style="margin-top: 50px; color: #ff4d4d;"><span>🚪 Sair</span></div>
+    </aside>
+
+    <main class="main-content">
+        <div class="header-admin">
+            <h1>Dashboard da Secretaria</h1>
+            <p>Bem-vindo, Secretário(a)</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="card-stat">
+                <h3>Dizimistas Ativos</h3>
+                <p>142</p>
+            </div>
+            <div class="card-stat">
+                <h3>Arrecadação Mês (PIX)</h3>
+                <p>R$ 4.250,00</p>
+            </div>
+            <div class="card-stat">
+                <h3>Pedidos de Oração</h3>
+                <p>12 novos</p>
+            </div>
+        </div>
+
+        <div class="admin-section">
+            <h2>Atualizar Horários de Missa</h2>
+            <p style="margin-bottom: 20px; color: #666;">As alterações feitas aqui aparecerão instantaneamente no site principal.</p>
+            
+            <form id="form-missas">
+                <div class="form-group">
+                    <label>Missas de Domingo</label>
+                    <input type="text" placeholder="Ex: 07h, 09h e 19h" value="07h00 | 09h00 | 18h00">
+                </div>
+                
+                <div class="form-group">
+                    <label>Missas durante a Semana</label>
+                    <input type="text" placeholder="Ex: Terça a Sexta às 19h" value="Terça a Sexta: 19h00">
+                </div>
+
+                <div class="form-group">
+                    <label>Aviso em Destaque (Banner)</label>
+                    <textarea rows="3">Este final de semana teremos a festa da padroeira. Venha participar!</textarea>
+                </div>
+
+                <button type="submit" class="btn-save">Salvar Alterações</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="JS/admin.js"></script>
+
+</body>
+</html>

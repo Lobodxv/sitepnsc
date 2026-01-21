@@ -209,7 +209,8 @@
         footer {
             background: #222;
             color: white;
-            padding: 20px;
+            padding: 20px 4%;
+            height: 100px;
             text-align: center;
             font-size: 0.9rem;
         }
@@ -219,7 +220,7 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: rgb(10, 217, 10);
+            background-color: rgb(17, 147, 17);
             color: white;
             width: 60px;
             height: 60px;
@@ -247,7 +248,7 @@
                 position: fixed; 
                 top: 4rem; 
                 right: -100%; 
-                width: 30%;
+                width: 55%;
                 height: 50vh;
                 background-color: var(--marrom); 
                 flex-direction: column; 
