@@ -15,7 +15,7 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
         navMenu.classList.remove('active');
         hamburger.classList.remove('open');
     };
-}); 
+});
 // --Menu hambúrguer (Mobile)
 
 // Interação com o Banco de Dados

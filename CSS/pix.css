@@ -1,0 +1,167 @@
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+ :root {
+            --marrom: #211800;
+            --dourado: #e1ad2a;
+            --branco: #ffffff;
+            --cinza-claro: #f4f4f4;
+            --tempoliturgico: rgb(0, 116, 0);
+            --transicao: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: var(--marrom);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--branco);
+        }
+
+        /* Menu Desktop */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transicao);
+        }
+
+        .nav-menu a:hover {
+            color: var(--dourado);
+            transform: scale(1.10);
+        }
+
+        /* Botão Hambúrguer */
+        /* --- ESTILO DO MENU HAMBÚRGUER ANIMADO --- */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 30px;
+            height: 24px;
+            position: relative;
+            z-index: 1100;
+        }
+
+        /* As 3 linhas do ícone */
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: white;
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: var(--transicao);
+        }
+
+        .hamburger span:nth-child(1) { top: 0px; }
+        .hamburger span:nth-child(2) { top: 10px; }
+        .hamburger span:nth-child(3) { top: 20px; }
+
+        /* Transformação para o "X" quando ativo */
+        .hamburger.open span:nth-child(1) {
+            top: 10px;
+            transform: rotate(135deg);
+            background: var(--branco);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+            left: -40px;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            top: 10px;
+            transform: rotate(-135deg);
+            background: var(--branco);
+        }
+
+
+
+
+         /* Botão WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgb(17, 147, 17);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0px 0px 10px 1px #27272778;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transicao);
+        }.whatsapp-float:hover{
+            transform: scale(1.10);
+            background-color: rgb(0, 116, 0);
+            transition: var(--transicao);
+        }
+
+        /* Responsividade - MOBILE */
+        @media (max-width: 768px) {
+            .hamburger { 
+                display: block;
+                position: absolute;
+                right: 3rem;
+                
+            }
+            .nav-menu {
+                position: fixed; 
+                top: 4rem; 
+                right: -100%; 
+                width: 55%;
+                height: 50vh;
+                background-color: var(--marrom); 
+                flex-direction: column; 
+                align-items: center; 
+                justify-content: center; 
+                transition: var(--transicao);
+            }
+            .nav-menu.active { right: 0; }
+            .nav-menu li { margin: 20px 0; }
+            .nav-menu a { font-size: 1.5rem; }
+        }
+
