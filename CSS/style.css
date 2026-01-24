@@ -247,6 +247,13 @@
             font-size: 0.9rem;
         }
 
+        a.dev i{
+            color: var(--dourado);
+            font-size: 20px;
+            font-weight: bolder;
+            margin-right: 6px;
+        }a.dev{text-decoration: none; color: white; font-size: 17px;}
+
         /* Botão WhatsApp */
         .whatsapp-float {
             position: fixed;
