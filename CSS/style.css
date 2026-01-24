@@ -71,12 +71,13 @@
         .login{
             background-color: var(--dourado);
             color: white;
-            width: 5rem;
+            width: 8rem;
             height: 2rem;
             border-radius: 2rem;
             border: none;
             cursor: pointer;
             transition: var(--transicao);
+            font-size: 16px;
         }
         .login:hover{
             background-color: var(--cinza-claro);
