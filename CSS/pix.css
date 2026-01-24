@@ -112,6 +112,8 @@
             background: var(--branco);
         }
 
+        .home{visibility: hidden;}
+
 
 
 
@@ -160,8 +162,17 @@
                 justify-content: center; 
                 transition: var(--transicao);
             }
-            .nav-menu.active { right: 0; }
-            .nav-menu li { margin: 20px 0; }
-            .nav-menu a { font-size: 1.5rem; }
+            .nav-menu.active { right: 0;}
+            .nav-menu li { margin: 20px 0;}
+            .nav-menu a { font-size: 1.5rem;}
+
+            .home i{
+                visibility: visible;
+                position: absolute;
+                font-size: 35px;
+                top: 0;
+                margin: 10px;
+                right: 7rem;
+            }
         }
 

@@ -16,4 +16,5 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
         hamburger.classList.remove('open');
     };
 });
+
 // --Menu hambúrguer (Mobile)
