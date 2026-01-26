@@ -297,4 +297,8 @@
             .nav-menu.active { right: 0; }
             .nav-menu li { margin: 20px 0; }
             .nav-menu a { font-size: 1.5rem; }
+
+            footer{
+                font-size: 16px;
+            }
         }
