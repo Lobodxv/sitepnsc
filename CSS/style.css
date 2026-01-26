@@ -339,7 +339,7 @@
 
 
  /* Responsividade - MOBILE */
- @media (max-width: 768px) {
+ @media (max-width: 950px) {
      .hamburger {
          display: block;
          position: absolute;
