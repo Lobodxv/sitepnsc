@@ -8,7 +8,29 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* BIBLIOTECA SWIPER */
+.swiper { width: 100%; padding: 20px 0 50px;}
+    .swiper-slide { 
+        display: flex; 
+        justify-content: center;
+        transition: transform 0.3s;
+    }
+    .card-missa {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        border-top: 5px solid var(--dourado);
+        width: 90%;
+        max-width: 350px;
+        text-align: center;
+    }
+    .swiper-button-next, .swiper-button-prev { color: var(--marrom);}
+    .swiper-pagination-bullet-active { background: var(--dourado); }
+/* --Biblioteca Swiper */
  
+
  :root {
             --marrom: #211800;
             --dourado: #e1ad2a;
@@ -184,7 +206,7 @@
             text-align: center;
         }
 
-        .grid-horarios {
+        /* .grid-horarios {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
@@ -196,9 +218,9 @@
             padding: 20px;
             border-radius: 8px;
             border-top: 5px solid var(--marrom);
-        }
+        } */
 
-        .card-horario h3 {
+        .celebrações h3 {
             color: var(--marrom);
             margin-bottom: 10px;
         }
@@ -207,8 +229,9 @@
         .pix-section {
             background-color: var(--marrom);
             color: white;
-            padding: 60px 5%;
+            padding: 150px 5%;
             text-align: center;
+            font-size: 1.3rem;
         }
         .pix-section span{color: var(--dourado);}
 
@@ -223,7 +246,7 @@
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 50px;
             transition: transform 0.2s;
         }
 

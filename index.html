@@ -10,6 +10,8 @@
         rel="stylesheet"> <!-- Link das fontes -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <!-- Link dos ícones - Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Biblioteca Swiper -->
 
     <link rel="stylesheet" href="CSS\style.css"> <!-- Folha de estilos CSS -->
 </head>
@@ -46,6 +48,79 @@
 
     <section class="celebracoes" id="missas">
         <h2>Horários de Celebrações</h2>
+
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="card-missa">
+                        <h3>Domingos</h3>
+                        <p id="horario-domingo" style="font-size: 1.1rem; line-height: 1.6;">09h00 e 19h00<br>Santa
+                            Missa</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card-missa">
+                        <h3>Segunda-feira</h3>
+                        <p id="horario-semana" style="font-size: 1.1rem; line-height: 1.6;">18h00<br>Terço das Mulheres
+                        </p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card-missa">
+                        <h3>Terça-feira</h3>
+                        <p id="horario-semana" style="font-size: 1.1rem; line-height: 1.6;">18h00<br>Terço dos Homens
+                        </p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card-missa">
+                        <h3>Quarta-feira</h3>
+                        <p id="horario-semana" style="font-size: 1.1rem; line-height: 1.6;">18h00<br>Terço das Crianças
+                        </p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card-missa">
+                        <h3>Quinta-feira</h3>
+                        <p id="horario-semana" style="font-size: 1.1rem; line-height: 1.6;">18h00 - Adoração<br>19h00 -
+                            Santa Missa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            speed: 500,
+            // Configuração do Autoplay
+            autoplay: {
+                delay: 1700, // Passa a cada 3 segundos
+                disableOnInteraction: false, // Para o autoplay quando o fiel deslizar manualmente
+                pauseOnMouseEnter: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            },
+            breakpoints: {
+                768: { slidesPerView: 4 }
+            }
+        });
+    </script>
+
+    <!-- <section class="celebracoes" id="missas">
+        <h2>Horários de Celebrações</h2>
         <div class="grid-horarios">
             <div class="card-horario">
                 <h3>Segunda-feira</h3>
@@ -69,7 +144,7 @@
                 <p>09h00 | 19h00</p>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section class="pix-section" id="dizimo">
         <h2>Seja um <span id="doador">Doador</span></h2>
@@ -87,7 +162,8 @@
         <div>
             <p>&copy; 2026 Paróquia N. Sra. do Carmo - Todos os direitos reservados.</p>
             <p><i class="bi bi-geo-alt-fill"></i> Av. Trajano Honorato - Lagoa do Mato, Centro</p>
-            <a class="dev" title="Desenvolvido por Manoel Lobo" href="https://instagram.com/manoellob_"><i class="bi bi-code-slash"></i>por Manoel Lobo</a>
+            <a class="dev" title="Desenvolvido por Manoel Lobo" href="https://instagram.com/manoellob_"><i
+                    class="bi bi-code-slash"></i>por Manoel Lobo</a>
         </div>
     </footer>
 
