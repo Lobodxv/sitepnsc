@@ -234,15 +234,16 @@
         .endereco{
             width: auto;
             height: auto;
-            
         }
 
         footer {
+            display: flex;
+            align-items: flex-end;
             background: #222;
             color: white;
             padding: 20px 4%;
-            height: 100px;
-            text-align: center;
+            height: 130px;
+            text-align: left;
             font-size: 0.9rem;
         }
 
@@ -296,9 +297,4 @@
             .nav-menu.active { right: 0; }
             .nav-menu li { margin: 20px 0; }
             .nav-menu a { font-size: 1.5rem; }
-
-            footer{
-                text-align: left;
-                height: 130px;
-            }
         }
