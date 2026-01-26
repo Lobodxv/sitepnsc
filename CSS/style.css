@@ -377,7 +377,8 @@
          background-position: center;
          background-size: contain;
          background-repeat: no-repeat;
-         background-attachment: fixed;
+         background-attachment: scroll;
+         min-height: 70vh;
          width: 100%;
          height: 70vh;
      }
