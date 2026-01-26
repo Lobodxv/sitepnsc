@@ -373,15 +373,15 @@
 
      .hero {
          background-image: url('../img/imgaerea2-mob.jpeg');
-         background-position:bottom;
-         background-size: contain;
+         background-position: center;
+         background-size: cover;
          background-attachment: fixed;
          width: 100%;
          height: 70vh;
      }
 
      .hero h1 {
-         font-size: 3.5rem;
+         font-size: 2.5rem;
          margin-bottom: 15px;
      }.hero p{
         font-size: 1.1rem
