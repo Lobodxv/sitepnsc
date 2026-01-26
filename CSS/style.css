@@ -372,8 +372,8 @@
      }
 
      .hero {
-         background-position-x: -1100px;
-         background-position-y: -50px;
+         background-image: url('../img/imgaerea2-mob.jpeg');
+         background-position: center;
          background-size: cover;
          background-attachment: fixed;
          width: 100%;
