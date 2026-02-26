@@ -102,7 +102,7 @@
         }
 
         .current-row {
-            background-color: #e8f5e9;
+            background-color: #ecdef0;
             font-weight: bold;
         }
 
@@ -210,7 +210,7 @@
 
             const numDomingo = Math.ceil(alvo.getDate() / 7);
 
-            document.getElementById('next-date-label').innerText = "Próximo Domingo: " + alvo.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' });
+            document.getElementById('next-date-label').innerText = "Coral do Próximo Domingo: " + alvo.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' });
             document.getElementById('next-coral-name').innerText = corais[numDomingo - 1];
             document.getElementById('next-info-label').innerText = `Referente ao ${numDomingo}º domingo do mês`;
         }
