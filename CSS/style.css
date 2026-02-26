@@ -45,7 +45,8 @@
 
 
  :root {
-    --marrom: #211800;
+    /* --marrom: #211800; */
+    --marrom: #4e0e70;
     --dourado: #e1ad2a;
     --branco: #ffffff;
     --cinza-claro: #f4f4f4;
