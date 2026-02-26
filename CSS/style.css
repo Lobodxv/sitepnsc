@@ -45,13 +45,13 @@
 
 
  :root {
-     --marrom: #211800;
-     --dourado: #e1ad2a;
-     --branco: #ffffff;
-     --cinza-claro: #f4f4f4;
-     --tempoliturgico: rgb(0, 116, 0);
-     --transicao: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
- }
+    --marrom: #211800;
+    --dourado: #e1ad2a;
+    --branco: #ffffff;
+    --cinza-claro: #f4f4f4;
+    --tempoliturgico: #4e0e70;
+    --transicao: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
  body {
      font-family: 'Montserrat', sans-serif;
@@ -63,7 +63,7 @@
 
  /* Cabeçalho */
  header {
-     background-color: var(--marrom);
+     background-color: var(--tempoliturgico);
      color: white;
      padding: 1rem 5%;
      display: flex;

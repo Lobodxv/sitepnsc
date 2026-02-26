@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escala de Corais</title>
+
+    <link rel="stylesheet" href="CSS\style.css"> <!-- Folha de estilos CSS -->
+    <style>
+        :root {
+            --marrom: #211800;
+            --dourado: #e1ad2a;
+            --branco: #ffffff;
+            --cinza-claro: #f4f4f4;
+            --cinza-escuro: #4e4e4e;
+            --tempoliturgico: #4e0e70;
+            --transicao: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        header{
+            position: fixed;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: var(--cinza-claro);
+        }
+
+        .card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 0px 50px 5px rgba(0, 0, 0, 0.445);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #000000;
+            margin-top: 0;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .date-display {
+            color: #3c393d;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+        }
+
+        .coral-box {
+            background: #f9f9f9;
+            border: 2px dashed #ddd;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .coral-name {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--tempoliturgico);
+            display: block;
+        }
+
+        .label {
+            font-size: 0.9rem;
+            color: #554d57;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background: var(--cinza-escuro);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            flex: 1;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-reset {
+            background: var(--tempoliturgico);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">PNSC</div>
+
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#missas">Celebrações</a></li>
+                <li><a href="#endereco">Endereço</a></li>
+                <li><a href="#dizimo">Doação</a></li>
+                <!-- <li><a href="login.html"><button class="login">Login</button></a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <div class="card">
+        <h1>Escala de Corais</h1>
+        <div id="data-exibida" class="date-display">--</div>
+
+        <div class="coral-box">
+            <span id="resultado" class="coral-name">Carregando...</span>
+            <span id="detalhe" class="label">--</span>
+        </div>
+
+        <div class="controls">
+            <button onclick="resetarData()" class="btn-reset">Retornar</button>
+            <button onclick="proximoDomingo()">Próximo Domingo →</button>
+        </div>
+    </div>
+
+    <script>
+        let dataReferencia = new Date();
+
+        function atualizarTela() {
+            let dataAlvo = new Date(dataReferencia);
+
+            // Se não for domingo (0), avança para o próximo
+            if (dataAlvo.getDay() !== 0) {
+                dataAlvo.setDate(dataAlvo.getDate() + (7 - dataAlvo.getDay()));
+            }
+
+            const dia = dataAlvo.getDate();
+            const ordemDomingo = Math.ceil(dia / 7);
+            const corais = ["Aliança de Amor", "Yeshua", "Donum Dei (Dízimo)", "Pastoral Familiar", "Flor do Carmelo"];
+
+            // Formatação
+            const opcoes = { weekday: 'long', day: 'numeric', month: 'long' };
+            document.getElementById('data-exibida').innerText = dataAlvo.toLocaleDateString('pt-BR', opcoes);
+            document.getElementById('resultado').innerText = corais[ordemDomingo - 1];
+            document.getElementById('detalhe').innerText = `${ordemDomingo}º Domingo do Mês`;
+
+            // Atualiza a referência para que o próximo clique parta daqui
+            dataReferencia = new Date(dataAlvo);
+        }
+
+        function proximoDomingo() {
+            // Adiciona 7 dias à data atual de referência
+            dataReferencia.setDate(dataReferencia.getDate() + 7);
+            atualizarTela();
+        }
+
+        function resetarData() {
+            dataReferencia = new Date();
+            atualizarTela();
+        }
+
+        atualizarTela();
+    </script>
+    <script src="JS/hamburger.js"></script>
+</body>
+
+</html>
