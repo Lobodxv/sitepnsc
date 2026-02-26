@@ -18,94 +18,123 @@
             --transicao: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        header{
+        header {
             position: fixed;
             width: 100%;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg);
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: var(--cinza-claro);
+            padding: 20px;
+            margin-top: 80px;;
         }
 
-        .card {
+        .container {
             background: white;
-            padding: 3rem;
+            padding: 25px;
             border-radius: 20px;
-            box-shadow: 0 0px 50px 5px rgba(0, 0, 0, 0.445);
+            box-shadow: 0 10px 30px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
             text-align: center;
-            max-width: 400px;
-            width: 90%;
         }
 
         h1 {
-            color: #000000;
-            margin-top: 0;
-            font-size: 1.6rem;
+            color: var(--tempoliturgico);
+            font-size: 1.8rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
 
-        .date-display {
-            color: #3c393d;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+        /* Destaque do Próximo */
+        .highlight {
+            background: var(--cinza-claro);
+            border: 2px solid #4e0e70a6;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .highlight .date {
+            font-size: 0.9rem;
+            color: #414141;
             text-transform: capitalize;
         }
 
-        .coral-box {
-            background: #f9f9f9;
-            border: 2px dashed #ddd;
-            padding: 25px;
-            border-radius: 12px;
-            margin: 30px 0;
-        }
-
-        .coral-name {
-            font-size: 2rem;
+        .highlight .name {
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--tempoliturgico);
             display: block;
+            margin: 5px 0;
         }
 
-        .label {
-            font-size: 0.9rem;
-            color: #554d57;
+        /* Tabela Mensal */
+        .month-title {
+            font-weight: bold;
+            color: var(--tempoliturgico);
+            font-size: 1.2rem;
+            margin: 15px 0 10px;
             display: block;
-            margin-top: 5px;
+            text-transform: capitalize;
         }
 
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        th {
+            background: var(--tempoliturgico);
+            padding: 10px;
+            color: var(--branco);
+        }
+
+        td {
+            border-bottom: 1px solid #8a8a8a;
+            padding: 12px 8px;
+            color: rgb(15, 15, 15);
+        }
+
+        .current-row {
+            background-color: #e8f5e9;
+            font-weight: bold;
+        }
+
+        /* Botões */
         .controls {
             display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
+            gap: 8px;
         }
 
         button {
-            background: var(--cinza-escuro);
-            color: white;
+            flex: 1;
+            padding: 12px;
             border: none;
-            padding: 12px 20px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
-            transition: 0.3s;
-            flex: 1;
+            transition: 0.2s;
+        }
+
+        .btn-next {
+            background: var(--cinza-escuro);
+            color: white;
+        }
+
+        .btn-today {
+            background: var(--tempoliturgico);
+            color: var(--branco);
+            display: none;
         }
 
         button:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        .btn-reset {
-            background: var(--tempoliturgico);
+            opacity: 0.8;
         }
     </style>
 
@@ -133,58 +162,115 @@
         </nav>
     </header>
 
-    <div class="card">
+    <div class="container">
         <h1>Escala de Corais</h1>
-        <div id="data-exibida" class="date-display">--</div>
 
-        <div class="coral-box">
-            <span id="resultado" class="coral-name">Carregando...</span>
-            <span id="detalhe" class="label">--</span>
+        <div class="highlight">
+            <div id="next-date-label" class="date">--</div>
+            <span id="next-coral-name" class="name">--</span>
+            <div id="next-info-label" style="font-size: 0.8rem; color: #888;">--</div>
         </div>
 
+        <span id="month-name" class="month-title">--</span>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dia</th>
+                    <th>Domingo</th>
+                    <th>Coral Responsável</th>
+                </tr>
+            </thead>
+            <tbody id="month-table-body">
+            </tbody>
+        </table>
+
         <div class="controls">
-            <button onclick="resetarData()" class="btn-reset">Retornar</button>
-            <button onclick="proximoDomingo()">Próximo Domingo →</button>
+            <button onclick="resetar()" class="btn-today">Voltar ao mês atual</button>
+            <button onclick="navegar(1)" class="btn-next">Próximo Mês ➔</button>
         </div>
     </div>
 
     <script>
-        let dataReferencia = new Date();
+        let dataReferencia = new Date(); // Data que controla a visualização
+        const corais = ["Aliança de Amor", "Yeshua", "Donum Dei (Dízimo)", "Pastoral Familiar", "Flor do Carmelo"];
 
-        function atualizarTela() {
-            let dataAlvo = new Date(dataReferencia);
+        function init() {
+            renderDestaque();
+            renderTabelaMensal();
+        }
 
-            // Se não for domingo (0), avança para o próximo
-            if (dataAlvo.getDay() !== 0) {
-                dataAlvo.setDate(dataAlvo.getDate() + (7 - dataAlvo.getDay()));
+        function renderDestaque() {
+            let hoje = new Date();
+            let alvo = new Date(hoje);
+
+            // Ajusta para o próximo domingo se não for domingo
+            if (alvo.getDay() !== 0) {
+                alvo.setDate(hoje.getDate() + (7 - hoje.getDay()));
             }
 
-            const dia = dataAlvo.getDate();
-            const ordemDomingo = Math.ceil(dia / 7);
-            const corais = ["Aliança de Amor", "Yeshua", "Donum Dei (Dízimo)", "Pastoral Familiar", "Flor do Carmelo"];
+            const numDomingo = Math.ceil(alvo.getDate() / 7);
 
-            // Formatação
-            const opcoes = { weekday: 'long', day: 'numeric', month: 'long' };
-            document.getElementById('data-exibida').innerText = dataAlvo.toLocaleDateString('pt-BR', opcoes);
-            document.getElementById('resultado').innerText = corais[ordemDomingo - 1];
-            document.getElementById('detalhe').innerText = `${ordemDomingo}º Domingo do Mês`;
-
-            // Atualiza a referência para que o próximo clique parta daqui
-            dataReferencia = new Date(dataAlvo);
+            document.getElementById('next-date-label').innerText = "Próximo Domingo: " + alvo.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' });
+            document.getElementById('next-coral-name').innerText = corais[numDomingo - 1];
+            document.getElementById('next-info-label').innerText = `Referente ao ${numDomingo}º domingo do mês`;
         }
 
-        function proximoDomingo() {
-            // Adiciona 7 dias à data atual de referência
-            dataReferencia.setDate(dataReferencia.getDate() + 7);
-            atualizarTela();
+        function renderTabelaMensal() {
+            const corpoTabela = document.getElementById('month-table-body');
+            corpoTabela.innerHTML = "";
+
+            const mes = dataReferencia.getMonth();
+            const ano = dataReferencia.getFullYear();
+
+            document.getElementById('month-name').innerText = dataReferencia.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+
+            // Loop pelos dias do mês para achar os domingos
+            let dataBusca = new Date(ano, mes, 1);
+            let contadorDomingo = 1;
+
+            while (dataBusca.getMonth() === mes) {
+                if (dataBusca.getDay() === 0) {
+                    const tr = document.createElement('tr');
+
+                    // Destacar se for o próximo domingo cronológico
+                    let hoje = new Date();
+                    if (dataBusca.toDateString() === getProximoDomingo(hoje).toDateString()) {
+                        tr.className = "current-row";
+                    }
+
+                    tr.innerHTML = `
+                    <td>${dataBusca.getDate()}</td>
+                    <td>${contadorDomingo}º</td>
+                    <td>${corais[contadorDomingo - 1]}</td>
+                `;
+                    corpoTabela.appendChild(tr);
+                    contadorDomingo++;
+                }
+                dataBusca.setDate(dataBusca.getDate() + 1);
+            }
         }
 
-        function resetarData() {
+        function getProximoDomingo(d) {
+            let res = new Date(d);
+            if (res.getDay() !== 0) res.setDate(d.getDate() + (7 - d.getDay()));
+            return res;
+        }
+
+        const btnToday = document.querySelector('.btn-today');
+        function navegar(direcao) {
+            dataReferencia.setMonth(dataReferencia.getMonth() + direcao);
+            renderTabelaMensal();
+            btnToday.style.display = 'block';
+
+        }
+
+        function resetar() {
             dataReferencia = new Date();
-            atualizarTela();
+            renderTabelaMensal();
+            btnToday.style.display = 'none';
         }
 
-        atualizarTela();
+        init();
     </script>
     <script src="JS/hamburger.js"></script>
 </body>
