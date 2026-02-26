@@ -340,6 +340,10 @@
 
  /* Responsividade - MOBILE */
  @media (max-width: 768px) {
+    h1.topTitle{
+        display: block;
+    }
+
      .hamburger {
          display: block;
          position: absolute;

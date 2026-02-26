@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escala de Corais</title>
 
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet"> <!-- Link das fontes -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- Link dos ícones - Bootstrap -->
+
+
     <link rel="stylesheet" href="CSS\style.css"> <!-- Folha de estilos CSS -->
     <style>
         :root {
@@ -23,13 +30,24 @@
             width: 100%;
         }
 
+        footer{
+            width: 100%;
+            background-color: var(--cinza-claro);
+            padding: 20px;
+            color: rgba(0, 0, 0, 0.527);
+        }footer i{color: var(--tempoliturgico);}
+        a.dev i{color: var(--tempoliturgico);}
+        a.dev {color: rgba(0, 0, 0, 0.527); text-decoration: none;}
+
         body {
             font-family: 'Segoe UI', sans-serif;
             background-color: var(--bg);
+            margin-top: 60px;
             display: flex;
             justify-content: center;
-            padding: 20px;
-            margin-top: 80px;;
+            align-items: center;
+            flex-direction: column;
+            gap: 80px;
         }
 
         .container {
@@ -43,10 +61,13 @@
         }
 
         h1 {
-            color: var(--tempoliturgico);
+            color: var(--branco);
             font-size: 1.8rem;
-            text-transform: uppercase;
-            margin-bottom: 20px;
+        }
+        h1.topTitle{
+            color: var(--branco);
+            font-size: 1.8rem;
+            display: none;
         }
 
         /* Destaque do Próximo */
@@ -152,18 +173,19 @@
         </button>
 
         <nav>
+            <h1 class="topTitle">Escala de Corais</h1>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#missas">Celebrações</a></li>
-                <li><a href="#endereco">Endereço</a></li>
-                <li><a href="#dizimo">Doação</a></li>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#celebracoes">Celebrações</a></li>
+                <li><a href="index.html#endereco">Endereço</a></li>
+                <li><a href="index.html#dizimo">Doação</a></li>
                 <!-- <li><a href="login.html"><button class="login">Login</button></a></li> -->
             </ul>
         </nav>
     </header>
 
     <div class="container">
-        <h1>Escala de Corais</h1>
+        <h1 class="topTitle">Escala de Corais</h1>
 
         <div class="highlight">
             <div id="next-date-label" class="date">--</div>
@@ -261,7 +283,7 @@
             dataReferencia.setMonth(dataReferencia.getMonth() + direcao);
             renderTabelaMensal();
             btnToday.style.display = 'block';
-
+            btnToday.innerText = "Voltar a " + new Date().toLocaleDateString('pt-BR', { month: 'long', year: 'numeric'});
         }
 
         function resetar() {
@@ -273,6 +295,16 @@
         init();
     </script>
     <script src="JS/hamburger.js"></script>
+
+
+    <footer id="direitos">
+        <div>
+            <p>&copy; 2026 Paróquia N. Sra. do Carmo - Todos os direitos reservados.</p>
+            <p><i class="bi bi-geo-alt-fill"></i> Av. Trajano Honorato - Lagoa do Mato, Centro</p>
+            <a class="dev" title="Desenvolvido por Manoel Lobo" href="https://instagram.com/manoellob_"><i
+                    class="bi bi-code-slash"></i>por Manoel Lobo</a>
+        </div>
+    </footer>
 </body>
 
 </html>
