@@ -1,6 +1,20 @@
- /* SUMÁRIO */
 
- /* xx */
+
+ /* 
+    --   SUMÁRIO  --
+
+    01 - UNIVERSAIS
+    01.1 - Barra do Evangelho do dia
+    02 - BIBLIOTECA SWIPPER (Carrossel das celebrações)
+    03 - MENU DO TOPO
+    04 - ESTILO DO MENU HAMBÚRGUER 
+    05 - 
+    06.
+    07.
+    08.
+    09.
+    10.
+ */
 
 
  * {
@@ -9,7 +23,70 @@
      box-sizing: border-box;
  }
 
- /* BIBLIOTECA SWIPER */
+ :root {
+    /* --marrom: #211800; */
+    --marrom: #4e0e70;
+    --span: #9615db;
+    --branco: #ffffff;
+    --cinza-claro: #f4f4f4;
+    --tempoliturgico: #4e0e70;
+    --transicao: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+ body {
+     font-family: 'Montserrat', sans-serif;
+     margin: 0;
+     padding: 0;
+     color: #333;
+     line-height: 1.6;
+ }
+
+ /* Estilo da barra horizontal (Evangelho do dia) */
+.barra-evangelho {
+    background: var(--tempoliturgico);
+    color: #fff;
+    height: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    font-size: 0.7rem;
+    font-weight: 500;
+    border-top: var(--cinza-claro) 2px solid;
+    border-bottom: 3px solid var(--tempoliturgico);
+    position: fixed;
+    top: 73px;
+    z-index: 100;
+
+        
+}
+
+.marquee {
+    white-space: nowrap;
+    animation: scroll 160s linear infinite;
+    padding-left: 48%;
+}
+
+/* Animação de movimento */
+@keyframes scroll {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-100%, 0);
+    }
+}
+
+/* Pausa ao passar o mouse para o fiel conseguir ler com calma */
+.barra-evangelho:hover .marquee {
+    animation-play-state: paused;
+    cursor: pointer;
+}
+
+
+
+ /* 02 - BIBLIOTECA SWIPER */
  .swiper {
      width: 100%;
      padding: 20px 0 50px;
@@ -26,7 +103,7 @@
      padding: 30px;
      border-radius: 15px;
      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-     border-top: 5px solid var(--dourado);
+     border-top: 5px solid var(--tempoliturgico);
      width: 90%;
      max-width: 350px;
      text-align: center;
@@ -34,33 +111,18 @@
 
  .swiper-button-next,
  .swiper-button-prev {
-     color: var(--marrom);
+     color: var(--tempoliturgico);
  }
 
  .swiper-pagination-bullet-active {
-     background: var(--dourado);
+     background: var(--tempoliturgico);
  }
 
- /* --Biblioteca Swiper */
 
 
- :root {
-    /* --marrom: #211800; */
-    --marrom: #4e0e70;
-    --dourado: #e1ad2a;
-    --branco: #ffffff;
-    --cinza-claro: #f4f4f4;
-    --tempoliturgico: #4e0e70;
-    --transicao: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
- body {
-     font-family: 'Montserrat', sans-serif;
-     margin: 0;
-     padding: 0;
-     color: #333;
-     line-height: 1.6;
- }
+
+/* 03 - MENU DO TOPO */
 
  /* Cabeçalho */
  header {
@@ -125,7 +187,7 @@
  }
 
  /* Botão Hambúrguer */
- /* --- ESTILO DO MENU HAMBÚRGUER ANIMADO --- */
+ /* 04. ESTILO DO MENU HAMBÚRGUER ANIMADO */
  .hamburger {
      display: none;
      cursor: pointer;
@@ -188,8 +250,8 @@
             font-weight: 400;
         } */
 
- /* Banner Principal */
- .hero {
+ /* CARROSSEL DE IMAGENS */
+ /* .hero {
      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
      background-image: url('../img/imgaerea2.jpeg');
      background-position: center;
@@ -206,17 +268,26 @@
      color: white;
      text-align: center;
      padding: 0 20px;
-     -webkit-box-shadow: inset 0px -40px 24px -16px #FFFFFF; 
-    box-shadow: inset 0px -40px 24px -16px #FFFFFF;
  }
 
  .hero h1 {
      font-family: 'Playfair Display', serif;
      font-size: 3rem;
      margin-bottom: 10px;
- }
+ } */
+.carousel{
+    height: 450px;
+}
+.carousel img{
+    height: 45rem;
+    width: 100vw;
+    max-height: 450px;
+    object-fit: fill;
+    max-width: 100%;
+}
 
- /* Avisos e destaques */
+
+ /* Avisos e destaques
  .aviso-destaque {
      background: #fff3cd;
      border: 1px solid #ffeeba;
@@ -225,17 +296,16 @@
      border-radius: 8px;
      text-align: center;
      font-weight: bold;
- }
+ } */
 
 
 
- /* Sessão de Horários */
+
+ /* 0X - CELEBRAÇÕES */
  .celebracoes {
      padding: 70px 5%;
      background-color: var(--branco);
      text-align: center;
-     -webkit-box-shadow: inset 0px -40px 20px -11px #211800; 
-    box-shadow: inset 0px -40px 20px -11px #211800;
  }
 
  /* .grid-horarios {
@@ -253,13 +323,13 @@
         } */
 
  .celebrações h3 {
-     color: var(--marrom);
+     color: var(--tempoliturgico);
      margin-bottom: 10px;
  }
 
  /* Botão Dízimo/Pix */
  .pix-section {
-     background-color: var(--marrom);
+     background-color: var(--tempoliturgico);
      color: white;
      padding: 150px 5%;
      text-align: center;
@@ -267,12 +337,12 @@
  }
 
  .pix-section span {
-     color: var(--dourado);
+     color: var(--span);
  }
 
  .btn-pix {
-     background-color: var(--dourado);
-     color: white;
+     background-color: var(--span);
+     color: var(--branco);
      font-weight: bold;
      padding: 15px 30px;
      border: none;
@@ -341,6 +411,13 @@
 
  /* Responsividade - MOBILE */
  @media (max-width: 768px) {
+    .carousel {
+        height: 15rem;
+    }
+    .carousel img{
+        height: 15rem;
+    }
+
     h1.topTitle{
         display: block;
     }

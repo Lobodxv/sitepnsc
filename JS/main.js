@@ -36,3 +36,22 @@ onSnapshot(doc(db, "site_content", "geral"), (doc) => {
         }
     }
 });
+
+
+const imagem = document.getElementById('imagem1');
+const breakpoint = window.matchMedia("(max-width: 768px)");
+
+function trocarImagem(e) {
+  if (e.matches) {
+    // Se for mobile
+    imagem.src = "img/Paróquia N. Sra. do Carmo (800 x 400 px).png";
+  } else {
+    // Se for desktop
+    imagem.src = "img/Paróquia N. Sra. do Carmo.png";
+  }
+}
+
+// Escuta mudanças no tamanho da tela
+breakpoint.addListener(trocarImagem);
+// Executa a função ao carregar a página
+trocarImagem(breakpoint);

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"> <!-- Link dos ícones -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"> <!-- Link dos ícones -->
+  
+  <link rel="stylesheet" href="CSS/style.css"> <!-- Folha de estilo principal -->
   <link rel="stylesheet" href="CSS/pix.css">
 
   <title>Doação | PNSC</title>
@@ -34,10 +36,43 @@
             </ul>
         </nav>
     </header>
+    <div class="barra-evangelho">
+        <div class="marquee" id="texto-evangelho">
+            📖 Carregando o Evangelho do dia... 
+        </div>
+    </div>
 
-    <h1><i class="bi bi-code-slash"></i>  Página em desenvolvimento...</h1>
+    <!-- <div class="card-right">
+        <div class="logo-paroquia">PNS do Carmo</div>
+        <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+    </div> -->
+
+
+    <div class="card-doacao">
+        <!-- <div class="logo-paroquia">PNS do Carmo</div> -->
+        <h2 style="color: #333; margin-top: 0;">Dízimo e Ofertas</h2>
+        <p style="color: #666; font-size: 0.9rem;">"Deus ama quem dá com alegria." (2Cor 9,7)</p>
+        <div id="qrcode"></div>
+
+        <div class="info-pix">
+            <span class="chave-label">Chave Pix</span>
+            <span id="txt-chave" class="chave-valor">07.721.749/0020-30</span>
+            <p style="margin: 5px 0 0; font-size: 0.85rem; color: #555;">
+                Favorecido: <strong id="txt-nome">Paróquia Nossa Senhora do Carmo</strong>
+            </p>
+        </div>
+
+        <button class="btn-copiar" onclick="copiarPix(event)">Copiar Chave Pix</button>
+
+        <p class="footer-obs">
+            Após escanear ou colar a chave, confira os dados da paróquia no seu aplicativo bancário antes de confirmar.
+        </p>
+        
+        <a href="index.html" style="display: inline-block; margin-top: 20px; color: var(--azul); text-decoration: none; font-weight: 600; font-size: 0.9rem;">← Voltar ao Início</a>
+    </div>
 
     <script src="JS/hamburger.js"></script>
     <script src="JS/main.js"></script>
+    <script src="JS/evangelho.js"></script>
 </body>
 </html>
