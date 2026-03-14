@@ -282,7 +282,7 @@
     height: 45rem;
     width: 100vw;
     max-height: 450px;
-    object-fit: cover;
+    object-fit:fill;
     max-width: 100%;
 }
 
