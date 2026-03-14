@@ -277,13 +277,12 @@
  } */
 .carousel{
     height: 450px;
+    object-fit: cover;
 }
 .carousel img{
     height: 45rem;
-    width: 100vw;
     max-height: 450px;
-    object-fit:fill;
-    max-width: 100%;
+    object-fit: fill;
 }
 
 
@@ -416,10 +415,10 @@
 }
 
     .carousel {
-        height: 15rem;
+        height: 13rem;
     }
     .carousel img{
-        height: 15rem;
+        height: 13rem;
     }
 
     h1.topTitle{
