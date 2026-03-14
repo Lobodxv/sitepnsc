@@ -162,7 +162,7 @@
  }
 
  .nav-menu a:hover {
-     color: var(--dourado);
+     color: var(--span);
      transform: scale(1.10);
  }
 
@@ -282,7 +282,7 @@
     height: 45rem;
     width: 100vw;
     max-height: 450px;
-    object-fit: fill;
+    object-fit: cover;
     max-width: 100%;
 }
 
@@ -411,6 +411,10 @@
 
  /* Responsividade - MOBILE */
  @media (max-width: 768px) {
+.barra-evangelho{
+    top: 65px;
+}
+
     .carousel {
         height: 15rem;
     }
