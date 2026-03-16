@@ -63,8 +63,8 @@
 
 .marquee {
     white-space: nowrap;
-    animation: scroll 160s linear infinite;
-    padding-left: 48%;
+    animation: scroll 100s linear infinite;
+    padding-left: 30%;
 }
 
 /* Animação de movimento */
@@ -360,22 +360,22 @@
 
  .endereco {
      width: auto;
-     height: auto;
+     height: 250px;
  }
 
  footer {
      display: flex;
      align-items: flex-end;
-     background: #222;
-     color: white;
-     padding: 20px 4%;
+     background: var(--cinza-claro);
+     color: rgb(92, 92, 92);
+     padding: 10px 4%;
      height: 130px;
      text-align: left;
      font-size: 0.9rem;
  }
 
  a.dev i {
-     color: var(--dourado);
+     color: var(--span);
      font-size: 20px;
      font-weight: bolder;
      margin-right: 6px;
@@ -383,7 +383,7 @@
 
  a.dev {
      text-decoration: none;
-     color: white;
+     color: rgb(92, 92, 92);
      font-size: 17px;
  }
 
