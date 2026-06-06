@@ -25,11 +25,11 @@
 
  :root {
     /* --marrom: #211800; */
-    --marrom: #4e0e70;
-    --span: #9615db;
+    --marrom: #18787a;
+    --span: #00eaff;
     --branco: #ffffff;
     --cinza-claro: #f4f4f4;
-    --tempoliturgico: #4e0e70;
+    --tempoliturgico: #5abbca;
     --transicao: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
