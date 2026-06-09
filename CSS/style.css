@@ -14,10 +14,11 @@
  *  06 - SEÇÃO CELEBRAÇÕES (Swiper)
  *  07 - SEÇÃO ENDEREÇO
  *  08 - SEÇÃO DOAÇÃO (PIX)
- *  09 - FOOTER
- *  10 - BOTÃO WHATSAPP FLUTUANTE
- *  11 - ANIMAÇÕES
- *  12 - RESPONSIVIDADE
+ *  09 - SEÇÃO RESGATE HISTÓRICO
+ *  10 - FOOTER
+ *  11 - BOTÃO WHATSAPP FLUTUANTE
+ *  12 - ANIMAÇÕES
+ *  13 - RESPONSIVIDADE
  * ============================================================
  */
 
@@ -539,7 +540,129 @@ header {
   color: var(--cor-primaria);
 }
 
-/* ── 09 FOOTER ─────────────────────────────────────────────── */
+/* ── 09 RESGATE HISTÓRICO ─────────────────────────────────── */
+.resgate-historico {
+    padding: var(--s-16) var(--s-4);
+    background-color: var(--cor-fundo-alt);
+    font-family: var(--fonte-corpo);
+    color: var(--cor-texto);
+}
+
+.historico-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.historico-header {
+    text-align: center;
+    margin-bottom: var(--s-12);
+}
+
+.historico-header h2 {
+    font-family: var(--fonte-display);
+    font-size: var(--t-2xl);
+    color: var(--cor-primaria);
+    margin-bottom: var(--s-3);
+    position: relative;
+}
+
+.historico-header h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--cor-destaque);
+    margin: var(--s-2) auto 0;
+    border-radius: var(--radius-sm);
+}
+
+.historico-header p {
+    font-size: var(--t-md);
+    color: var(--cor-texto-sub);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.historico-linha {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-12);
+}
+
+.historico-item {
+    display: flex;
+    align-items: center;
+    gap: var(--s-12);
+    background: var(--cor-branco);
+    padding: var(--s-6);
+    border-radius: var(--radius-md);
+    box-shadow: var(--sombra-md);
+}
+
+.historico-item .historico-img {
+    flex: 1;
+    min-width: 300px;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+}
+
+.historico-item .historico-img img {
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    object-fit: cover;
+    display: block;
+    transition: var(--transicao);
+}
+
+.historico-item:hover .historico-img img {
+    transform: scale(1.03);
+}
+
+.historico-item .historico-texto {
+    flex: 1.2;
+}
+
+.historico-item .historico-texto h3 {
+    font-family: var(--fonte-display);
+    font-size: var(--t-xl);
+    color: var(--cor-primaria);
+    margin-bottom: var(--s-3);
+}
+
+.historico-item .historico-texto p {
+    font-size: var(--t-base);
+    line-height: 1.6;
+    color: var(--cor-texto);
+    text-align: justify;
+}
+
+.historico-item.item-reverso {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+    .resgate-historico {
+        padding: var(--s-12) var(--s-4);
+    }
+
+    .historico-item, 
+    .historico-item.item-reverso {
+        flex-direction: column;
+        gap: var(--s-4);
+        padding: var(--s-4);
+    }
+
+    .historico-item .historico-img {
+        min-width: 100%;
+    }
+
+    .historico-header h2 {
+        font-size: var(--t-xl);
+    }
+}
+
+/* ── 10 FOOTER ─────────────────────────────────────────────── */
 footer {
   background: #1a1209;
   color: rgba(255,255,255,0.6);
@@ -592,7 +715,7 @@ a.dev i {
   font-size: var(--t-base);
 }
 
-/* ── 10 WHATSAPP FLUTUANTE ─────────────────────────────────── */
+/* ── 11 WHATSAPP FLUTUANTE ─────────────────────────────────── */
 .whatsapp-float {
   position: fixed;
   bottom: var(--s-6);
@@ -618,7 +741,7 @@ a.dev i {
   color: var(--cor-branco);
 }
 
-/* ── 11 ANIMAÇÕES GERAIS ───────────────────────────────────── */
+/* ── 12 ANIMAÇÕES GERAIS ───────────────────────────────────── */
 .fade-in {
   opacity: 0;
   transform: translateY(24px);
@@ -635,7 +758,7 @@ a.dev i {
   .marquee  { animation: none; }
 }
 
-/* ── 12 RESPONSIVIDADE ─────────────────────────────────────── */
+/* ── 13 RESPONSIVIDADE ─────────────────────────────────────── */
 @media (max-width: 768px) {
   /* Barra evangelho */
   .barra-evangelho { top: 70px; }
