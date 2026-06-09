@@ -2,299 +2,415 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escala de Corais</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Escala de Corais da Paróquia Nossa Senhora do Carmo — consulte qual coral canta nos próximos domingos.">
+  <meta name="theme-color" content="#2d1b04">
+  <title>Escala de Corais — PNSC</title>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap"
-        rel="stylesheet"> <!-- Link das fontes -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <!-- Link dos ícones - Bootstrap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="CSS/style.css">
 
+  <style>
+    /* ── Overrides específicos desta página ── */
+    header { position: fixed; width: 100%; top: 0; }
 
-    <link rel="stylesheet" href="CSS\style.css"> <!-- Folha de estilos CSS -->
-    <style>
-        header {
-            position: fixed;
-            width: 100%;
-        }
+    body {
+      background: var(--cor-fundo);
+      display: block;
+      padding: 0;
+      min-height: 100vh;
+    }
 
-        footer{
-            width: 100%;
-            background-color: var(--cinza-claro);
-            padding: 20px;
-            color: rgba(0, 0, 0, 0.527);
-        }footer i{color: var(--tempoliturgico);}
-        a.dev i{color: var(--tempoliturgico);}
-        a.dev {color: rgba(0, 0, 0, 0.527); text-decoration: none;}
+    .corais-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 140px 5% 80px;
+      gap: 32px;
+    }
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: var(--bg);
-            margin-top: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 80px;
-        }
+    /* Hero da página */
+    .corais-hero {
+      text-align: center;
+      max-width: 600px;
+    }
 
-        .container {
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px 20px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 450px;
-            text-align: center;
-        }
+    .corais-hero .section-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cor-destaque);
+      margin-bottom: 12px;
+    }
 
-        h1 {
-            color: var(--branco);
-            font-size: 1.8rem;
-        }
-        h1.topTitle{
-            color: var(--branco);
-            font-size: 1.8rem;
-            display: none;
-        }
+    .corais-hero h1 {
+      font-family: var(--fonte-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--cor-primaria);
+      margin-bottom: 8px;
+    }
 
-        /* Destaque do Próximo */
-        .highlight {
-            background: var(--cinza-claro);
-            border: 2px solid #4e0e70a6;
-            padding: 15px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-        }
+    .corais-hero p {
+      color: var(--cor-texto-sub);
+      font-size: 0.95rem;
+    }
 
-        .highlight .date {
-            font-size: 0.9rem;
-            color: #414141;
-            text-transform: capitalize;
-        }
+    /* Container do card */
+    .container {
+      background: var(--cor-branco);
+      padding: 36px 32px;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(45, 27, 4, 0.12);
+      width: 100%;
+      max-width: 500px;
+      border-top: 5px solid var(--cor-destaque);
+    }
 
-        .highlight .name {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--tempoliturgico);
-            display: block;
-            margin: 5px 0;
-        }
+    /* Destaque do próximo coral */
+    .highlight {
+      background: var(--cor-fundo-alt);
+      border: 2px solid rgba(201,146,42,0.3);
+      padding: 20px;
+      border-radius: 14px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
 
-        /* Tabela Mensal */
-        .month-title {
-            font-weight: bold;
-            color: var(--tempoliturgico);
-            font-size: 1.2rem;
-            margin: 15px 0 10px;
-            display: block;
-            text-transform: capitalize;
-        }
+    .highlight::before {
+      content: '🎵';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      opacity: 0.2;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
+    .highlight .badge {
+      background: var(--cor-destaque);
+      color: var(--cor-primaria);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
 
-        th {
-            background: var(--tempoliturgico);
-            padding: 10px;
-            color: var(--branco);
-        }
+    .highlight .date {
+      font-size: 0.85rem;
+      color: var(--cor-texto-sub);
+      text-transform: capitalize;
+      margin-bottom: 4px;
+    }
 
-        td {
-            border-bottom: 1px solid #8a8a8a;
-            padding: 12px 8px;
-            color: rgb(15, 15, 15);
-        }
+    .highlight .name {
+      font-family: var(--fonte-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--cor-primaria);
+      display: block;
+      margin: 4px 0;
+    }
 
-        .current-row {
-            background-color: #ecdef0;
-            font-weight: bold;
-        }
+    .highlight .info {
+      font-size: 0.8rem;
+      color: var(--cor-texto-sub);
+    }
 
-        /* Botões */
-        .controls {
-            display: flex;
-            gap: 8px;
-        }
+    /* Título do mês */
+    .month-title {
+      font-family: var(--fonte-display);
+      font-weight: 700;
+      color: var(--cor-primaria);
+      font-size: 1.1rem;
+      margin: 0 0 12px;
+      display: block;
+      text-transform: capitalize;
+    }
 
-        button {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.2s;
-        }
+    /* Tabela */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      margin-bottom: 24px;
+    }
 
-        .btn-next {
-            background: var(--cinza-escuro);
-            color: white;
-        }
+    thead th {
+      background: var(--cor-primaria);
+      padding: 10px 12px;
+      color: var(--cor-branco);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
 
-        .btn-today {
-            background: var(--tempoliturgico);
-            color: var(--branco);
-            display: none;
-        }
+    thead th:first-child { border-radius: 8px 0 0 0; }
+    thead th:last-child  { border-radius: 0 8px 0 0; }
 
-        button:hover {
-            opacity: 0.8;
-        }
-    </style>
+    tbody td {
+      border-bottom: 1px solid var(--cor-fundo-alt);
+      padding: 11px 12px;
+      color: var(--cor-texto);
+    }
 
+    tbody tr:last-child td { border-bottom: none; }
+
+    tbody tr:hover td {
+      background: var(--cor-fundo);
+    }
+
+    .current-row td {
+      background: rgba(201,146,42,0.1) !important;
+      font-weight: 700;
+      color: var(--cor-primaria);
+    }
+
+    .current-row td:first-child {
+      border-left: 3px solid var(--cor-destaque);
+    }
+
+    /* Botões de navegação */
+    .controls {
+      display: flex;
+      gap: 10px;
+    }
+
+    .controls button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.88rem;
+      font-family: var(--fonte-corpo);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-next {
+      background: var(--cor-primaria);
+      color: var(--cor-branco);
+    }
+
+    .btn-next:hover {
+      background: var(--cor-secundaria);
+      transform: translateY(-2px);
+    }
+
+    .btn-today {
+      background: var(--cor-destaque);
+      color: var(--cor-primaria);
+      display: none;
+    }
+
+    .btn-today:hover {
+      background: var(--cor-destaque-hov);
+      transform: translateY(-2px);
+    }
+
+    /* Footer inline */
+    footer {
+      width: 100%;
+      margin-top: auto;
+    }
+
+    /* Responsividade */
+    @media (max-width: 560px) {
+      .corais-page { padding: 130px 4% 60px; }
+      .container { padding: 24px 20px; }
+      .corais-hero h1 { font-size: 1.7rem; }
+      .highlight .name { font-size: 1.3rem; }
+    }
+  </style>
 </head>
 
 <body>
 
-    <header>
-        <div class="logo">PNSC</div>
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo" aria-label="PNSC — Página inicial">PNSC</a>
 
-        <button class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-        <nav>
-            <h1 class="topTitle">Escala de Corais</h1>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="index.html#celebracoes">Celebrações</a></li>
-                <li><a href="index.html#endereco">Endereço</a></li>
-                <li><a href="index.html#dizimo">Doação</a></li>
-                <!-- <li><a href="login.html"><button class="login">Login</button></a></li> -->
-            </ul>
-        </nav>
-    </header>
+    <nav aria-label="Navegação principal">
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="index.html#missas">Celebrações</a></li>
+        <li><a href="index.html#endereco">Endereço</a></li>
+        <li><a href="index.html#dizimo">Doação</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <div class="container">
-        <h1 class="topTitle">Escala de Corais</h1>
-
-        <div class="highlight">
-            <div id="next-date-label" class="date">--</div>
-            <span id="next-coral-name" class="name">--</span>
-            <div id="next-info-label" style="font-size: 0.8rem; color: #888;">--</div>
-        </div>
-
-        <span id="month-name" class="month-title">--</span>
-        <table>
-            <thead>
-                <tr>
-                    <th>Dia</th>
-                    <th>Domingo</th>
-                    <th>Coral Responsável</th>
-                </tr>
-            </thead>
-            <tbody id="month-table-body">
-            </tbody>
-        </table>
-
-        <div class="controls">
-            <button onclick="resetar()" class="btn-today">Voltar ao mês atual</button>
-            <button onclick="navegar(1)" class="btn-next">Próximo Mês ➔</button>
-        </div>
+  <!-- PÁGINA -->
+  <div class="corais-page">
+    <!-- Hero -->
+    <div class="corais-hero">
+      <span class="section-eyebrow">Liturgia</span>
+      <h1>Escala de Corais</h1>
+      <p>Veja qual coral ministra nos próximos domingos da paróquia.</p>
     </div>
 
-    <script>
-        let dataReferencia = new Date(); // Data que controla a visualização
-        const corais = ["Aliança de Amor", "Yeshua", "Donum Dei (Dízimo)", "Pastoral Familiar", "Flor do Carmelo"];
+    <!-- Card principal -->
+    <div class="container" role="region" aria-label="Escala de corais">
 
-        function init() {
-            renderDestaque();
-            renderTabelaMensal();
-        }
+      <!-- Próximo coral em destaque -->
+      <div class="highlight">
+        <span class="badge">Próximo Domingo</span>
+        <div id="next-date-label" class="date">—</div>
+        <span id="next-coral-name" class="name">—</span>
+        <div id="next-info-label" class="info">—</div>
+      </div>
 
-        function renderDestaque() {
-            let hoje = new Date();
-            let alvo = new Date(hoje);
+      <!-- Tabela mensal -->
+      <span id="month-name" class="month-title">—</span>
+      <table aria-label="Tabela de escala de corais do mês">
+        <thead>
+          <tr>
+            <th>Dia</th>
+            <th>Domingo</th>
+            <th>Coral</th>
+          </tr>
+        </thead>
+        <tbody id="month-table-body"></tbody>
+      </table>
 
-            // Ajusta para o próximo domingo se não for domingo
-            if (alvo.getDay() !== 0) {
-                alvo.setDate(hoje.getDate() + (7 - hoje.getDay()));
-            }
+      <!-- Controles -->
+      <div class="controls">
+        <button onclick="resetar()" class="btn-today" id="btn-today">
+          <i class="bi bi-arrow-counterclockwise"></i> Mês atual
+        </button>
+        <button onclick="navegar(1)" class="btn-next">
+          Próximo Mês <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+    </div>
 
-            const numDomingo = Math.ceil(alvo.getDate() / 7);
-
-            document.getElementById('next-date-label').innerText = "Coral do Próximo Domingo: " + alvo.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' });
-            document.getElementById('next-coral-name').innerText = corais[numDomingo - 1];
-            document.getElementById('next-info-label').innerText = `Referente ao ${numDomingo}º domingo do mês`;
-        }
-
-        function renderTabelaMensal() {
-            const corpoTabela = document.getElementById('month-table-body');
-            corpoTabela.innerHTML = "";
-
-            const mes = dataReferencia.getMonth();
-            const ano = dataReferencia.getFullYear();
-
-            document.getElementById('month-name').innerText = dataReferencia.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
-
-            // Loop pelos dias do mês para achar os domingos
-            let dataBusca = new Date(ano, mes, 1);
-            let contadorDomingo = 1;
-
-            while (dataBusca.getMonth() === mes) {
-                if (dataBusca.getDay() === 0) {
-                    const tr = document.createElement('tr');
-
-                    // Destacar se for o próximo domingo cronológico
-                    let hoje = new Date();
-                    if (dataBusca.toDateString() === getProximoDomingo(hoje).toDateString()) {
-                        tr.className = "current-row";
-                    }
-
-                    tr.innerHTML = `
-                    <td>${dataBusca.getDate()}</td>
-                    <td>${contadorDomingo}º</td>
-                    <td>${corais[contadorDomingo - 1]}</td>
-                `;
-                    corpoTabela.appendChild(tr);
-                    contadorDomingo++;
-                }
-                dataBusca.setDate(dataBusca.getDate() + 1);
-            }
-        }
-
-        function getProximoDomingo(d) {
-            let res = new Date(d);
-            if (res.getDay() !== 0) res.setDate(d.getDate() + (7 - d.getDay()));
-            return res;
-        }
-
-        const btnToday = document.querySelector('.btn-today');
-        function navegar(direcao) {
-            dataReferencia.setMonth(dataReferencia.getMonth() + direcao);
-            renderTabelaMensal();
-            btnToday.style.display = 'block';
-            btnToday.innerText = "Voltar a " + new Date().toLocaleDateString('pt-BR', { month: 'long', year: 'numeric'});
-        }
-
-        function resetar() {
-            dataReferencia = new Date();
-            renderTabelaMensal();
-            btnToday.style.display = 'none';
-        }
-
-        init();
-    </script>
-    <script src="JS/hamburger.js"></script>
-
-
+    <!-- Footer -->
     <footer id="direitos">
-        <div>
-            <p>&copy; 2026 Paróquia N. Sra. do Carmo - Todos os direitos reservados.</p>
-            <p><i class="bi bi-geo-alt-fill"></i> Av. Trajano Honorato - Lagoa do Mato, Centro</p>
-            <a class="dev" title="Desenvolvido por Manoel Lobo" href="https://instagram.com/manoellob_"><i
-                    class="bi bi-code-slash"></i>por Manoel Lobo</a>
-        </div>
+      <div class="footer-logo">PNSC</div>
+      <div>
+        <p>&copy; 2026 Paróquia N. Sra. do Carmo — Todos os direitos reservados.</p>
+        <p><i class="bi bi-geo-alt-fill" style="color:var(--cor-destaque);margin-right:4px;"></i> Av. Trajano Honorato — Lagoa do Mato, Centro</p>
+      </div>
+      <a class="dev" title="Desenvolvido por Manoel Lobo" href="https://instagram.com/manoellob_" target="_blank" rel="noopener">
+        <i class="bi bi-code-slash"></i> por Manoel Lobo
+      </a>
     </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    let dataReferencia = new Date();
+
+    const corais = [
+      "Aliança de Amor",
+      "Yeshua",
+      "Donum Dei (Dízimo)",
+      "Pastoral Familiar",
+      "Flor do Carmelo"
+    ];
+
+    function init() {
+      renderDestaque();
+      renderTabelaMensal();
+    }
+
+    function renderDestaque() {
+      const hoje = new Date();
+      const alvo = new Date(hoje);
+      if (alvo.getDay() !== 0) {
+        alvo.setDate(hoje.getDate() + (7 - hoje.getDay()));
+      }
+      const numDomingo = Math.ceil(alvo.getDate() / 7);
+      const coral = corais[Math.min(numDomingo - 1, corais.length - 1)];
+      const dataFormatada = alvo.toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: 'long' });
+
+      document.getElementById('next-date-label').innerText = dataFormatada;
+      document.getElementById('next-coral-name').innerText = coral;
+      document.getElementById('next-info-label').innerText = `${numDomingo}º Domingo do mês`;
+    }
+
+    function renderTabelaMensal() {
+      const corpo = document.getElementById('month-table-body');
+      corpo.innerHTML = '';
+
+      const mes = dataReferencia.getMonth();
+      const ano = dataReferencia.getFullYear();
+
+      document.getElementById('month-name').innerText =
+        dataReferencia.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+
+      let dataBusca = new Date(ano, mes, 1);
+      let contadorDomingo = 1;
+
+      while (dataBusca.getMonth() === mes) {
+        if (dataBusca.getDay() === 0) {
+          const tr = document.createElement('tr');
+          const proximoDomingo = getProximoDomingo(new Date());
+          if (dataBusca.toDateString() === proximoDomingo.toDateString()) {
+            tr.className = 'current-row';
+          }
+          const coral = corais[Math.min(contadorDomingo - 1, corais.length - 1)];
+          tr.innerHTML = `
+            <td>${dataBusca.getDate()}</td>
+            <td>${contadorDomingo}º</td>
+            <td>${coral}</td>
+          `;
+          corpo.appendChild(tr);
+          contadorDomingo++;
+        }
+        dataBusca.setDate(dataBusca.getDate() + 1);
+      }
+    }
+
+    function getProximoDomingo(d) {
+      const res = new Date(d);
+      if (res.getDay() !== 0) res.setDate(d.getDate() + (7 - d.getDay()));
+      return res;
+    }
+
+    const btnToday = document.getElementById('btn-today');
+
+    function navegar(direcao) {
+      dataReferencia.setMonth(dataReferencia.getMonth() + direcao);
+      renderTabelaMensal();
+      btnToday.style.display = 'flex';
+      btnToday.title = 'Voltar a ' + new Date().toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+    }
+
+    function resetar() {
+      dataReferencia = new Date();
+      renderTabelaMensal();
+      btnToday.style.display = 'none';
+    }
+
+    init();
+  </script>
+
+  <script src="JS/hamburger.js"></script>
 </body>
 
 </html>

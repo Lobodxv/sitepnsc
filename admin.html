@@ -2,125 +2,195 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Administrativo | PNSC </title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/admin.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Painel Administrativo — PNSC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="CSS/admin.css">
 </head>
 
 <body>
+  <div class="admin-wrapper">
 
-    <aside class="sidebar">
-        <h3>PNS do Carmo</h3>
-        <p>Painel de Controle</p>
-
-        <button onclick="fazerLogout()"
-            style="background: #ff4d4d; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 30px; font-weight: bold;">
-            🚪 Sair do Sistema
-        </button>
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" role="navigation" aria-label="Menu administrativo">
+      <div class="sidebar-logo">PNSC</div>
+      <nav class="sidebar-nav">
+        <a href="#" class="active">
+          <i class="bi bi-speedometer2"></i> Painel
+        </a>
+        <a href="#">
+          <i class="bi bi-megaphone"></i> Avisos
+        </a>
+        <a href="#">
+          <i class="bi bi-qr-code"></i> Doação PIX
+        </a>
+        <a href="index.html" target="_blank">
+          <i class="bi bi-box-arrow-up-right"></i> Ver Site
+        </a>
+        <a href="#" onclick="fazerLogout()" style="margin-top: auto; color: #ff8080;">
+          <i class="bi bi-box-arrow-left"></i> Sair
+        </a>
+      </nav>
     </aside>
 
-    <main class="main">
+    <!-- Conteúdo principal -->
+    <main class="admin-main" role="main">
+
+      <div class="admin-header">
         <h1>Gerenciar Site</h1>
-        <div class="card">
-            <form id="form-admin">
-                <div class="form-group">
-                    <label>Aviso Paroquial</label>
-                    <textarea id="aviso-texto" rows="4"></textarea>
-                </div>
-                <div class="form-group" style="margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px;">
-                    <label style="color: var(--azul)">💰 Configuração do Dízimo</label>
-                    <label for="chave-pix">Chave PIX da Paróquia</label>
-                    <input type="text" id="chave-pix" placeholder="CNPJ, E-mail ou Celular">
-                </div>
-                <div class="form-group">
-                    <label for="beneficiario">Nome do Beneficiário</label>
-                    <input type="text" id="beneficiario" placeholder="Ex: Paróquia N. S. do Carmo">
-                </div>
-                <button type="submit" class="btn" id="btn-salvar">Salvar no Site</button>
-            </form>
+        <p>Painel de controle da Paróquia Nossa Senhora do Carmo</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="admin-stats">
+        <div class="stat-card">
+          <div class="stat-label">Última atualização</div>
+          <div class="stat-value" id="stat-ultima-att" style="font-size:1rem; padding-top:4px;">—</div>
         </div>
+        <div class="stat-card">
+          <div class="stat-label">Aviso ativo</div>
+          <div class="stat-value" id="stat-aviso">—</div>
+        </div>
+      </div>
+
+      <!-- Formulário admin -->
+      <div class="admin-card">
+        <h2><i class="bi bi-pencil-square"></i> Conteúdo do Site</h2>
+
+        <form id="form-admin" novalidate>
+
+          <!-- Aviso paroquial -->
+          <div class="form-group">
+            <label for="aviso-texto">Aviso Paroquial</label>
+            <textarea id="aviso-texto" rows="4" placeholder="Ex: Missa de Nossa Senhora do Carmo neste sábado às 19h00..."></textarea>
+          </div>
+
+          <!-- Configuração PIX -->
+          <div class="form-group" style="margin-top:24px; padding-top:24px; border-top:2px solid var(--cor-fundo-alt);">
+            <label>Configuração do Dízimo</label>
+          </div>
+
+          <div class="form-group">
+            <label for="chave-pix">Chave PIX da Paróquia</label>
+            <input type="text" id="chave-pix" placeholder="CNPJ, e-mail ou celular">
+          </div>
+
+          <div class="form-group">
+            <label for="beneficiario">Nome do Beneficiário</label>
+            <input type="text" id="beneficiario" placeholder="Ex: Paróquia N. S. do Carmo">
+          </div>
+
+          <button type="submit" class="btn-salvar" id="btn-salvar">
+            <i class="bi bi-cloud-upload"></i> Salvar no Site
+          </button>
+
+          <div id="msg-feedback" class="msg-feedback" role="alert"></div>
+        </form>
+      </div>
+
     </main>
+  </div>
 
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+    const firebaseConfig = {
+      apiKey: "AIzaSyA_tVDmvcRHRBr-aLoVZU9bhRO2SUMJMOU",
+      authDomain: "paroquia-pns-do-carmo.firebaseapp.com",
+      projectId: "paroquia-pns-do-carmo",
+      storageBucket: "paroquia-pns-do-carmo.firebasestorage.app",
+      messagingSenderId: "454506351447",
+      appId: "1:454506351447:web:58eaf7b84c119886ebcc12",
+      measurementId: "G-5BSGXTLWHZ"
+    };
 
-    <script type="module">
-        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-        const auth = getAuth(app);
+    // Verificação de segurança
+    onAuthStateChanged(auth, (user) => {
+      if (!user) window.location.href = "login.html";
+    });
 
-        // VERIFICAÇÃO DE SEGURANÇA: Se não estiver logado, volta para o login
-        onAuthStateChanged(auth, (user) => {
-            if (!user) {
-                window.location.href = "login.html";
-            }
+    // Logout
+    window.fazerLogout = () => {
+      signOut(auth).then(() => {
+        window.location.href = "login.html";
+      });
+    };
+
+    // Carregar dados existentes
+    async function carregarDados() {
+      try {
+        const docRef = doc(db, "site_content", "geral");
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const d = docSnap.data();
+          document.getElementById('aviso-texto').value = d.aviso || '';
+          document.getElementById('chave-pix').value = d.pix_chave || '';
+          document.getElementById('beneficiario').value = d.pix_nome || '';
+
+          // Stats
+          document.getElementById('stat-aviso').innerText = d.aviso && d.aviso.trim() ? 'Sim' : 'Não';
+          if (d.ultima_atualizacao) {
+            const dt = d.ultima_atualizacao.toDate ? d.ultima_atualizacao.toDate() : new Date(d.ultima_atualizacao);
+            document.getElementById('stat-ultima-att').innerText =
+              dt.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+          }
+        }
+      } catch (err) {
+        console.error('Erro ao carregar dados:', err);
+      }
+    }
+    carregarDados();
+
+    // Salvar dados
+    const form = document.getElementById('form-admin');
+    const btnSalvar = document.getElementById('btn-salvar');
+    const msgFeedback = document.getElementById('msg-feedback');
+
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      btnSalvar.disabled = true;
+      btnSalvar.innerHTML = '<i class="bi bi-arrow-repeat"></i> Salvando...';
+
+      try {
+        await setDoc(doc(db, "site_content", "geral"), {
+          aviso: document.getElementById('aviso-texto').value.trim(),
+          pix_chave: document.getElementById('chave-pix').value.trim(),
+          pix_nome: document.getElementById('beneficiario').value.trim(),
+          ultima_atualizacao: new Date()
         });
 
-        // Função para Sair (Logout)
-        window.fazerLogout = () => {
-            signOut(auth).then(() => {
-                window.location.href = "login.html";
-            });
-        };
+        msgFeedback.className = 'msg-feedback sucesso';
+        msgFeedback.innerHTML = '<i class="bi bi-check-circle-fill"></i> Site atualizado com sucesso!';
+        msgFeedback.style.display = 'block';
 
+        document.getElementById('stat-aviso').innerText =
+          document.getElementById('aviso-texto').value.trim() ? 'Sim' : 'Não';
+        document.getElementById('stat-ultima-att').innerText = 'Agora mesmo';
 
-
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-        // Suas chaves reais extraídas da imagem
-        const firebaseConfig = {
-            apiKey: "AIzaSyA_tVDmvcRHRBr-aLoVZU9bhRO2SUMJMOU",
-            authDomain: "paroquia-pns-do-carmo.firebaseapp.com",
-            projectId: "paroquia-pns-do-carmo",
-            storageBucket: "paroquia-pns-do-carmo.firebasestorage.app",
-            messagingSenderId: "454506351447",
-            appId: "1:454506351447:web:58eaf7b84c119886ebcc12",
-            measurementId: "G-5BSGXTLWHZ"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        // Carregar dados atuais ao abrir a página
-        async function carregarDados() {
-            const docRef = doc(db, "site_content", "geral");
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-                const d = docSnap.data();
-                // document.getElementById('missa-domingo').value = d.domingo; 
-                // document.getElementById('missa-semana').value = d.semana;
-                document.getElementById('aviso-texto').value = d.aviso;
-            }
-        }
-        carregarDados();
-
-        // Salvar novos dados
-        document.getElementById('form-admin').onsubmit = async (e) => {
-            e.preventDefault();
-            const btn = document.getElementById('btn-salvar');
-            btn.disabled = true;
-            btn.innerText = "Salvando...";
-
-            try {
-                await setDoc(doc(db, "site_content", "geral"), {
-                    // domingo: document.getElementById('missa-domingo').value,
-                    // semana: document.getElementById('missa-semana').value,
-                    aviso: document.getElementById('aviso-texto').value,
-                    pix_chave: document.getElementById('chave-pix').value,
-                    pix_nome: document.getElementById('beneficiario').value,
-                    ultima_atualizacao: new Date()
-                });
-                alert("Site atualizado com sucesso!");
-            } catch (err) {
-                console.error(err);
-                alert("Erro ao salvar dados.");
-            } finally {
-                btn.disabled = false;
-                btn.innerText = "Salvar no Site";
-            }
-        };
-    </script>
+      } catch (err) {
+        console.error(err);
+        msgFeedback.className = 'msg-feedback erro';
+        msgFeedback.innerHTML = '<i class="bi bi-x-circle-fill"></i> Erro ao salvar. Tente novamente.';
+        msgFeedback.style.display = 'block';
+      } finally {
+        btnSalvar.disabled = false;
+        btnSalvar.innerHTML = '<i class="bi bi-cloud-upload"></i> Salvar no Site';
+        setTimeout(() => { msgFeedback.style.display = 'none'; }, 4000);
+      }
+    };
+  </script>
 </body>
 </html>

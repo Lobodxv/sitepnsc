@@ -1,57 +1,45 @@
-// Interação com o Banco de Dados
+/**
+ * main.js — Scripts principais da página inicial
+ * Paróquia Nossa Senhora do Carmo (v2.0)
+ */
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyA_tVDmvcRHRBr-aLoVZU9bhRO2SUMJMOU",
-    authDomain: "paroquia-pns-do-carmo.firebaseapp.com",
-    projectId: "paroquia-pns-do-carmo",
-    storageBucket: "paroquia-pns-do-carmo.firebasestorage.app",
-    messagingSenderId: "454506351447",
-    appId: "1:454506351447:web:58eaf7b84c119886ebcc12",
-    measurementId: "G-5BSGXTLWHZ"
+  apiKey: "AIzaSyA_tVDmvcRHRBr-aLoVZU9bhRO2SUMJMOU",
+  authDomain: "paroquia-pns-do-carmo.firebaseapp.com",
+  projectId: "paroquia-pns-do-carmo",
+  storageBucket: "paroquia-pns-do-carmo.firebasestorage.app",
+  messagingSenderId: "454506351447",
+  appId: "1:454506351447:web:58eaf7b84c119886ebcc12",
+  measurementId: "G-5BSGXTLWHZ"
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db  = getFirestore(app);
 
-// ESCUTA EM TEMPO REAL
-onSnapshot(doc(db, "site_content", "geral"), (doc) => {
-    if (doc.exists()) {
-        const dados = doc.data();
+// Escuta em tempo real o documento de conteúdo
+onSnapshot(doc(db, "site_content", "geral"), (snapshot) => {
+  if (!snapshot.exists()) return;
+  const dados = snapshot.data();
 
-        // // Atualiza Horários
-        // document.getElementById("horario-domingo").innerText = dados.domingo;
-        // document.getElementById("horario-domingo").classList.remove("loading");
+  // Aviso paroquial (se existir o elemento)
+  const containerAviso = document.getElementById("container-aviso");
+  const textoAviso     = document.getElementById("texto-aviso");
 
-        // document.getElementById("horario-semana").innerText = dados.semana;
-        // document.getElementById("horario-semana").classList.remove("loading");
-
-        // Atualiza Aviso (mostra se não estiver vazio)
-        if (dados.aviso && dados.aviso.trim() !== "") {
-            document.getElementById("container-aviso").style.display = "block";
-            document.getElementById("texto-aviso").innerText = dados.aviso;
-        } else {
-            document.getElementById("container-aviso").style.display = "none";
-        }
+  if (containerAviso && textoAviso) {
+    if (dados.aviso && dados.aviso.trim() !== "") {
+      containerAviso.style.display = "block";
+      textoAviso.innerText = dados.aviso;
+    } else {
+      containerAviso.style.display = "none";
     }
-});
-
-
-const imagem = document.getElementById('imagem1');
-const breakpoint = window.matchMedia("(max-width: 768px)");
-
-function trocarImagem(e) {
-  if (e.matches) {
-    // Se for mobile
-    imagem.src = "img/Paróquia N. Sra. do Carmo (800 x 400 px).png";
-  } else {
-    // Se for desktop
-    imagem.src = "img/Paróquia N. Sra. do Carmo.png";
   }
-}
 
-// Escuta mudanças no tamanho da tela
-breakpoint.addListener(trocarImagem);
-// Executa a função ao carregar a página
-trocarImagem(breakpoint);
+  // Chave PIX dinâmica (se existir o elemento na página)
+  const txtChave = document.getElementById("txt-chave");
+  const txtNome  = document.getElementById("txt-nome");
+  if (txtChave && dados.pix_chave) txtChave.innerText = dados.pix_chave;
+  if (txtNome  && dados.pix_nome)  txtNome.innerText  = dados.pix_nome;
+});
