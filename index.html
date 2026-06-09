@@ -2,222 +2,255 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paróquia Nossa Senhora do Carmo</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap"
-        rel="stylesheet"> <!-- Link das fontes -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <!-- Link p/ Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <!-- Link dos ícones - Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- Biblioteca Swiper -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Paróquia Nossa Senhora do Carmo — Horários de celebrações, endereço, escala de corais e doações via PIX.">
+  <meta name="theme-color" content="#2d1b04">
 
-    <link rel="stylesheet" href="CSS\style.css"> <!-- Folha de estilos CSS -->
+  <title>Paróquia Nossa Senhora do Carmo — PNSC</title>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <!-- Estilos do site -->
+  <link rel="stylesheet" href="CSS/style.css">
 </head>
 
 <body>
-    <a href="https://wa.me/5588981996070" class="whatsapp-float" target="_blank">
-        <i class="bi bi-whatsapp"></i> <!-- Ícone do WhatsApp -->
-    </a>
 
-    <header>
-        <div class="logo">PNSC</div>
+  <!-- Botão WhatsApp flutuante -->
+  <a href="https://wa.me/5588981996070" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
 
-        <button class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+  <!-- ── HEADER ──────────────────────────────────────────────── -->
+  <header>
+    <a href="#inicio" class="logo" aria-label="PNSC — Página inicial">PNSC</a>
 
-        <nav>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#missas">Celebrações</a></li>
-                <li><a href="#endereco">Endereço</a></li>
-                <li><a href="corais.html">Escala de Corais</a></li>
-                <li><a href="#dizimo">Doação</a></li>
-                <!-- <li><a href="login.html"><button class="login">Login</button></a></li> -->
-            </ul>
-        </nav>
-    </header>
-    <div class="barra-evangelho">
-        <div class="marquee" id="texto-evangelho">
-            📖 Carregando o Evangelho do dia...
-        </div>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav aria-label="Navegação principal">
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#missas">Celebrações</a></li>
+        <li><a href="#endereco">Endereço</a></li>
+        <li><a href="corais.html">Escala de Corais</a></li>
+        <li><a href="pix.html">Doação</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Barra do Evangelho do Dia -->
+  <div class="barra-evangelho" role="marquee" aria-live="polite" aria-label="Evangelho do dia">
+    <div class="marquee" id="texto-evangelho">
+      📖 Carregando o Evangelho do dia...
     </div>
+  </div>
 
-    <!-- Carrossel de imagens -->
-    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <!-- ── CARROSSEL / HERO ────────────────────────────────────── -->
+  <main id="inicio">
+    <div class="carousel-wrapper">
+      <div id="carouselPNSC" class="carousel slide" data-bs-ride="carousel" aria-label="Galeria de imagens da Paróquia">
+
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <!-- <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2"
-                aria-label="Slide 3"></button> -->
+          <button type="button" data-bs-target="#carouselPNSC" data-bs-slide-to="0"
+            class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselPNSC" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
         </div>
+
         <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="3000">
-                <img id="imagem1" src="img/bannergrande.png" class="d-block w-100" alt="Imagem 1" srcset="img/bannergrande.png 2000w, img/bannermobile.png 800w" sizes="(max-width: 600px) 800px, 2000px">
-                <div class="carousel-caption d-none d-md-block">
-                </div>
+          <div class="carousel-item active" data-bs-interval="4000">
+            <img id="imagem1"
+              src="img/bannergrande.png"
+              srcset="img/bannergrande.png 2000w, img/bannermobile.png 800w"
+              sizes="(max-width: 600px) 800px, 2000px"
+              class="d-block w-100"
+              alt="Paróquia Nossa Senhora do Carmo — vista principal">
+          </div>
+          <div class="carousel-item" data-bs-interval="4000">
+            <img src="img/imgaerea2.jpeg" class="d-block w-100" alt="Vista aérea da Paróquia feita por drone">
+            <div class="carousel-caption">
+              <h5>Vista Aérea da Paróquia</h5>
+              <p>Registro por drone da Igreja Matriz de Nossa Senhora do Carmo.</p>
             </div>
-            <div class="carousel-item" data-bs-interval="3000">
-                <img src="img/imgaerea2.jpeg" class="d-block w-100" alt="Imagem 2">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Imagem aérea da Paróquia</h5>
-                    <p>Registro feito por drone, acima da Igreja Matriz.</p>
-                </div>
-            </div>
+          </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselPNSC" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Próximo</span>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselPNSC" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Próximo</span>
         </button>
+      </div>
     </div>
 
-    <!-- <section class="hero" id="inicio">
-        <h1>Bem-vindo à nossa Paróquia</h1>
-        <p>Sob a proteção de Nossa Senhora do Carmo, caminhamos na fé.</p>
-    </section> -->
+    <!-- ── CELEBRAÇÕES ───────────────────────────────────────── -->
+    <section class="celebracoes" id="missas" aria-labelledby="titulo-celebracoes">
+      <span class="section-eyebrow">Agenda Litúrgica</span>
+      <h2 class="section-title" id="titulo-celebracoes">Horários de Celebrações</h2>
+      <p class="section-subtitle">Venha participar da nossa vida comunitária e crescer na fé.</p>
 
-    <section class="celebracoes" id="missas">
-        <h2>Horários de Celebrações</h2>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
 
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="card-missa">
-                        <h3>Domingos</h3>
-                        <p id="horario-domingo" style="font-size: 1.1rem; line-height: 1.6;">09h00 e 19h00<br>Santa
-                            Missa</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card-missa">
-                        <h3>Segunda-feira</h3>
-                        <p id="horario-semana" style="font-size: 1.1rem; line-height: 1.6;">18h00<br>Terço das Mulheres
-                        </p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card-missa">
-                        <h3>Terça-feira</h3>
-                        <p id="horario-semana" style="font-size: 1.1rem; line-height: 1.6;">18h00<br>Terço dos Homens
-                        </p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card-missa">
-                        <h3>Quarta-feira</h3>
-                        <p id="horario-semana" style="font-size: 1.1rem; line-height: 1.6;">18h00<br>Terço das Crianças
-                        </p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card-missa">
-                        <h3>Quinta-feira</h3>
-                        <p id="horario-semana" style="font-size: 1.1rem; line-height: 1.6;">18h00 - Adoração<br>19h00 -
-                            Santa Missa</p>
-                    </div>
-                </div>
+          <div class="swiper-slide">
+            <div class="card-missa fade-in">
+              <h3>Domingos</h3>
+              <span class="hora">09h00 &amp; 19h00</span>
+              <p>Santa Missa</p>
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="card-missa fade-in">
+              <h3>Segunda-feira</h3>
+              <span class="hora">18h00</span>
+              <p>Terço das Mulheres</p>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="card-missa fade-in">
+              <h3>Terça-feira</h3>
+              <span class="hora">18h00</span>
+              <p>Terço dos Homens</p>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="card-missa fade-in">
+              <h3>Quarta-feira</h3>
+              <span class="hora">18h00</span>
+              <p>Terço das Crianças</p>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="card-missa fade-in">
+              <h3>Quinta-feira</h3>
+              <span class="hora">18h00 &amp; 19h00</span>
+              <p>Adoração ao Santíssimo<br>Santa Missa</p>
+            </div>
+          </div>
+
         </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next" aria-label="Próximo"></div>
+        <div class="swiper-button-prev" aria-label="Anterior"></div>
+      </div>
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        const swiper = new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            speed: 500,
-            // Configuração do Autoplay
-            autoplay: {
-                delay: 1700, // Passa a cada 3 segundos
-                disableOnInteraction: false, // Para o autoplay quando o fiel deslizar manualmente
-                pauseOnMouseEnter: true,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev"
-            },
-            breakpoints: {
-                768: { slidesPerView: 4 }
-            }
-        });
-    </script>
 
-    <!-- <section class="celebracoes" id="missas">
-        <h2>Horários de Celebrações</h2>
-        <div class="grid-horarios">
-            <div class="card-horario">
-                <h3>Segunda-feira</h3>
-                <p>18h00 - Terço das mulheres</p>
-            </div>
-            <div class="card-horario">
-                <h3>Terça-feira</h3>
-                <p>18h00 - Terço dos homens</p>
-            </div>
-             <div class="card-horario">
-                <h3>Quarta-feira</h3>
-                <p>18h00 - Terço das crianças</p>
-            </div>
-            <div class="card-horario">
-                <h3>Quinta-feira</h3>
-                <p>18h00 - Adoração | 19h00 - Santa Missa</p>
-            </div>
-            <div class="card-horario">
-                <h3>Domingo</h3>
-                <p>Santa Missa</p>
-                <p>09h00 | 19h00</p>
-            </div>
-        </div>
-    </section> -->
+    <!-- ── DOAÇÃO / PIX ──────────────────────────────────────── -->
+    <section class="pix-section" id="dizimo" aria-labelledby="titulo-dizimo">
+      <span class="section-eyebrow">Contribua</span>
+      <h2 class="section-title" id="titulo-dizimo">Seja um Doador</h2>
+      <p class="section-subtitle">
+        Contribua com a evangelização e manutenção da nossa paróquia.<br>
+        <em style="font-style:italic; color: rgba(255,255,255,0.55); font-size:0.9em;">
+          "Deus ama quem dá com alegria." — 2Cor 9,7
+        </em>
+      </p>
+      <a href="pix.html" class="btn-pix">
+        <i class="bi bi-qr-code"></i> Contribuir via PIX
+      </a>
+    </section>
 
-    <!-- <section class="pix-section" id="dizimo">
-        <h2>Seja um <span id="doador">Doador</span></h2>
-        <p>Contribua com a evangelização e manutenção de nossa paróquia.</p>
-        <a href="pix.html" class="btn-pix">Contribuir via PIX</a>
-    </section> -->
+    <!-- ── ENDEREÇO ──────────────────────────────────────────── -->
+    <section class="endereco-section" id="endereco" aria-labelledby="titulo-endereco">
+      <span class="section-eyebrow">Onde Estamos</span>
+      <h2 class="section-title" id="titulo-endereco">Nossa Localização</h2>
 
-    <section class="endereco" id="endereco">
+      <div class="mapa-wrapper fade-in">
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.687052958556!2d-39.6781979267365!3d-4.649792543782279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7be3fa3d8ede62b%3A0xd6bae7c3d8119ec0!2sIgreja%20de%20Nossa%20Senhora%20do%20Carmo!5e0!3m2!1spt-BR!2sbr!4v1768949287045!5m2!1spt-BR!2sbr"
-            width="100%" height="250px" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </section>
-    <footer id="direitos">
-        <div>
-            <p>&copy; 2026 Paróquia N. Sra. do Carmo - Todos os direitos reservados.</p>
-            <p><i class="bi bi-geo-alt-fill"></i> Av. Trajano Honorato - Lagoa do Mato, Centro</p>
-            <a class="dev" title="Desenvolvido por Manoel Lobo" href="https://instagram.com/manoellob_"><i
-                    class="bi bi-code-slash"></i>por Manoel Lobo</a>
-        </div>
-    </footer>
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.687052958556!2d-39.6781979267365!3d-4.649792543782279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7be3fa3d8ede62b%3A0xd6bae7c3d8119ec0!2sIgreja%20de%20Nossa%20Senhora%20do%20Carmo!5e0!3m2!1spt-BR!2sbr!4v1768949287045!5m2!1spt-BR!2sbr"
+          title="Localização da Paróquia Nossa Senhora do Carmo no Google Maps"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
 
-    <script src="JS/main.js"></script> <!-- Scripts -->
-    <script src="JS/hamburger.js"></script>
-    <script src="JS/evangelho.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+      <div class="endereco-info">
+        <div class="endereco-item">
+          <i class="bi bi-geo-alt-fill"></i>
+          <span>Av. Trajano Honorato — Lagoa do Mato, Centro</span>
+        </div>
+        <div class="endereco-item">
+          <i class="bi bi-telephone-fill"></i>
+          <span>(88) 98199-6070</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ────────────────────────────────────────────── -->
+  <footer id="direitos">
+    <div class="footer-logo">PNSC</div>
+    <div>
+      <p>&copy; 2026 Paróquia N. Sra. do Carmo — Todos os direitos reservados.</p>
+      <p><i class="bi bi-geo-alt-fill" style="color:var(--cor-destaque);margin-right:4px;"></i> Av. Trajano Honorato — Lagoa do Mato, Centro</p>
+    </div>
+    <a class="dev" title="Desenvolvido por Manoel Lobo" href="https://instagram.com/manoellob_" target="_blank" rel="noopener">
+      <i class="bi bi-code-slash"></i> por Manoel Lobo
+    </a>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      speed: 600,
+      autoplay: {
+        delay: 2200,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      },
+      breakpoints: {
+        640:  { slidesPerView: 2 },
+        1024: { slidesPerView: 4 }
+      }
+    });
+  </script>
+
+  <script src="JS/hamburger.js"></script>
+  <script src="JS/evangelho.js"></script>
+  <script src="JS/main.js"></script>
+  <script src="JS/animations.js"></script>
 </body>
 
 </html>

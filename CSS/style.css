@@ -1,481 +1,697 @@
-
-
- /* 
-    --   SUMÁRIO  --
-
-    01 - UNIVERSAIS
-    01.1 - Barra do Evangelho do dia
-    02 - BIBLIOTECA SWIPPER (Carrossel das celebrações)
-    03 - MENU DO TOPO
-    04 - ESTILO DO MENU HAMBÚRGUER 
-    05 - 
-    06.
-    07.
-    08.
-    09.
-    10.
+/*
+ * ============================================================
+ *  PNSC — Paróquia Nossa Senhora do Carmo
+ *  style.css — Folha de estilos principal (v2.0 modernizada)
+ * ============================================================
+ *
+ *  SUMÁRIO
+ *  00 - TOKENS (Variáveis CSS)
+ *  01 - RESET & BASE
+ *  02 - BARRA DO EVANGELHO
+ *  03 - HEADER / NAVBAR
+ *  04 - MENU HAMBÚRGUER (Mobile)
+ *  05 - HERO / CARROSSEL
+ *  06 - SEÇÃO CELEBRAÇÕES (Swiper)
+ *  07 - SEÇÃO ENDEREÇO
+ *  08 - SEÇÃO DOAÇÃO (PIX)
+ *  09 - FOOTER
+ *  10 - BOTÃO WHATSAPP FLUTUANTE
+ *  11 - ANIMAÇÕES
+ *  12 - RESPONSIVIDADE
+ * ============================================================
  */
 
+/* ── 00 TOKENS ─────────────────────────────────────────────── */
+:root {
+  /* Paleta principal — marrom litúrgico + dourado */
+  --cor-primaria:    #2d1b04;   /* marrom escuro litúrgico         */
+  --cor-secundaria:  #5a3410;   /* marrom médio para hover/bordas  */
+  --cor-destaque:    #c9922a;   /* dourado âmbar para CTAs         */
+  --cor-destaque-hov:#e6a930;   /* dourado mais claro no hover     */
+  --cor-fundo:       #faf8f5;   /* creme quente — fundo geral      */
+  --cor-fundo-alt:   #f1ece4;   /* creme levemente mais escuro     */
+  --cor-texto:       #1a1209;   /* texto principal                 */
+  --cor-texto-sub:   #6b5c45;   /* texto secundário / legendas     */
+  --cor-branco:      #ffffff;
+  --cor-sombra:      rgba(45, 27, 4, 0.12);
 
- * {
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
- }
+  /* Tipografia */
+  --fonte-display:  'Playfair Display', Georgia, serif;
+  --fonte-corpo:    'Montserrat', 'Segoe UI', sans-serif;
 
- :root {
-    /* --marrom: #211800; */
-    --marrom: #18787a;
-    --span: #00eaff;
-    --branco: #ffffff;
-    --cinza-claro: #f4f4f4;
-    --tempoliturgico: #5abbca;
-    --transicao: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Escala tipográfica */
+  --t-xs:   0.75rem;
+  --t-sm:   0.875rem;
+  --t-base: 1rem;
+  --t-md:   1.125rem;
+  --t-lg:   1.375rem;
+  --t-xl:   1.75rem;
+  --t-2xl:  2.25rem;
+  --t-3xl:  3rem;
+
+  /* Espaçamentos */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-6: 1.5rem;
+  --s-8: 2rem;
+  --s-12: 3rem;
+  --s-16: 4rem;
+  --s-20: 5rem;
+  --s-24: 6rem;
+
+  /* Bordas e sombras */
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-pill:9999px;
+  --sombra-sm:  0 2px 8px var(--cor-sombra);
+  --sombra-md:  0 8px 24px var(--cor-sombra);
+  --sombra-lg:  0 20px 50px rgba(45, 27, 4, 0.18);
+
+  /* Transições */
+  --transicao: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
- body {
-     font-family: 'Montserrat', sans-serif;
-     margin: 0;
-     padding: 0;
-     color: #333;
-     line-height: 1.6;
- }
+/* ── 01 RESET & BASE ────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
- /* Estilo da barra horizontal (Evangelho do dia) */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--fonte-corpo);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.65;
+  font-size: var(--t-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--fonte-corpo);
+}
+
+/* ── 02 BARRA DO EVANGELHO ─────────────────────────────────── */
 .barra-evangelho {
-    background: var(--tempoliturgico);
-    color: #fff;
-    height: 30px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    font-size: 0.7rem;
-    font-weight: 500;
-    border-top: var(--cinza-claro) 2px solid;
-    border-bottom: 3px solid var(--tempoliturgico);
-    position: fixed;
-    top: 73px;
-    z-index: 100;
-
-        
+  background: var(--cor-primaria);
+  color: var(--cor-fundo-alt);
+  height: 34px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  font-size: var(--t-xs);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-bottom: 2px solid var(--cor-destaque);
+  position: fixed;
+  top: 70px;
+  z-index: 900;
 }
 
 .marquee {
-    white-space: nowrap;
-    animation: scroll 100s linear infinite;
-    padding-left: 30%;
+  white-space: nowrap;
+  animation: scroll-ticker 120s linear infinite;
+  padding-left: 100%;
+  will-change: transform;
 }
 
-/* Animação de movimento */
-@keyframes scroll {
-    0% {
-        transform: translate(0, 0);
-    }
-
-    100% {
-        transform: translate(-100%, 0);
-    }
+@keyframes scroll-ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
 }
 
-/* Pausa ao passar o mouse para o fiel conseguir ler com calma */
 .barra-evangelho:hover .marquee {
-    animation-play-state: paused;
-    cursor: pointer;
+  animation-play-state: paused;
+  cursor: default;
 }
 
-
-
- /* 02 - BIBLIOTECA SWIPER */
- .swiper {
-     width: 100%;
-     padding: 20px 0 50px;
- }
-
- .swiper-slide {
-     display: flex;
-     justify-content: center;
-     transition: transform 0.3s;
- }
-
- .card-missa {
-     background: white;
-     padding: 30px;
-     border-radius: 15px;
-     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-     border-top: 5px solid var(--tempoliturgico);
-     width: 90%;
-     max-width: 350px;
-     text-align: center;
- }
-
- .swiper-button-next,
- .swiper-button-prev {
-     color: var(--tempoliturgico);
- }
-
- .swiper-pagination-bullet-active {
-     background: var(--tempoliturgico);
- }
-
-
-
-
-
-/* 03 - MENU DO TOPO */
-
- /* Cabeçalho */
- header {
-     background-color: var(--tempoliturgico);
-     color: white;
-     padding: 1rem 5%;
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     position: sticky;
-     top: 0;
-     z-index: 1000;
-     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
- }
-
- .logo {
-     font-family: 'Playfair Display', serif;
-     font-size: 1.5rem;
-     color: var(--branco);
- }
-
- /* Menu Desktop */
- .nav-menu {
-     display: flex;
-     list-style: none;
- }
-
- .nav-menu li {
-     margin-left: 25px;
- }
-
- .nav-menu a {
-     color: white;
-     text-decoration: none;
-     font-weight: 500;
-     transition: var(--transicao);
- }
-
- .nav-menu a:hover {
-     color: var(--span);
-     transform: scale(1.10);
- }
-
- .login {
-     background-color: var(--dourado);
-     color: white;
-     width: 8rem;
-     height: 2rem;
-     border-radius: 2rem;
-     border: none;
-     cursor: pointer;
-     transition: var(--transicao);
-     font-size: 16px;
- }
-
- .login:hover {
-     background-color: var(--cinza-claro);
-     color: var(--marrom);
-     transition: var(--transicao);
-     transform: scale(1.10);
-     cursor: pointer;
- }
-
- /* Botão Hambúrguer */
- /* 04. ESTILO DO MENU HAMBÚRGUER ANIMADO */
- .hamburger {
-     display: none;
-     cursor: pointer;
-     background: none;
-     border: none;
-     width: 30px;
-     height: 24px;
-     position: relative;
-     z-index: 1100;
- }
-
- /* As 3 linhas do ícone */
- .hamburger span {
-     display: block;
-     position: absolute;
-     height: 3px;
-     width: 100%;
-     background: white;
-     border-radius: 9px;
-     opacity: 1;
-     left: 0;
-     transform: rotate(0deg);
-     transition: var(--transicao);
- }
-
- .hamburger span:nth-child(1) {
-     top: 0px;
- }
-
- .hamburger span:nth-child(2) {
-     top: 10px;
- }
-
- .hamburger span:nth-child(3) {
-     top: 20px;
- }
-
- /* Transformação para o "X" quando ativo */
- .hamburger.open span:nth-child(1) {
-     top: 10px;
-     transform: rotate(135deg);
-     background: var(--branco);
- }
-
- .hamburger.open span:nth-child(2) {
-     opacity: 0;
-     left: -40px;
- }
-
- .hamburger.open span:nth-child(3) {
-     top: 10px;
-     transform: rotate(-135deg);
-     background: var(--branco);
- }
-
- /* nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: 400;
-        } */
-
- /* CARROSSEL DE IMAGENS */
- /* .hero {
-     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-     background-image: url('../img/imgaerea2.jpeg');
-     background-position: center;
-     background-repeat: no-repeat;
-     background-size: cover;
-     background-attachment: fixed;
-     width: 100%;
-     height: 60vh;
-     margin: 0;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     color: white;
-     text-align: center;
-     padding: 0 20px;
- }
-
- .hero h1 {
-     font-family: 'Playfair Display', serif;
-     font-size: 3rem;
-     margin-bottom: 10px;
- } */
-.carousel{
-    height: 450px;
-    object-fit: cover;
-}
-.carousel img{
-    height: 45rem;
-    max-height: 450px;
-    object-fit: fill;
+/* ── 03 HEADER / NAVBAR ────────────────────────────────────── */
+header {
+  background-color: var(--cor-primaria);
+  color: var(--cor-branco);
+  padding: 0 5%;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
+  border-bottom: 2px solid var(--cor-secundaria);
 }
 
-
- /* Avisos e destaques
- .aviso-destaque {
-     background: #fff3cd;
-     border: 1px solid #ffeeba;
-     padding: 20px;
-     margin: 20px 5%;
-     border-radius: 8px;
-     text-align: center;
-     font-weight: bold;
- } */
-
-
-
-
- /* 0X - CELEBRAÇÕES */
- .celebracoes {
-     padding: 70px 5%;
-     background-color: var(--branco);
-     text-align: center;
- }
-
- /* .grid-horarios {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .card-horario {
-            background: var(--cinza-claro);
-            padding: 20px;
-            border-radius: 8px;
-            border-top: 5px solid var(--marrom);
-        } */
-
- .celebrações h3 {
-     color: var(--tempoliturgico);
-     margin-bottom: 10px;
- }
-
- /* Botão Dízimo/Pix */
- .pix-section {
-     background-color: var(--tempoliturgico);
-     color: white;
-     padding: 150px 5%;
-     text-align: center;
-     font-size: 1.3rem;
- }
-
- .pix-section span {
-     color: var(--span);
- }
-
- .btn-pix {
-     background-color: var(--span);
-     color: var(--branco);
-     font-weight: bold;
-     padding: 15px 30px;
-     border: none;
-     border-radius: 30px;
-     font-size: 1.1rem;
-     cursor: pointer;
-     text-decoration: none;
-     display: inline-block;
-     margin-top: 50px;
-     transition: transform 0.2s;
- }
-
- .btn-pix:hover {
-     transform: scale(1.05);
- }
-
- .endereco {
-     width: auto;
-     height: 250px;
- }
-
- footer {
-     display: flex;
-     align-items: flex-end;
-     background: var(--cinza-claro);
-     color: rgb(92, 92, 92);
-     padding: 10px 4%;
-     height: 130px;
-     text-align: left;
-     font-size: 0.9rem;
- }
-
- a.dev i {
-     color: var(--span);
-     font-size: 20px;
-     font-weight: bolder;
-     margin-right: 6px;
- }
-
- a.dev {
-     text-decoration: none;
-     color: rgb(92, 92, 92);
-     font-size: 17px;
- }
-
- /* Botão WhatsApp */
- .whatsapp-float {
-     position: fixed;
-     bottom: 20px;
-     right: 20px;
-     background-color: rgb(17, 147, 17);
-     color: white;
-     width: 60px;
-     height: 60px;
-     border-radius: 50px;
-     text-align: center;
-     font-size: 30px;
-     box-shadow: 0px 0px 10px 1px #27272778;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     text-decoration: none;
-     z-index: 100;
- }
-
-
- /* Responsividade - MOBILE */
- @media (max-width: 768px) {
-.barra-evangelho{
-    top: 65px;
+.logo {
+  font-family: var(--fonte-display);
+  font-size: var(--t-xl);
+  font-weight: 700;
+  color: var(--cor-branco);
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  transition: var(--transicao);
 }
 
-    .carousel {
-        height: 13rem;
-    }
-    .carousel img{
-        height: 13rem;
-    }
+.logo::before {
+  content: '✦';
+  color: var(--cor-destaque);
+  font-size: var(--t-lg);
+}
 
-    h1.topTitle{
-        display: block;
-    }
+.logo:hover {
+  color: var(--cor-destaque);
+}
 
-     .hamburger {
-         display: block;
-         position: absolute;
-         right: 3rem;
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
 
-     }
+.nav-menu li a {
+  color: rgba(255,255,255,0.85);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: var(--s-2) var(--s-3);
+  border-radius: var(--radius-sm);
+  transition: var(--transicao);
+  position: relative;
+}
 
-     .nav-menu {
-         position: fixed;
-         top: 4rem;
-         right: -100%;
-         width: 55%;
-         height: 50vh;
-         background-color: var(--marrom);
-         flex-direction: column;
-         align-items: center;
-         justify-content: center;
-         transition: var(--transicao);
-     }
+.nav-menu li a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--cor-destaque);
+  transition: width 0.3s ease;
+  border-radius: var(--radius-pill);
+}
 
-     .nav-menu.active {
-         right: 0;
-     }
+.nav-menu li a:hover {
+  color: var(--cor-destaque);
+}
 
-     .nav-menu li {
-         margin: 20px 0;
-     }
+.nav-menu li a:hover::after {
+  width: 70%;
+}
 
-     .nav-menu a {
-         font-size: 1.5rem;
-     }
+/* ── 04 MENU HAMBÚRGUER ────────────────────────────────────── */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 32px;
+  height: 26px;
+  position: relative;
+  z-index: 1100;
+  flex-shrink: 0;
+}
 
-     .hero {
-         background-image: url('../img/imgaerea2-mob.jpeg');
-         background-position: center;
-         background-size: cover;
-         background-repeat: no-repeat;
-         background-attachment: scroll;
-         width: 100%;
-         height: 70vh;
-     }
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: var(--cor-branco);
+  border-radius: var(--radius-pill);
+  left: 0;
+  transition: var(--transicao);
+}
 
-     .hero h1 {
-         font-size: 2.5rem;
-         margin-bottom: 15px;
-     }.hero p{
-        font-size: 1.1rem;
-     }
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 11px; }
+.hamburger span:nth-child(3) { top: 22px; }
 
+.hamburger.open span:nth-child(1) {
+  top: 11px;
+  transform: rotate(135deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  left: -40px;
+}
+.hamburger.open span:nth-child(3) {
+  top: 11px;
+  transform: rotate(-135deg);
+}
 
-     footer {
-         font-size: 12px;
-     }
- }
+/* ── 05 HERO / CARROSSEL ───────────────────────────────────── */
+.carousel-wrapper {
+  position: relative;
+  margin-top: 104px; /* header(70) + barra(34) */
+}
+
+.carousel {
+  height: 480px;
+  overflow: hidden;
+}
+
+.carousel img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.carousel-caption {
+  background: linear-gradient(to top, rgba(45,27,4,0.75) 0%, transparent 100%);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: left;
+  padding: var(--s-8) var(--s-12);
+  border-radius: 0;
+}
+
+.carousel-caption h5 {
+  font-family: var(--fonte-display);
+  font-size: var(--t-xl);
+  font-weight: 700;
+  color: var(--cor-branco);
+  margin-bottom: var(--s-2);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.carousel-caption p {
+  font-size: var(--t-base);
+  color: rgba(255,255,255,0.85);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+}
+
+/* ── 06 CELEBRAÇÕES (Swiper) ───────────────────────────────── */
+.celebracoes {
+  padding: var(--s-20) 5%;
+  background-color: var(--cor-fundo);
+  text-align: center;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cor-destaque);
+  margin-bottom: var(--s-3);
+}
+
+.section-title {
+  font-family: var(--fonte-display);
+  font-size: var(--t-2xl);
+  font-weight: 700;
+  color: var(--cor-primaria);
+  margin-bottom: var(--s-4);
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: var(--t-md);
+  color: var(--cor-texto-sub);
+  max-width: 520px;
+  margin: 0 auto var(--s-12);
+}
+
+.swiper {
+  width: 100%;
+  padding: var(--s-4) 0 var(--s-12);
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+.card-missa {
+  background: var(--cor-branco);
+  padding: var(--s-8) var(--s-6);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--sombra-md);
+  border-top: 4px solid var(--cor-destaque);
+  width: 90%;
+  max-width: 280px;
+  text-align: center;
+  transition: var(--transicao);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-missa::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cor-destaque), var(--cor-destaque-hov));
+}
+
+.card-missa:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--sombra-lg);
+}
+
+.card-missa h3 {
+  font-family: var(--fonte-display);
+  font-size: var(--t-lg);
+  color: var(--cor-primaria);
+  margin-bottom: var(--s-4);
+  font-weight: 700;
+}
+
+.card-missa p {
+  font-size: var(--t-base);
+  line-height: 1.7;
+  color: var(--cor-texto-sub);
+}
+
+.card-missa .hora {
+  font-size: var(--t-xl);
+  font-weight: 700;
+  color: var(--cor-destaque);
+  display: block;
+  margin-bottom: var(--s-1);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--cor-primaria);
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--cor-destaque) !important;
+}
+
+/* ── 07 ENDEREÇO ───────────────────────────────────────────── */
+.endereco-section {
+  background: var(--cor-fundo-alt);
+  padding: var(--s-20) 5%;
+  text-align: center;
+}
+
+.endereco-section .section-title {
+  margin-bottom: var(--s-8);
+}
+
+.mapa-wrapper {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--sombra-lg);
+  max-width: 900px;
+  margin: 0 auto;
+  border: 3px solid var(--cor-branco);
+}
+
+.mapa-wrapper iframe {
+  width: 100%;
+  height: 320px;
+  border: 0;
+  display: block;
+}
+
+.endereco-info {
+  display: flex;
+  justify-content: center;
+  gap: var(--s-8);
+  margin-top: var(--s-8);
+  flex-wrap: wrap;
+}
+
+.endereco-item {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  font-size: var(--t-sm);
+  color: var(--cor-texto-sub);
+  font-weight: 600;
+}
+
+.endereco-item i {
+  color: var(--cor-destaque);
+  font-size: var(--t-lg);
+}
+
+/* ── 08 PIX / DOAÇÃO ───────────────────────────────────────── */
+.pix-section {
+  background: var(--cor-primaria);
+  color: var(--cor-branco);
+  padding: var(--s-20) 5%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pix-section::before {
+  content: '✦';
+  position: absolute;
+  font-size: 280px;
+  color: rgba(255,255,255,0.025);
+  top: -60px;
+  right: -40px;
+  pointer-events: none;
+  font-family: var(--fonte-display);
+  line-height: 1;
+}
+
+.pix-section .section-eyebrow {
+  color: var(--cor-destaque);
+}
+
+.pix-section .section-title {
+  color: var(--cor-branco);
+}
+
+.pix-section .section-subtitle {
+  color: rgba(255,255,255,0.7);
+}
+
+.btn-pix {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  background: var(--cor-destaque);
+  color: var(--cor-primaria);
+  font-weight: 700;
+  font-size: var(--t-md);
+  padding: var(--s-4) var(--s-8);
+  border-radius: var(--radius-pill);
+  border: none;
+  text-decoration: none;
+  transition: var(--transicao);
+  margin-top: var(--s-6);
+  box-shadow: 0 4px 20px rgba(201, 146, 42, 0.35);
+  letter-spacing: 0.02em;
+}
+
+.btn-pix:hover {
+  background: var(--cor-destaque-hov);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(201, 146, 42, 0.45);
+  color: var(--cor-primaria);
+}
+
+/* ── 09 FOOTER ─────────────────────────────────────────────── */
+footer {
+  background: #1a1209;
+  color: rgba(255,255,255,0.6);
+  padding: var(--s-8) 5%;
+  font-size: var(--t-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  border-top: 3px solid var(--cor-destaque);
+}
+
+footer p {
+  margin: var(--s-1) 0;
+  line-height: 1.6;
+}
+
+footer .footer-logo {
+  font-family: var(--fonte-display);
+  font-size: var(--t-lg);
+  color: var(--cor-branco);
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+footer .footer-logo::before {
+  content: '✦';
+  color: var(--cor-destaque);
+}
+
+a.dev {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  color: rgba(255,255,255,0.5);
+  font-size: var(--t-sm);
+  text-decoration: none;
+  transition: color 0.3s;
+  margin-top: var(--s-2);
+}
+
+a.dev:hover {
+  color: var(--cor-destaque);
+}
+
+a.dev i {
+  color: var(--cor-destaque);
+  font-size: var(--t-base);
+}
+
+/* ── 10 WHATSAPP FLUTUANTE ─────────────────────────────────── */
+.whatsapp-float {
+  position: fixed;
+  bottom: var(--s-6);
+  right: var(--s-6);
+  background: #25D366;
+  color: var(--cor-branco);
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  z-index: 999;
+  transition: var(--transicao);
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.12) translateY(-3px);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+  color: var(--cor-branco);
+}
+
+/* ── 11 ANIMAÇÕES GERAIS ───────────────────────────────────── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1; transform: none; transition: none; }
+  .marquee  { animation: none; }
+}
+
+/* ── 12 RESPONSIVIDADE ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Barra evangelho */
+  .barra-evangelho { top: 70px; }
+
+  /* Carrossel */
+  .carousel-wrapper { margin-top: 104px; }
+  .carousel         { height: 220px; }
+  .carousel img     { height: 220px; }
+  .carousel-caption { padding: var(--s-4); }
+  .carousel-caption h5 { font-size: var(--t-base); }
+
+  /* Section titles */
+  .section-title { font-size: var(--t-xl); }
+
+  /* Hambúrguer */
+  .hamburger { display: flex; flex-direction: column; justify-content: space-between; }
+
+  /* Menu mobile */
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 68%;
+    height: calc(100vh - 70px);
+    background: var(--cor-primaria);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-8);
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 3px solid var(--cor-destaque);
+    z-index: 1050;
+  }
+
+  .nav-menu.active {
+    right: 0;
+  }
+
+  .nav-menu li a {
+    font-size: var(--t-lg);
+    color: var(--cor-branco);
+  }
+
+  /* Footer */
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-3);
+  }
+}
+
+@media (max-width: 480px) {
+  header { padding: 0 4%; }
+  .carousel { height: 180px; }
+  .carousel img { height: 180px; }
+  .celebracoes { padding: var(--s-12) 4%; }
+  .endereco-section { padding: var(--s-12) 4%; }
+  .pix-section { padding: var(--s-12) 4%; }
+}

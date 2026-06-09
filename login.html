@@ -1,38 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Administrativo | PNSC</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/login.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Acesso ao painel administrativo da Paróquia Nossa Senhora do Carmo.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Login — Secretaria PNSC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="CSS/login.css">
 </head>
+
 <body>
 
-    <div class="login-container">
-        <h1>PNS do Carmo</h1>
-        <p>Acesso ao Painel da Secretaria</p>
+  <div class="login-container" role="main">
+    <div class="login-logo">PNSC</div>
+    <p>Acesso ao Painel da Secretaria</p>
 
-        <div id="error-msg">Usuário ou senha incorretos.</div>
-
-        <form id="login-form">
-            <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" placeholder="secretaria@pnsdocarmo.com.br" required>
-            </div>
-
-            <div class="form-group">
-                <label for="password">Senha</label>
-                <input type="password" id="password" placeholder="••••••••" required>
-            </div>
-
-            <button type="submit" class="btn-login">Entrar no Sistema</button>
-        </form>
-
-        <a href="#" class="forgot-password">Esqueceu a senha? Entre em contato com o suporte técnico.</a>
+    <!-- Mensagem de erro -->
+    <div id="error-msg" role="alert" aria-live="assertive">
+      <i class="bi bi-exclamation-circle-fill"></i> Usuário ou senha incorretos.
     </div>
 
-    <script type="module" src="JS/login.js"></script>
+    <form id="login-form" novalidate>
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="secretaria@pnsdocarmo.com.br"
+          autocomplete="email"
+          required>
+      </div>
 
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="••••••••"
+          autocomplete="current-password"
+          required>
+      </div>
+
+      <button type="submit" class="btn-login">
+        <i class="bi bi-box-arrow-in-right"></i> Entrar no Sistema
+      </button>
+    </form>
+
+    <div class="divider">ou</div>
+
+    <a href="#" class="forgot-password">
+      Esqueceu a senha? Entre em contato com o suporte técnico.
+    </a>
+
+    <a href="index.html" class="back-link">
+      <i class="bi bi-arrow-left"></i> Voltar ao site
+    </a>
+  </div>
+
+  <script type="module" src="JS/login.js"></script>
 </body>
+
 </html>

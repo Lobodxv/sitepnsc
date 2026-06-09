@@ -4,75 +4,126 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"> <!-- Link dos ícones -->
-  
-  <link rel="stylesheet" href="CSS/style.css"> <!-- Folha de estilo principal -->
-  <link rel="stylesheet" href="CSS/pix.css">
+  <meta name="description" content="Faça sua doação à Paróquia Nossa Senhora do Carmo via PIX. Sua contribuição sustenta a evangelização e a missão paroquial.">
+  <meta name="theme-color" content="#2d1b04">
+  <title>Doação via PIX — PNSC</title>
 
-  <title>Doação | PNSC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/pix.css">
 </head>
 
 <body>
-  <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank">
-        <i class="bi bi-whatsapp"></i> <!-- Ícone do WhatsApp -->
-    </a>
 
-    <header>
-        <div class="logo">PNSC</div>
+  <!-- Botão WhatsApp -->
+  <a href="https://wa.me/5588981996070" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
 
-        <button class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo" aria-label="PNSC — Página inicial">PNSC</a>
 
-        <nav style="display: flex;">
-            <a href="index.html" class="home" id="home" style="color: white; text-decoration: none;"><i class="bi bi-house-door-fill"></i></a>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="index.html#missas">Celebrações</a></li>
-                <li><a href="index.html#endereco">Endereço</a></li>
-                <!-- <li><a href="index.html#dizimo">Doação</a></li> -->
-            </ul>
-        </nav>
-    </header>
-    <div class="barra-evangelho">
-        <div class="marquee" id="texto-evangelho">
-            📖 Carregando o Evangelho do dia... 
-        </div>
-    </div>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
+    <nav aria-label="Navegação principal">
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="index.html#missas">Celebrações</a></li>
+        <li><a href="index.html#endereco">Endereço</a></li>
+        <li><a href="corais.html">Escala de Corais</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Barra evangelho -->
+  <div class="barra-evangelho" role="marquee" aria-live="polite">
+    <div class="marquee" id="texto-evangelho">📖 Carregando o Evangelho do dia...</div>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="pix-page-wrapper">
+
+    <!-- Painel contextual esquerdo -->
     <div class="card-right">
-        <div class="logo-paroquia">PNS do Carmo</div>
-        <h2>Faça a sua doação para nos ajudar a continuar nossa missão de evangelização!</h2>
+      <div class="logo-paroquia">PNSC</div>
+      <h2>Ajude-nos a continuar a nossa missão de evangelização e serviço à comunidade.</h2>
+      <p class="versicle">"Deus ama quem dá com alegria." — 2Cor 9,7</p>
     </div>
 
+    <!-- Painel PIX direito -->
+    <div class="card-doacao" role="main" aria-label="Formulário de doação PIX">
+      <h2>Dízimo e Ofertas</h2>
+      <p class="subtitulo">Escaneie o QR Code ou copie a chave PIX abaixo</p>
 
-    <div class="card-doacao">
-        <!-- <div class="logo-paroquia">PNS do Carmo</div> -->
-        <h2 style="color: #333; margin-top: 0;">Dízimo e Ofertas</h2>
-        <p style="color: #666; font-size: 0.9rem;">"Deus ama quem dá com alegria." (2Cor 9,7)</p>
-        <div id="qrcode"><img style="width: 20%;" src="img/qrcode.jpeg" alt="QR Code"></div>
+      <div id="qrcode" title="QR Code para doação PIX">
+        <img src="img/qrcode.jpeg" alt="QR Code PIX da Paróquia Nossa Senhora do Carmo">
+      </div>
 
-        <div class="info-pix">
-            <span class="chave-label">Chave Pix</span>
-            <span id="txt-chave" class="chave-valor">07.721.749/0020-30</span>
-            <p style="margin: 5px 0 0; font-size: 0.85rem; color: #555;">
-                Favorecido: <strong id="txt-nome">Paróquia Nossa Senhora do Carmo</strong>
-            </p>
-        </div>
-
-        <button class="btn-copiar" onclick="copiarPix(event)">Copiar Chave Pix</button>
-
-        <p class="footer-obs">
-            Após escanear ou colar a chave, confira os dados da paróquia no seu aplicativo bancário antes de confirmar.
+      <div class="info-pix">
+        <span class="chave-label">Chave PIX (CNPJ)</span>
+        <span id="txt-chave" class="chave-valor">07.721.749/0020-30</span>
+        <p class="chave-nome">
+          Favorecido: <strong id="txt-nome">Paróquia Nossa Senhora do Carmo</strong>
         </p>
-        
-        <a href="index.html" style="display: inline-block; margin-top: 20px; color: var(--azul); text-decoration: none; font-weight: 600; font-size: 0.9rem;">← Voltar ao Início</a>
-    </div>
+      </div>
 
-    <script src="JS/hamburger.js"></script>
-    <script src="JS/main.js"></script>
-    <script src="JS/evangelho.js"></script>
+      <button class="btn-copiar" onclick="copiarPix(event)" aria-label="Copiar chave PIX">
+        <i class="bi bi-clipboard" id="icone-copiar"></i>
+        <span id="label-copiar">Copiar Chave PIX</span>
+      </button>
+
+      <p class="footer-obs">
+        Após escanear ou colar a chave, confira os dados da paróquia no seu aplicativo bancário antes de confirmar.
+      </p>
+
+      <a href="index.html" class="voltar-link">
+        <i class="bi bi-arrow-left"></i> Voltar ao início
+      </a>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function copiarPix(e) {
+      const chave = document.getElementById('txt-chave').innerText;
+      navigator.clipboard.writeText(chave).then(() => {
+        const btn = e.currentTarget;
+        const icone = document.getElementById('icone-copiar');
+        const label = document.getElementById('label-copiar');
+
+        btn.classList.add('copiado');
+        icone.className = 'bi bi-clipboard-check';
+        label.innerText = 'Chave copiada!';
+
+        setTimeout(() => {
+          btn.classList.remove('copiado');
+          icone.className = 'bi bi-clipboard';
+          label.innerText = 'Copiar Chave PIX';
+        }, 2500);
+      }).catch(() => {
+        // Fallback para browsers antigos
+        const input = document.createElement('input');
+        input.value = chave;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        alert('Chave PIX copiada!');
+      });
+    }
+  </script>
+
+  <script src="JS/hamburger.js"></script>
+  <script src="JS/evangelho.js"></script>
 </body>
+
 </html>
