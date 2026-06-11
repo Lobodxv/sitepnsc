@@ -277,7 +277,7 @@ header {
 .hero-split {
     display: grid;
     grid-template-columns: 1fr 1.1fr;
-    min-height: 85vh;
+    min-height: 90vh;
     background-color: var(--cor-primaria);
     overflow: hidden;
     position: relative;
@@ -385,14 +385,11 @@ header {
 }
 
 @media (max-width: 992px) {
+    .barra-evangelho {display: none;}
     .hero-split {
-        top: 0px;
+        top: 50px;
         grid-template-columns: 1fr;
         min-height: 90vh;
-    }
-
-    .hero-split-image{
-      display: none;
     }
 
     .hero-split-content {
@@ -401,6 +398,7 @@ header {
     }
 
     .hero-split-image {
+      display: none;
         height: 420px;
         order: 1;
         clip-path: none;
@@ -408,6 +406,15 @@ header {
 }
 
 @media (max-width: 576px) {
+  .hero-tag{
+    font-size: 10px;
+  }
+  .hero-title{
+    font-size: 30px;
+  }
+  .hero-desc{
+    font-size: 15px;
+  }
     .hero-split-image {
         height: 300px;
     }
@@ -481,6 +488,7 @@ header {
 
 /* ── 06 CELEBRAÇÕES (Swiper) ───────────────────────────────── */
 .celebracoes {
+  margin-top: 40px;
   padding: var(--s-20) 5%;
   background-color: var(--cor-fundo);
   text-align: center;
@@ -917,6 +925,18 @@ a.dev i {
 @media (max-width: 768px) {
   /* Barra evangelho */
   .barra-evangelho { top: 70px; }
+
+  /* Celebrações */
+  .card-missa{
+    height: 180px;
+  }
+  .card-missa h3{
+    font-size: 22px;
+  }
+  .card-missa .hora{
+    font-size: 22px;
+  }
+
 
   /* Carrossel */
   .carousel-wrapper { margin-top: 104px; }
