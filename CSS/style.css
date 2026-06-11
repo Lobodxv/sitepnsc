@@ -31,6 +31,7 @@
   --cor-destaque-hov:#e6a930;   /* dourado mais claro no hover     */
   --cor-fundo:       #faf8f5;   /* creme quente — fundo geral      */
   --cor-fundo-alt:   #f1ece4;   /* creme levemente mais escuro     */
+  --cor-texto-alt: #c3b49ed8;
   --cor-texto:       #1a1209;   /* texto principal                 */
   --cor-texto-sub:   #6b5c45;   /* texto secundário / legendas     */
   --cor-branco:      #ffffff;
@@ -128,7 +129,7 @@ button {
   font-size: var(--t-xs);
   font-weight: 500;
   letter-spacing: 0.02em;
-  border-bottom: 2px solid var(--cor-destaque);
+  border-bottom: 1px solid var(--cor-secundaria);
   position: fixed;
   top: 70px;
   z-index: 900;
@@ -237,7 +238,9 @@ header {
   border: none;
   width: 32px;
   height: 26px;
-  position: relative;
+  position: absolute;
+  right: 0;
+  margin-right: 2em;
   z-index: 1100;
   flex-shrink: 0;
 }
@@ -271,9 +274,157 @@ header {
 }
 
 /* ── 05 HERO / CARROSSEL ───────────────────────────────────── */
-.carousel-wrapper {
+.hero-split {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    min-height: 85vh;
+    background-color: var(--cor-primaria);
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-split-content {
+    padding: var(--s-16) var(--s-12);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 2;
+}
+
+.hero-tag {
+    color: var(--cor-destaque);
+    font-size: var(--t-sm);
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 600;
+    margin-bottom: var(--s-3);
+    display: inline-block;
+}
+
+.hero-title {
+    color: var(--cor-fundo);
+    font-family: var(--fonte-display);
+    font-size: clamp(var(--t-2xl), 5vw, var(--t-3xl));
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: var(--s-4);
+}
+
+.hero-desc {
+    color: var(--cor-texto-alt);
+    font-size: var(--t-md);
+    line-height: 1.6;
+    margin-bottom: var(--s-8);
+    max-width: 540px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--s-4);
+    flex-wrap: wrap;
+}
+
+.hero-split .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--s-3) var(--s-8);
+    border-radius: var(--radius-pill);
+    font-size: var(--t-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transicao);
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.hero-split .btn-primary {
+    background-color: var(--cor-destaque);
+    color: var(--cor-primaria);
+    box-shadow: var(--sombra-sm);
+}
+
+.hero-split .btn-primary:hover {
+    background-color: var(--cor-destaque-hov);
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-md);
+}
+
+.hero-split .btn-secondary {
+    background-color: transparent;
+    color: var(--cor-texto-alt);
+    border-color: var(--cor-secundaria);
+}
+
+.hero-split .btn-secondary:hover {
+    background-color: var(--cor-fundo-alt);
+    color: var(--cor-primaria);
+    transform: translateY(-2px);
+}
+
+.hero-split-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+    background-color: var(--cor-fundo-alt);
+}
+
+.hero-img-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: var(--transicao);
+}
+
+.hero-split:hover .hero-img-element {
+    transform: scale(1.02);
+}
+
+@media (max-width: 992px) {
+    .hero-split {
+        top: 0px;
+        grid-template-columns: 1fr;
+        min-height: 90vh;
+    }
+
+    .hero-split-image{
+      display: none;
+    }
+
+    .hero-split-content {
+        padding: var(--s-12) var(--s-6);
+        order: 2;
+    }
+
+    .hero-split-image {
+        height: 420px;
+        order: 1;
+        clip-path: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-split-image {
+        height: 300px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-split .btn {
+        width: 100%;
+    }
+}
+
+/* .carousel-wrapper {
   position: relative;
-  margin-top: 104px; /* header(70) + barra(34) */
+  margin-top: 104px;
 }
 
 .carousel {
@@ -322,7 +473,11 @@ header {
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
   opacity: 1;
-}
+} */
+
+
+/* ----------------------------------------- */
+
 
 /* ── 06 CELEBRAÇÕES (Swiper) ───────────────────────────────── */
 .celebracoes {
