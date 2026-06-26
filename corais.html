@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Escala de Corais da Paróquia Nossa Senhora do Carmo — consulte qual coral canta nos próximos domingos.">
-  <meta name="theme-color" content="#2d1b04">
+  <meta name="theme-color" content="#201109">
   <title>Escala de Corais — PNSC</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,13 +13,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="CSS/style.css">
+  <script src="JS/theme-toggle.js"></script>
 
   <style>
     /* ── Overrides específicos desta página ── */
     header { position: fixed; width: 100%; top: 0; }
 
     body {
-      background: var(--cor-fundo);
+      background:
+        radial-gradient(circle at top left, rgba(197, 138, 53, 0.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(78, 45, 29, 0.3), transparent 24%),
+        linear-gradient(180deg, #1d0f09 0%, #2a1810 38%, #150b07 100%);
       display: block;
       padding: 0;
       min-height: 100vh;
@@ -46,7 +50,7 @@
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--cor-destaque);
+      color: #d6a85a;
       margin-bottom: 12px;
     }
 
@@ -54,30 +58,32 @@
       font-family: var(--fonte-display);
       font-size: 2.2rem;
       font-weight: 700;
-      color: var(--cor-primaria);
+      color: rgba(255, 244, 232, 0.96);
       margin-bottom: 8px;
     }
 
     .corais-hero p {
-      color: var(--cor-texto-sub);
+      color: rgba(255, 236, 215, 0.74);
       font-size: 0.95rem;
     }
 
     /* Container do card */
     .container {
-      background: var(--cor-branco);
+      background: linear-gradient(145deg, rgba(32, 17, 9, 0.86), rgba(78, 45, 29, 0.7));
       padding: 36px 32px;
       border-radius: 20px;
-      box-shadow: 0 12px 40px rgba(45, 27, 4, 0.12);
+      box-shadow: 0 22px 60px rgba(16, 9, 5, 0.22);
       width: 100%;
       max-width: 500px;
-      border-top: 5px solid var(--cor-destaque);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
     }
 
     /* Destaque do próximo coral */
     .highlight {
-      background: var(--cor-fundo-alt);
-      border: 2px solid rgba(201,146,42,0.3);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       padding: 20px;
       border-radius: 14px;
       margin-bottom: 28px;
@@ -96,8 +102,8 @@
     }
 
     .highlight .badge {
-      background: var(--cor-destaque);
-      color: var(--cor-primaria);
+      background: linear-gradient(135deg, var(--cor-destaque), var(--cor-destaque-hov));
+      color: #22120b;
       font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -110,7 +116,7 @@
 
     .highlight .date {
       font-size: 0.85rem;
-      color: var(--cor-texto-sub);
+      color: rgba(255, 236, 215, 0.72);
       text-transform: capitalize;
       margin-bottom: 4px;
     }
@@ -119,21 +125,21 @@
       font-family: var(--fonte-display);
       font-size: 1.6rem;
       font-weight: 800;
-      color: var(--cor-primaria);
+      color: rgba(255, 244, 232, 0.96);
       display: block;
       margin: 4px 0;
     }
 
     .highlight .info {
       font-size: 0.8rem;
-      color: var(--cor-texto-sub);
+      color: rgba(255, 236, 215, 0.72);
     }
 
     /* Título do mês */
     .month-title {
       font-family: var(--fonte-display);
       font-weight: 700;
-      color: var(--cor-primaria);
+      color: rgba(255, 244, 232, 0.96);
       font-size: 1.1rem;
       margin: 0 0 12px;
       display: block;
@@ -149,9 +155,9 @@
     }
 
     thead th {
-      background: var(--cor-primaria);
+      background: linear-gradient(135deg, rgba(32, 17, 9, 0.98), rgba(78, 45, 29, 0.94));
       padding: 10px 12px;
-      color: var(--cor-branco);
+      color: rgba(255, 239, 220, 0.94);
       font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
@@ -162,21 +168,21 @@
     thead th:last-child  { border-radius: 0 8px 0 0; }
 
     tbody td {
-      border-bottom: 1px solid var(--cor-fundo-alt);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       padding: 11px 12px;
-      color: var(--cor-texto);
+      color: rgba(255, 236, 215, 0.78);
     }
 
     tbody tr:last-child td { border-bottom: none; }
 
     tbody tr:hover td {
-      background: var(--cor-fundo);
+      background: rgba(255, 255, 255, 0.04);
     }
 
     .current-row td {
-      background: rgba(201,146,42,0.1) !important;
+      background: rgba(197, 138, 53, 0.12) !important;
       font-weight: 700;
-      color: var(--cor-primaria);
+      color: rgba(255, 244, 232, 0.96);
     }
 
     .current-row td:first-child {
@@ -206,18 +212,18 @@
     }
 
     .btn-next {
-      background: var(--cor-primaria);
-      color: var(--cor-branco);
+      background: linear-gradient(135deg, #22120b, #4e2d1d);
+      color: rgba(255, 239, 220, 0.94);
     }
 
     .btn-next:hover {
-      background: var(--cor-secundaria);
+      background: linear-gradient(135deg, #4e2d1d, #22120b);
       transform: translateY(-2px);
     }
 
     .btn-today {
-      background: var(--cor-destaque);
-      color: var(--cor-primaria);
+      background: linear-gradient(135deg, var(--cor-destaque), var(--cor-destaque-hov));
+      color: #22120b;
       display: none;
     }
 
@@ -230,6 +236,7 @@
     footer {
       width: 100%;
       margin-top: auto;
+      background: transparent;
     }
 
     /* Responsividade */
@@ -240,6 +247,8 @@
       .highlight .name { font-size: 1.3rem; }
     }
   </style>
+
+  <link rel="stylesheet" href="CSS/theme.css">
 </head>
 
 <body>

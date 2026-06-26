@@ -10,7 +10,7 @@
 ![Bootstrap](https://img.shields.io/badge/Bootstrap_5-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
 ![License](https://img.shields.io/badge/licença-MIT-blue?style=flat-square)
 
-**Site institucional da Paróquia Nossa Senhora do Carmo**, com agenda de celebrações, escala de corais, doação via PIX e demais informações e funcionalidades.**
+**Site institucional da Paróquia Nossa Senhora do Carmo**, com liturgia diária, agenda de celebrações, escala de corais, doação via PIX e demais informações e funcionalidades.**
 
 [🌐 Ver Site](#) · [🐛 Reportar Bug](https://github.com/manoellob_/sitepnsc/issues) · [✨ Solicitar Funcionalidade](https://github.com/manoellob_/sitepnsc/issues)
 
@@ -50,8 +50,10 @@ O site da **Paróquia Nossa Senhora do Carmo** é uma plataforma web institucion
 | Funcionalidade | Descrição |
 |---|---|
 | 📅 **Agenda Litúrgica** | Cards com horários de missas, terços e adoração por dia da semana |
+| 📖 **Liturgia Diária** | Página dedicada às leituras do dia, com visual premium e conteúdo atualizado automaticamente |
 | 🎵 **Escala de Corais** | Cálculo automático por domingo do mês; navegação entre meses |
 | 📖 **Evangelho do Dia** | Barra marquee com texto litúrgico carregado da API em tempo real |
+| 🌓 **Tema Claro/Escuro** | Alternância de tema premium com preferência salva no navegador |
 | 🗺️ **Mapa** | Google Maps embed com localização da Igreja Matriz |
 | 📱 **Responsivo** | Layout adaptado para mobile, tablet e desktop |
 | ♿ **Acessível** | ARIA labels, roles, foco gerenciado, `prefers-reduced-motion` |
@@ -96,6 +98,7 @@ O site da **Paróquia Nossa Senhora do Carmo** é uma plataforma web institucion
 sitepnsc/
 │
 ├── index.html          # Página inicial (hero, celebrações, PIX, endereço)
+├── liturgia.html       # Liturgia diária com leituras do dia
 ├── corais.html         # Escala de corais por mês
 ├── pix.html            # Página de doação via PIX
 ├── login.html          # Login do painel administrativo
@@ -103,6 +106,7 @@ sitepnsc/
 │
 ├── CSS/
 │   ├── style.css       # Estilos globais + variáveis + responsividade
+│   ├── theme.css       # Overlays do tema claro/escuro e botão de alternância
 │   ├── pix.css         # Estilos específicos da página de doação
 │   ├── login.css       # Estilos da página de login
 │   └── admin.css       # Estilos do painel administrativo
@@ -111,6 +115,8 @@ sitepnsc/
 │   ├── main.js         # Firebase Firestore — escuta em tempo real
 │   ├── hamburger.js    # Menu hambúrguer mobile (abre/fecha/Escape)
 │   ├── evangelho.js    # Carrega o Evangelho do dia via API
+│   ├── liturgiadiaria.js # Carrega e formata o conteúdo da liturgia diária
+│   ├── theme-toggle.js  # Alterna entre dark e light com persistência local
 │   ├── animations.js   # Animações de scroll (IntersectionObserver)
 │   └── login.js        # Firebase Auth — login/logout
 │
@@ -167,6 +173,12 @@ cd sitepnsc
 - Footer com informações e crédito do desenvolvedor
 - Botão WhatsApp flutuante
 
+### `liturgia.html` — Liturgia Diária
+- Leituras do dia organizadas em cards premium com glassmorphism
+- Conteúdo carregado automaticamente ao abrir a página
+- Layout dedicado para leitura e oração, sem a seção de santo do dia
+- Compatível com os temas dark e light do site
+
 ### `corais.html` — Escala de Corais
 - Destaque do próximo coral (calculado automaticamente)
 - Tabela mensal de domingos com coral responsável
@@ -218,6 +230,7 @@ O site é desenvolvido com abordagem **Mobile First** e funciona em:
 - **`lang="pt-br"`** no `<html>` para leitores de tela
 - **`autocomplete`** nos campos de formulário (login)
 - **`novalidate` + validação manual** com mensagens de erro acessíveis
+- **Tema alternável** entre dark e light, com preferência salva no navegador
 
 ---
 

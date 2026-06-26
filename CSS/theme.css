@@ -1,0 +1,479 @@
+:root {
+  --theme-toggle-bg: rgba(32, 17, 9, 0.8);
+  --theme-toggle-border: rgba(255, 255, 255, 0.12);
+  --theme-toggle-text: rgba(255, 239, 220, 0.96);
+  --theme-surface-light: rgba(255, 255, 255, 0.72);
+  --theme-surface-soft: rgba(248, 240, 230, 0.9);
+}
+
+html.theme-light {
+  --cor-primaria: #6f4630;
+  --cor-secundaria: #9d7350;
+  --cor-destaque: #b3772f;
+  --cor-destaque-hov: #cca15f;
+  --cor-fundo: #f6efe6;
+  --cor-fundo-alt: #eadfce;
+  --cor-texto: #2f1f14;
+  --cor-texto-sub: #6e5848;
+  --cor-texto-alt: rgba(80, 59, 45, 0.82);
+  --cor-branco: rgba(255, 255, 255, 0.92);
+  --cor-sombra: rgba(88, 61, 38, 0.14);
+}
+
+html.theme-light body {
+  color: var(--cor-texto);
+  background:
+    radial-gradient(circle at top left, rgba(180, 126, 61, 0.14), transparent 26%),
+    radial-gradient(circle at top right, rgba(160, 106, 58, 0.1), transparent 22%),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.75), transparent 46%),
+    linear-gradient(180deg, #fcf9f4 0%, #f3eadf 48%, #e8dccd 100%);
+}
+
+html.theme-light body::before,
+html.theme-light body::after {
+  display: none;
+}
+
+html.theme-light header {
+  background: linear-gradient(135deg, rgba(255, 250, 245, 0.9), rgba(243, 232, 219, 0.86));
+  color: var(--cor-texto);
+  border-bottom-color: rgba(120, 88, 56, 0.12);
+  box-shadow: 0 12px 28px rgba(80, 55, 33, 0.12);
+}
+
+html.theme-light .logo,
+html.theme-light .footer-logo,
+html.theme-light .login-logo,
+html.theme-light .sidebar-logo,
+html.theme-light .hero-title,
+html.theme-light .hero-tag,
+html.theme-light .section-title,
+html.theme-light .section-eyebrow,
+html.theme-light .section-subtitle,
+html.theme-light .nav-menu li a,
+html.theme-light .barra-evangelho,
+html.theme-light .hero-desc,
+html.theme-light .card-missa h3,
+html.theme-light .historico-header h2,
+html.theme-light .historico-texto h3,
+html.theme-light .pix-section,
+html.theme-light .endereco-section,
+html.theme-light .resgate-historico,
+html.theme-light .card-right,
+html.theme-light .card-doacao,
+html.theme-light .liturgia-header,
+html.theme-light .liturgia-titulo,
+html.theme-light .liturgia-subtitulo,
+html.theme-light .card-header-liturgia h2,
+html.theme-light .liturgia-item h3,
+html.theme-light .leitura-texto,
+html.theme-light .salmo-estilo,
+html.theme-light .liturgia-nota,
+html.theme-light .corais-hero h1,
+html.theme-light .corais-hero p,
+html.theme-light .container,
+html.theme-light .highlight,
+html.theme-light .month-title,
+html.theme-light .stat-card,
+html.theme-light .admin-card,
+html.theme-light .admin-header h1,
+html.theme-light .admin-header p,
+html.theme-light .admin-sidebar,
+html.theme-light .sidebar-nav a,
+html.theme-light .login-container,
+html.theme-light .login-container > p,
+html.theme-light .divider,
+html.theme-light .back-link,
+html.theme-light .forgot-password,
+html.theme-light .btn-login,
+html.theme-light .btn-salvar,
+html.theme-light .btn-pix,
+html.theme-light .btn-copiar,
+html.theme-light .btn-next,
+html.theme-light .btn-today,
+html.theme-light .voltar-link,
+html.theme-light .footer-obs,
+html.theme-light .chave-label,
+html.theme-light .chave-valor,
+html.theme-light .chave-nome,
+html.theme-light .highlight .badge,
+html.theme-light .highlight .date,
+html.theme-light .highlight .info,
+html.theme-light .controls button {
+  color: var(--cor-texto);
+}
+
+html.theme-light .logo::before,
+html.theme-light .footer-logo::before,
+html.theme-light .login-logo::before,
+html.theme-light .sidebar-logo::before,
+html.theme-light .card-header-liturgia i,
+html.theme-light .liturgia-nota i,
+html.theme-light .sidebar-nav a:hover,
+html.theme-light .sidebar-nav a.active {
+  color: var(--cor-destaque);
+}
+
+html.theme-light .barra-evangelho {
+  background: rgba(249, 242, 232, 0.92);
+  border-bottom-color: rgba(120, 88, 56, 0.12);
+  color: rgba(71, 52, 38, 0.88);
+}
+
+html.theme-light .nav-menu li a {
+  color: rgba(74, 54, 39, 0.9);
+}
+
+html.theme-light .nav-menu li a::after {
+  background: var(--cor-destaque);
+}
+
+html.theme-light .hamburger span {
+  background: var(--cor-texto);
+}
+
+html.theme-light .hero-split,
+html.theme-light .card-missa,
+html.theme-light .historico-item,
+html.theme-light .historico-header,
+html.theme-light .endereco-section,
+html.theme-light .pix-section,
+html.theme-light .resgate-historico,
+html.theme-light .hero-split-content,
+html.theme-light .hero-split-image,
+html.theme-light .card-liturgia,
+html.theme-light .liturgia-header,
+html.theme-light .card-right,
+html.theme-light .card-doacao,
+html.theme-light .container,
+html.theme-light .highlight,
+html.theme-light .login-container,
+html.theme-light .admin-sidebar,
+html.theme-light .admin-card,
+html.theme-light .stat-card {
+  border-color: rgba(126, 92, 63, 0.14);
+  box-shadow: 0 20px 54px rgba(88, 61, 38, 0.12);
+}
+
+html.theme-light .hero-split {
+  background: linear-gradient(145deg, rgba(255, 252, 247, 0.92), rgba(240, 229, 216, 0.88));
+}
+
+html.theme-light .hero-split-content {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(243, 234, 223, 0.58));
+}
+
+html.theme-light .hero-split-image {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(236, 224, 210, 0.72));
+}
+
+html.theme-light .hero-desc,
+html.theme-light .section-subtitle,
+html.theme-light .corais-hero p,
+html.theme-light .liturgia-subtitulo,
+html.theme-light .card-right h2,
+html.theme-light .card-doacao .subtitulo,
+html.theme-light .chave-nome,
+html.theme-light .footer-obs,
+html.theme-light .highlight .info,
+html.theme-light .highlight .date,
+html.theme-light .login-container > p,
+html.theme-light .admin-header p,
+html.theme-light .stat-card .stat-label,
+html.theme-light .sidebar-nav a,
+html.theme-light .back-link,
+html.theme-light .forgot-password,
+html.theme-light .leitura-texto,
+html.theme-light .salmo-estilo,
+html.theme-light .voltar-link,
+html.theme-light .card-missa p,
+html.theme-light .historico-header p,
+html.theme-light .historico-item .historico-texto p,
+html.theme-light .endereco-item,
+html.theme-light .endereco-item span,
+html.theme-light .swiper-button-next,
+html.theme-light .swiper-button-prev {
+  color: rgba(88, 66, 48, 0.88);
+}
+
+html.theme-light .hero-split .btn-primary,
+html.theme-light .btn-pix,
+html.theme-light .btn-copiar,
+html.theme-light .btn-login,
+html.theme-light .btn-salvar,
+html.theme-light .btn-next,
+html.theme-light .btn-today {
+  color: #2a1a10;
+}
+
+html.theme-light .hero-split .btn-secondary {
+  background-color: rgba(255, 255, 255, 0.58);
+  color: #4d3526;
+  border-color: rgba(120, 88, 56, 0.16);
+}
+
+html.theme-light .hero-split .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.82);
+}
+
+html.theme-light .section-eyebrow,
+html.theme-light .liturgia-tag,
+html.theme-light .highlight .badge,
+html.theme-light .chave-label {
+  background: rgba(183, 119, 47, 0.12);
+  color: var(--cor-destaque);
+  border-color: rgba(183, 119, 47, 0.16);
+}
+
+html.theme-light .liturgia-item .leitura-tag {
+  background: rgba(183, 119, 47, 0.16);
+  color: #5a381f;
+  border-color: rgba(183, 119, 47, 0.24);
+}
+
+html.theme-light .liturgia-item h3 {
+  color: #2f1f14;
+}
+
+html.theme-light .card-missa,
+html.theme-light .historico-item,
+html.theme-light .card-right,
+html.theme-light .card-doacao,
+html.theme-light .container,
+html.theme-light .highlight,
+html.theme-light .liturgia-header,
+html.theme-light .card-liturgia,
+html.theme-light .login-container,
+html.theme-light .admin-card,
+html.theme-light .stat-card,
+html.theme-light .admin-sidebar {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.74), rgba(244, 235, 225, 0.62));
+}
+
+html.theme-light .card-missa h3,
+html.theme-light .historico-item .historico-texto h3,
+html.theme-light .historico-header h2,
+html.theme-light .section-title,
+html.theme-light .login-logo,
+html.theme-light .sidebar-logo,
+html.theme-light .admin-card h2,
+html.theme-light .card-doacao h2,
+html.theme-light .corais-hero h1,
+html.theme-light .liturgia-titulo,
+html.theme-light .liturgia-item h3 {
+  color: #3a2618;
+}
+
+html.theme-light .liturgia-header {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(244, 233, 222, 0.72));
+}
+
+html.theme-light .card-liturgia,
+html.theme-light .card-header-liturgia {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(243, 232, 220, 0.72));
+}
+
+html.theme-light .card-header-liturgia {
+  border-bottom-color: rgba(126, 92, 63, 0.12);
+}
+
+html.theme-light .leitura-tag,
+html.theme-light .liturgia-nota {
+  background: rgba(255, 255, 255, 0.68);
+  border-color: rgba(126, 92, 63, 0.12);
+}
+
+html.theme-light .liturgia-item {
+  border-bottom-color: rgba(126, 92, 63, 0.14);
+}
+
+html.theme-light .liturgia-item h3 {
+  border-bottom-color: rgba(183, 119, 47, 0.48);
+}
+
+html.theme-light .card-missa .hora {
+  color: #a96b20;
+}
+
+html.theme-light .card-missa p,
+html.theme-light .historico-header p,
+html.theme-light .historico-item .historico-texto p,
+html.theme-light .endereco-item,
+html.theme-light .endereco-item span,
+html.theme-light .highlight .date,
+html.theme-light .highlight .info {
+  color: #6a5646;
+}
+
+html.theme-light .swiper-button-next,
+html.theme-light .swiper-button-prev {
+  color: var(--cor-primaria);
+}
+
+html.theme-light .card-right::before {
+  color: rgba(126, 92, 63, 0.06);
+}
+
+html.theme-light .info-pix,
+html.theme-light #qrcode,
+html.theme-light .btn-copiar,
+html.theme-light .btn-next,
+html.theme-light .btn-today,
+html.theme-light .btn-login,
+html.theme-light .btn-salvar,
+html.theme-light .msg-feedback,
+html.theme-light .divider::before,
+html.theme-light .divider::after,
+html.theme-light .form-group input,
+html.theme-light .form-group textarea,
+html.theme-light .form-group select,
+html.theme-light input,
+html.theme-light .card-doacao,
+html.theme-light .card-right,
+html.theme-light .login-container,
+html.theme-light .admin-card,
+html.theme-light .stat-card,
+html.theme-light .highlight,
+html.theme-light table,
+html.theme-light thead th,
+html.theme-light tbody td {
+  border-color: rgba(126, 92, 63, 0.14);
+}
+
+html.theme-light .highlight,
+html.theme-light .info-pix,
+html.theme-light #qrcode,
+html.theme-light .login-container,
+html.theme-light .admin-card,
+html.theme-light .stat-card,
+html.theme-light .form-group input,
+html.theme-light .form-group textarea,
+html.theme-light .form-group select,
+html.theme-light input,
+html.theme-light textarea,
+html.theme-light select {
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--cor-texto);
+}
+
+html.theme-light .btn-pix,
+html.theme-light .btn-copiar,
+html.theme-light .btn-login,
+html.theme-light .btn-salvar,
+html.theme-light .btn-next,
+html.theme-light .btn-today {
+  background: linear-gradient(135deg, var(--cor-destaque), var(--cor-destaque-hov));
+  border: none;
+}
+
+html.theme-light .btn-copiar.copiado {
+  background: linear-gradient(135deg, #44ad73, #2d8d57);
+  color: #ffffff;
+}
+
+html.theme-light .pix-section,
+html.theme-light .endereco-section,
+html.theme-light .resgate-historico,
+html.theme-light .celebracoes {
+  background: linear-gradient(180deg, rgba(255, 250, 244, 0.92), rgba(242, 231, 219, 0.88));
+}
+
+html.theme-light .footer-obs em,
+html.theme-light .pix-section em,
+html.theme-light .section-subtitle em {
+  color: rgba(111, 85, 62, 0.82) !important;
+}
+
+html.theme-light footer {
+  background: linear-gradient(180deg, rgba(246, 238, 230, 0.98), rgba(232, 221, 208, 0.98));
+  color: rgba(74, 54, 39, 0.9);
+  border-top-color: rgba(126, 92, 63, 0.12);
+}
+
+html.theme-light footer a.dev,
+html.theme-light footer a.dev:hover,
+html.theme-light footer a.dev i {
+  color: #5a381f;
+}
+
+html.theme-light footer a.dev {
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(126, 92, 63, 0.12);
+  padding: 0.55rem 0.85rem;
+  border-radius: 9999px;
+}
+
+html.theme-light footer a.dev:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+html.theme-light .whatsapp-float {
+  box-shadow: 0 16px 32px rgba(68, 173, 115, 0.3);
+}
+
+html.theme-light .theme-toggle {
+  background: rgba(255, 255, 255, 0.82);
+  color: #2d1d12;
+  border-color: rgba(126, 92, 63, 0.16);
+  box-shadow: 0 16px 34px rgba(88, 61, 38, 0.14);
+}
+
+html.theme-light .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.94);
+}
+
+html[data-layout='site'] .theme-toggle {
+  top: 6.75rem;
+}
+
+html[data-layout='simple'] .theme-toggle {
+  top: 1rem;
+}
+
+.theme-toggle {
+  position: fixed;
+  right: 1rem;
+  z-index: 1300;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.78rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid var(--theme-toggle-border);
+  background: var(--theme-toggle-bg);
+  color: var(--theme-toggle-text);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 16px 34px rgba(16, 9, 5, 0.22);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+}
+
+.theme-toggle i {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .theme-toggle {
+    right: 0.9rem;
+    padding: 0.78rem;
+  }
+
+  .theme-toggle-label {
+    display: none;
+  }
+
+  html[data-layout='site'] .theme-toggle {
+    top: 5.9rem;
+  }
+}

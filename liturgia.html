@@ -1,1 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liturgia Diária</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet">
+
+  <!-- Estilos do site -->
+  <link rel="stylesheet" href="CSS/style.css">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <script src="JS/theme-toggle.js"></script>
+
+
+  <style>
+    :root {
+      --cor-primaria: #201109;
+      --cor-secundaria: #4e2d1d;
+      --cor-destaque: #c58a35;
+      --cor-destaque-hov: #dfac5b;
+      --cor-fundo: #efe3d3;
+      --cor-fundo-alt: #e2d2be;
+      --cor-texto: #1a100a;
+      --cor-texto-sub: #594636;
+      --cor-branco: rgba(255, 255, 255, 0.8);
+      --cor-sombra: rgba(25, 14, 8, 0.18);
+
+      /* Tipografia */
+      --fonte-display: 'Playfair Display', Georgia, serif;
+      --fonte-corpo: 'Montserrat', 'Segoe UI', sans-serif;
+
+      /* Escala tipográfica */
+      --t-xs: 0.75rem;
+      --t-sm: 0.875rem;
+      --t-base: 1rem;
+      --t-md: 1.125rem;
+      --t-lg: 1.375rem;
+      --t-xl: 1.75rem;
+      --t-2xl: 2.25rem;
+      --t-3xl: 3rem;
+
+      /* Espaçamentos */
+      --s-1: 0.25rem;
+      --s-2: 0.5rem;
+      --s-3: 0.75rem;
+      --s-4: 1rem;
+      --s-6: 1.5rem;
+      --s-8: 2rem;
+      --s-12: 3rem;
+      --s-16: 4rem;
+      --s-20: 5rem;
+      --s-24: 6rem;
+
+      /* Bordas e sombras */
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-pill: 9999px;
+      --sombra-sm: 0 2px 8px var(--cor-sombra);
+      --sombra-md: 0 8px 24px var(--cor-sombra);
+      --sombra-lg: 0 20px 50px rgba(45, 27, 4, 0.18);
+
+      /* Transições */
+      --transicao: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    body {
+      background: linear-gradient(180deg, #180c07 0%, #1f120c 54%, #160b07 100%);
+      font-family: var(--fonte-corpo);
+      color: var(--cor-texto);
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Estrutura Principal */
+    .pagina-liturgia {
+      padding: 7rem var(--s-4) var(--s-8);
+      position: relative;
+      z-index: 1;
+    }
+
+    .liturgia-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .liturgia-header {
+      text-align: center;
+      margin-bottom: var(--s-8);
+      padding: var(--s-6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(32, 17, 9, 0.82), rgba(78, 45, 29, 0.7));
+      box-shadow: 0 24px 70px rgba(16, 9, 5, 0.22);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .liturgia-tag {
+      color: var(--cor-destaque);
+      font-size: var(--t-sm);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: var(--s-2);
+    }
+
+    .liturgia-titulo {
+      font-family: var(--fonte-display);
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
+      color: rgba(255, 244, 232, 0.96);
+      margin-bottom: var(--s-3);
+      letter-spacing: -0.02em;
+    }
+
+    .liturgia-subtitulo {
+      color: rgba(255, 236, 215, 0.74);
+      font-size: var(--t-md);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .liturgia-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--s-6);
+      align-items: start;
+    }
+
+    /* Estilo Geral dos Cards */
+    .card-liturgia {
+      background: linear-gradient(145deg, rgba(32, 17, 9, 0.86), rgba(78, 45, 29, 0.7));
+      border-radius: 28px;
+      box-shadow: 0 22px 60px rgba(16, 9, 5, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .card-header-liturgia {
+      background: linear-gradient(135deg, rgba(32, 17, 9, 0.98), rgba(78, 45, 29, 0.94));
+      color: rgba(255, 239, 220, 0.94);
+      padding: var(--s-4) var(--s-6);
+      display: flex;
+      align-items: center;
+      gap: var(--s-3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .card-header-liturgia i {
+      color: #d6a85a;
+      font-size: var(--t-lg);
+    }
+
+    .card-header-liturgia h2 {
+      font-family: var(--fonte-display);
+      font-size: var(--t-lg);
+      font-weight: 600;
+    }
+
+    /* Conteúdo da Liturgia */
+    .liturgia-conteudo {
+      padding: clamp(1.25rem, 2.5vw, 2.2rem);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-8);
+    }
+
+    .liturgia-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: var(--s-6);
+    }
+
+    .liturgia-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .leitura-tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(255, 236, 215, 0.84);
+      font-size: var(--t-xs);
+      font-weight: 600;
+      padding: var(--s-1) var(--s-3);
+      border-radius: var(--radius-pill);
+      text-transform: uppercase;
+      margin-bottom: var(--s-2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 6px 16px rgba(38, 23, 10, 0.06);
+    }
+
+    .liturgia-item h3 {
+      font-family: var(--fonte-display);
+      color: rgba(255, 244, 232, 0.96);
+      font-size: var(--t-lg);
+      margin-bottom: var(--s-4);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border-bottom: 1px dashed rgba(213, 168, 90, 0.55);
+      padding-bottom: var(--s-2);
+      display: inline-block;
+    }
+
+    .leitura-texto {
+      font-size: var(--t-base);
+      line-height: 1.8;
+      color: rgba(255, 236, 215, 0.78);
+      text-align: justify;
+      text-indent: 2em;
+      letter-spacing: 0.2px;
+    }
+
+    .salmo-estilo {
+      font-style: italic;
+      color: rgba(255, 236, 215, 0.74);
+      border-left: 3px solid #d6a85a;
+      padding-left: var(--s-4);
+    }
+
+    .liturgia-nota {
+      margin-top: var(--s-4);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: var(--s-2) var(--s-4);
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(255, 236, 215, 0.72);
+      font-size: var(--t-sm);
+    }
+
+    .liturgia-nota i {
+      color: var(--cor-destaque);
+    }
+
+    /* Responsividade */
+    @media (max-width: 992px) {
+      .liturgia-header {
+        margin-bottom: var(--s-8);
+      }
+
+      .liturgia-titulo {
+        font-size: var(--t-2xl);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .pagina-liturgia {
+        padding-top: 6.25rem;
+      }
+
+      .liturgia-header {
+        padding: var(--s-4);
+        border-radius: 22px;
+      }
+
+      .card-header-liturgia {
+        padding: var(--s-4);
+      }
+
+      .liturgia-conteudo {
+        gap: var(--s-6);
+      }
+
+      .leitura-texto {
+        text-indent: 1.2em;
+      }
+    }
+  </style>
+
+  <link rel="stylesheet" href="CSS/theme.css">
+</head>
+
+<body>
+  <header>
+    <a href="#inicio" class="logo" aria-label="PNSC — Página inicial">PNSC</a>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav aria-label="Navegação principal">
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="index.html#missas">Celebrações</a></li>
+        <li><a href="index.html#endereco">Endereço</a></li>
+        <!-- <li><a href="corais.html">Escala</a></li> -->
+        <li><a href="pix.html">Doação</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagina-liturgia">
+    <div class="liturgia-container">
+
+      <section class="liturgia-header">
+        <span class="liturgia-tag">Liturgia do dia</span>
+        <h1 class="liturgia-titulo">Leituras para oração e reflexão</h1>
+        <p class="liturgia-subtitulo">Carregando a data e o conteúdo litúrgico de hoje.</p>
+      </section>
+
+      <div class="liturgia-grid">
+
+        <section class="card-liturgia">
+          <div class="card-header-liturgia">
+            <i class="fa-solid fa-book-bible"></i>
+            <h2>Liturgia Diária</h2>
+          </div>
+
+          <div class="liturgia-conteudo">
+            <div class="liturgia-item">
+              <span class="leitura-tag">Primeira Leitura</span>
+              <h3>Primeira Leitura (Atos dos Apóstolos)</h3>
+              <p class="leitura-texto">
+                Aqui entrará o texto sagrado correspondente à primeira leitura do dia. A tipografia foi ajustada para
+                uma leitura confortável e imersiva, ideal para momentos de reflexão e oração individual ou comunitária.
+              </p>
+            </div>
+
+            <div class="liturgia-item">
+              <span class="leitura-tag">Salmo</span>
+              <h3>Salmo Responsorial</h3>
+              <p class="leitura-texto salmo-estilo">
+                — O Senhor é o meu pastor e nada me faltará.<br>
+                — O Senhor é o meu pastor e nada me faltará.<br><br>
+                Ele me guia por caminhos seguros, por amor do seu nome. Ainda que eu caminhe por vales escuros, nada
+                temerei, pois estais comigo.
+              </p>
+            </div>
+
+            <div class="liturgia-item">
+              <span class="leitura-tag">Evangelho</span>
+              <h3>Evangelho segundo João</h3>
+              <p class="leitura-texto">
+                Aqui ficará o texto do Evangelho do dia. O espaçamento entre linhas e o tamanho da fonte foram pensados
+                com base nos seus padrões de design para garantir total clareza visual tanto em computadores quanto em
+                smartphones.
+              </p>
+            </div>
+          </div>
+        </section>
+
+
+        <div class="liturgia-nota">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          Conteúdo atualizado automaticamente ao abrir a página.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="direitos">
+    <div class="footer-logo">PNSC</div>
+    <div>
+      <p>&copy; 2026 Paróquia N. Sra. do Carmo — Todos os direitos reservados.</p>
+      <p><i class="bi bi-geo-alt-fill" style="color:var(--cor-destaque);margin-right:4px;"></i> Av. Trajano Honorato —
+        Lagoa do Mato, Centro</p>
+    </div>
+    <a class="dev" title="Desenvolvido por Manoel Lobo" href="https://instagram.com/manoellob_" target="_blank"
+      rel="noopener">
+      <i class="bi bi-code-slash"></i> por Manoel Lobo
+    </a>
+  </footer>
+
+  <script src="JS/hamburger.js"></script>
+  <script src="JS/liturgiadiaria.js"></script>
+</body>
+
+</html>
