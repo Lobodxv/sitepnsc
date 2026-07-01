@@ -1,32 +1,16 @@
 /**
- * main.js — Scripts principais da página inicial
- * Paróquia Nossa Senhora do Carmo (v2.0)
+ * main.js — Carrega conteúdo público do Supabase
+ * Paróquia Nossa Senhora do Carmo (v3.0)
  */
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import { SUPABASE_ANON_KEY, SUPABASE_READY, SUPABASE_URL } from "./supabase-config.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyA_tVDmvcRHRBr-aLoVZU9bhRO2SUMJMOU",
-  authDomain: "paroquia-pns-do-carmo.firebaseapp.com",
-  projectId: "paroquia-pns-do-carmo",
-  storageBucket: "paroquia-pns-do-carmo.firebasestorage.app",
-  messagingSenderId: "454506351447",
-  appId: "1:454506351447:web:58eaf7b84c119886ebcc12",
-  measurementId: "G-5BSGXTLWHZ"
-};
+const CONTENT_SLUG = "geral";
 
-const app = initializeApp(firebaseConfig);
-const db  = getFirestore(app);
-
-// Escuta em tempo real o documento de conteúdo
-onSnapshot(doc(db, "site_content", "geral"), (snapshot) => {
-  if (!snapshot.exists()) return;
-  const dados = snapshot.data();
-
-  // Aviso paroquial (se existir o elemento)
+function renderContent(dados) {
   const containerAviso = document.getElementById("container-aviso");
-  const textoAviso     = document.getElementById("texto-aviso");
+  const textoAviso = document.getElementById("texto-aviso");
 
   if (containerAviso && textoAviso) {
     if (dados.aviso && dados.aviso.trim() !== "") {
@@ -37,9 +21,35 @@ onSnapshot(doc(db, "site_content", "geral"), (snapshot) => {
     }
   }
 
-  // Chave PIX dinâmica (se existir o elemento na página)
   const txtChave = document.getElementById("txt-chave");
-  const txtNome  = document.getElementById("txt-nome");
-  if (txtChave && dados.pix_chave) txtChave.innerText = dados.pix_chave;
-  if (txtNome  && dados.pix_nome)  txtNome.innerText  = dados.pix_nome;
-});
+  const txtNome = document.getElementById("txt-nome");
+
+  if (txtChave && dados.pix_chave) {
+    txtChave.innerText = dados.pix_chave;
+  }
+
+  if (txtNome && dados.pix_nome) {
+    txtNome.innerText = dados.pix_nome;
+  }
+}
+
+async function loadPublicContent() {
+  if (!SUPABASE_READY) {
+    return;
+  }
+
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const { data, error } = await supabase
+    .from("site_content")
+    .select("aviso, pix_nome, pix_chave")
+    .eq("slug", CONTENT_SLUG)
+    .maybeSingle();
+
+  if (error || !data) {
+    return;
+  }
+
+  renderContent(data);
+}
+
+loadPublicContent();
