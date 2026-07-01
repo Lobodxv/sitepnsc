@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Painel administrativo da Paróquia Nossa Senhora do Carmo.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#201109">
+
+  <title>Painel Administrativo — PNSC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="CSS/theme.css">
+  <link rel="stylesheet" href="CSS/admin.css">
+  <script src="JS/theme-toggle.js"></script>
+</head>
+
+<body>
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar">
+      <div class="sidebar-logo">PNSC</div>
+      <nav class="sidebar-nav" aria-label="Navegação do painel">
+        <a href="admin.html" class="active"><i class="bi bi-speedometer2"></i> Painel</a>
+        <button type="button" class="sidebar-nav-trigger" data-panel-link="perfil"><i class="bi bi-person-gear"></i> Perfil</button>
+        <a href="index.html"><i class="bi bi-house-door-fill"></i> Site público</a>
+        <a href="login.html"><i class="bi bi-box-arrow-left"></i> Trocar acesso</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <h1>Painel Administrativo</h1>
+        <p id="admin-user">Verificando sua sessão...</p>
+        <p class="admin-welcome" id="admin-welcome">Bem-vindo ao painel.</p>
+      </header>
+
+      <section class="admin-stats" aria-label="Resumo do painel">
+        <article class="stat-card">
+          <div class="stat-label">Status</div>
+          <div class="stat-value" id="stat-status">Online</div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-label">Sessão</div>
+          <div class="stat-value">Supabase</div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-label">Acesso</div>
+          <div class="stat-value">Restrito</div>
+        </article>
+      </section>
+
+      <section class="admin-card">
+        <h2><i class="bi bi-shield-check"></i> Sessão Administrativa</h2>
+        <p class="admin-copy">
+          O login foi concluído com sucesso. Este espaço já está preparado para receber formulários de edição,
+          avisos paroquiais, conteúdo de PIX e demais configurações do site.
+        </p>
+        <div class="msg-feedback" id="admin-status" role="alert" aria-live="polite"></div>
+      </section>
+
+      <section class="admin-card">
+        <h2><i class="bi bi-pencil-square"></i> Conteúdo do Site</h2>
+        <p class="admin-copy">
+          Os campos abaixo alimentam a home e a página de doação. Quando você salvar, o conteúdo público será atualizado
+          a partir da mesma fonte no Supabase.
+        </p>
+
+        <form id="content-form">
+          <div class="form-group">
+            <label for="site-aviso">Aviso paroquial</label>
+            <textarea id="site-aviso" rows="5" placeholder="Escreva o aviso da comunidade..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="pix-nome">Nome do favorecido</label>
+            <input id="pix-nome" type="text" placeholder="Paróquia Nossa Senhora do Carmo">
+          </div>
+
+          <div class="form-group">
+            <label for="pix-chave">Chave PIX</label>
+            <input id="pix-chave" type="text" placeholder="00.000.000/0001-00">
+          </div>
+
+          <button type="submit" class="btn-salvar" id="save-content-button">
+            <i class="bi bi-cloud-arrow-up"></i> Salvar conteúdo
+          </button>
+
+          <div class="msg-feedback" id="content-status" role="alert" aria-live="polite"></div>
+        </form>
+      </section>
+
+      <section class="admin-card admin-profile-panel is-hidden" id="perfil-panel" aria-hidden="true">
+        <h2><i class="bi bi-person-gear"></i> Configurações do Perfil</h2>
+        <p class="admin-copy">
+          Ajuste o nome de exibição, o e-mail de acesso e a senha da conta. Alterações de e-mail podem exigir
+          confirmação do Supabase.
+        </p>
+
+        <form id="profile-form">
+          <div class="form-group">
+            <label for="display-name">Nome de exibição</label>
+            <input id="display-name" type="text" maxlength="40" placeholder="Seu nome no painel" autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label for="profile-email">E-mail de acesso</label>
+            <input id="profile-email" type="email" placeholder="seu.email@dominio.com" autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label for="profile-password">Nova senha</label>
+            <input id="profile-password" type="password" placeholder="Deixe em branco para manter a atual" autocomplete="new-password">
+          </div>
+
+          <button type="submit" class="btn-salvar" id="save-profile-button">
+            <i class="bi bi-check2-circle"></i> Salvar perfil
+          </button>
+
+          <div class="msg-feedback" id="profile-status" role="alert" aria-live="polite"></div>
+        </form>
+      </section>
+
+      <section class="admin-card">
+        <h2><i class="bi bi-person-plus-fill"></i> Cadastrar Novo Administrador</h2>
+        <p class="admin-note">
+          Este formulário cria uma conta no Supabase Auth e, se a tabela <strong>admin_users</strong> existir, também
+          adiciona o e-mail dela à lista de administradores permitidos.
+        </p>
+
+        <form id="admin-create-form">
+          <div class="form-group">
+            <label for="new-admin-email">E-mail do novo administrador</label>
+            <input id="new-admin-email" type="email" placeholder="novo.admin@paroquia.com" autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label for="new-admin-password">Senha temporária</label>
+            <input id="new-admin-password" type="password" placeholder="Defina uma senha forte" autocomplete="new-password">
+          </div>
+
+          <button type="submit" class="btn-salvar" id="create-admin-button">
+            <i class="bi bi-person-check-fill"></i> Criar administrador
+          </button>
+
+          <div class="msg-feedback" id="admin-create-status" role="alert" aria-live="polite"></div>
+        </form>
+      </section>
+    </main>
+
+    <button type="button" class="btn-salvar btn-logout-float" id="logout-button">
+      <i class="bi bi-box-arrow-right"></i> Encerrar sessão
+    </button>
+  </div>
+
+  <div class="profile-onboarding" id="profile-onboarding" aria-hidden="true">
+    <div class="profile-onboarding-card" role="dialog" aria-modal="true" aria-labelledby="onboarding-title">
+      <p class="profile-onboarding-kicker">Primeiro acesso</p>
+      <h2 id="onboarding-title">Defina seu nome de exibição</h2>
+      <p>
+        Esse nome aparece nas saudações do painel. Depois de salvo, ele fica disponível apenas nas configurações do perfil.
+      </p>
+
+      <form id="onboarding-form">
+        <div class="form-group">
+          <label for="onboarding-display-name">Nome de exibição</label>
+          <input id="onboarding-display-name" type="text" maxlength="40" placeholder="Ex.: João" autocomplete="name">
+        </div>
+
+        <button type="submit" class="btn-salvar" id="onboarding-save-button">
+          <i class="bi bi-check2-circle"></i> Continuar
+        </button>
+        <div class="msg-feedback" id="onboarding-status" role="alert" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="JS/admin.js"></script>
+</body>
+
+</html>
