@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Acesso administrativo da Paróquia Nossa Senhora do Carmo.">
+	<meta name="robots" content="noindex, nofollow">
+	<meta name="theme-color" content="#201109">
+
+	<title>Acesso Administrativo — PNSC</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+	<link rel="stylesheet" href="CSS/style.css">
+	<link rel="stylesheet" href="CSS/theme.css">
+	<link rel="stylesheet" href="CSS/login.css">
+	<script src="JS/theme-toggle.js"></script>
+</head>
+
+<body class="login-page">
+	<div class="login-background" aria-hidden="true">
+		<span class="login-blob blob-1"></span>
+		<span class="login-blob blob-2"></span>
+		<span class="login-blob blob-3"></span>
+		<span class="login-grid"></span>
+	</div>
+
+	<main class="login-shell">
+		<section class="login-card" aria-labelledby="login-title">
+			<div class="login-card-top">
+				<a class="login-home-link" href="index.html">
+					<i class="bi bi-arrow-left"></i>
+					Voltar ao site
+				</a>
+				<span class="login-eyebrow">Área restrita</span>
+			</div>
+
+			<div class="login-card-head">
+				<div class="login-mark">
+					<i class="bi bi-shield-lock-fill"></i>
+				</div>
+				<div>
+					<span class="login-tag">Painel Administrativo</span>
+					<h1 id="login-title">Acesso Administrativo</h1>
+					<p>Use seu e-mail e senha autorizados.</p>
+				</div>
+			</div>
+
+			<p class="login-copy">
+				Apenas administradores autorizados devem entrar neste espaço.
+			</p>
+
+			<form class="login-form" id="login-form" novalidate>
+				<div class="form-group">
+					<label for="email">E-mail</label>
+					<input type="email" id="email" name="email" placeholder="admin@paroquia.com" autocomplete="email" required>
+				</div>
+
+				<div class="form-group">
+					<label for="password">Senha</label>
+					<input type="password" id="password" name="password" placeholder="Sua senha" autocomplete="current-password" required>
+				</div>
+
+				<button type="submit" class="btn-login">
+					<i class="bi bi-box-arrow-in-right"></i>
+					Acessar painel
+				</button>
+
+				<p id="login-status" class="login-status" role="alert" aria-live="polite"></p>
+			</form>
+
+			<div class="login-card-foot">
+				<span><i class="bi bi-lock-fill"></i> Sessão protegida com Supabase</span>
+				<a href="index.html">Ir para a página inicial</a>
+			</div>
+		</section>
+	</main>
+
+	<script type="module" src="JS/login.js"></script>
+</body>
+
+</html>
