@@ -265,6 +265,29 @@ header {
   width: 70%;
 }
 
+.nav-menu li .nav-admin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-left: var(--s-2);
+  padding: var(--s-2) var(--s-4);
+  border: 1px solid rgba(197, 138, 53, 0.28);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, rgba(197, 138, 53, 0.16), rgba(78, 45, 29, 0.18));
+  color: var(--cor-destaque);
+  box-shadow: 0 10px 24px rgba(38, 23, 10, 0.14);
+}
+
+.nav-menu li .nav-admin-link:hover {
+  color: #fff7eb;
+  background: linear-gradient(135deg, rgba(197, 138, 53, 0.28), rgba(78, 45, 29, 0.32));
+  border-color: rgba(216, 161, 74, 0.44);
+}
+
+.nav-menu li .nav-admin-link::after {
+  display: none;
+}
+
 /* ── 04 MENU HAMBÚRGUER ────────────────────────────────────── */
 .hamburger {
   display: none;
@@ -1039,6 +1062,12 @@ a.dev i {
     padding: var(--s-2) 0;
   }
 
+  .nav-menu li .nav-admin-link {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
   /* Footer */
   footer {
     flex-direction: column;
@@ -1063,5 +1092,10 @@ a.dev i {
   .nav-menu li a {
     font-size: clamp(0.95rem, 4vw, 1.05rem);
     letter-spacing: 0.05em;
+  }
+
+  .nav-menu li .nav-admin-link {
+    width: 100%;
+    padding-inline: var(--s-3);
   }
 }
