@@ -259,6 +259,7 @@ async function isAllowedAdmin(supabase, email) {
   return { allowed: Boolean(data), fallback: false };
 }
 
+<<<<<<< HEAD
 // async function registerAdminEmail(supabase, email) {
 //   const { error } = await supabase.from(ADMIN_USERS_TABLE).upsert({
 //     email
@@ -268,6 +269,17 @@ async function isAllowedAdmin(supabase, email) {
 //     throw error;
 //   }
 // }
+=======
+async function registerAdminEmail(supabase, email) {
+  const { error } = await supabase.from(ADMIN_USERS_TABLE).upsert({
+    email
+  }, { onConflict: "email" });
+
+  if (error && !error.message?.toLowerCase().includes("does not exist")) {
+    throw error;
+  }
+}
+>>>>>>> 6a9731d3dd06c063491eb032c966c81ab899f065
 
 if (!SUPABASE_READY) {
   userLabel.textContent = "Configure as credenciais do Supabase em JS/supabase-config.js para habilitar a sessão.";
