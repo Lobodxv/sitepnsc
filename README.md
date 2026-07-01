@@ -6,11 +6,11 @@
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap_5-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
 ![License](https://img.shields.io/badge/licença-MIT-blue?style=flat-square)
 
-**Site institucional da Paróquia Nossa Senhora do Carmo**, com liturgia diária, agenda de celebrações, escala de corais, doação via PIX e demais informações e funcionalidades.**
+**Site institucional da Paróquia Nossa Senhora do Carmo**, com liturgia diária, agenda de celebrações, escala de corais, doação via PIX e painel administrativo com Supabase Auth.
 
 [🌐 Ver Site](#) · [🐛 Reportar Bug](https://github.com/manoellob_/sitepnsc/issues) · [✨ Solicitar Funcionalidade](https://github.com/manoellob_/sitepnsc/issues)
 
@@ -21,12 +21,13 @@
 ## 📋 Índice
 
 - [Sobre o Projeto](#-sobre-o-projeto)
-- [Funcionalidades](#-funcionalidades)
-- [Funcionalidades EM DESENVOLVIMENTO](#-funcionalidades-em-desenvolvimento)
+- [Funcionalidades Atuais](#-funcionalidades-atuais)
+- [Painel Administrativo](#-painel-administrativo)
 - [Tecnologias](#-tecnologias)
 - [Estrutura de Pastas](#-estrutura-de-pastas)
 - [Configuração e Instalação](#-configuração-e-instalação)
 - [Páginas](#-páginas)
+- [Segurança e Dados Sensíveis](#-segurança-e-dados-sensíveis)
 - [Responsividade](#-responsividade)
 - [Acessibilidade](#-acessibilidade)
 - [Contribuindo](#-contribuindo)
@@ -37,57 +38,73 @@
 
 ## 📖 Sobre o Projeto
 
-O site da **Paróquia Nossa Senhora do Carmo** é uma plataforma web institucional desenvolvida para aproximar a comunidade paroquial dos serviços e informações da paróquia. A aplicação exibe:
+O site da **Paróquia Nossa Senhora do Carmo** é uma plataforma web institucional desenvolvida para apresentar informações da comunidade, disponibilizar a liturgia diária, organizar a escala de corais, exibir conteúdo litúrgico em tempo real e permitir a administração de conteúdo do site com autenticação.
 
-- **Horários de celebrações** semanais em tempo real
-- **Escala de corais** com cálculo automático baseado na data
-- **Barra do Evangelho do Dia** com integração à API litúrgica
+O projeto foi estruturado como um site estático com HTML, CSS e JavaScript, usando Supabase para autenticação e armazenamento do conteúdo compartilhado entre as páginas públicas e o painel administrativo.
 
 ---
 
-## ✨ Funcionalidades
+## ✅ Funcionalidades Atuais
 
 | Funcionalidade | Descrição |
 |---|---|
 | 📅 **Agenda Litúrgica** | Cards com horários de missas, terços e adoração por dia da semana |
 | 📖 **Liturgia Diária** | Página dedicada às leituras do dia, com visual premium e conteúdo atualizado automaticamente |
 | 🎵 **Escala de Corais** | Cálculo automático por domingo do mês; navegação entre meses |
-| 📖 **Evangelho do Dia** | Barra marquee com texto litúrgico carregado da API em tempo real |
-| 🌓 **Tema Claro/Escuro** | Alternância de tema premium com preferência salva no navegador |
-| 🗺️ **Mapa** | Google Maps embed com localização da Igreja Matriz |
+| 📖 **Evangelho do Dia** | Barra com o texto litúrgico carregado de API externa |
+| 🌓 **Tema Claro/Escuro** | Alternância de tema com preferência salva no navegador |
+| 🗺️ **Mapa** | Google Maps embed com a localização da igreja |
+| 💰 **Doação PIX** | QR Code + chave PIX com botão de cópia e feedback visual |
+| 🔒 **Painel Admin** | Login com Supabase Auth, edição de conteúdo e cadastro de administradores |
 | 📱 **Responsivo** | Layout adaptado para mobile, tablet e desktop |
-| ♿ **Acessível** | ARIA labels, roles, foco gerenciado, `prefers-reduced-motion` |
-| 📞 **WhatsApp** | Botão flutuante para contato direto |
+| ♿ **Acessível** | ARIA labels, foco gerenciado, roles semânticos e redução de animações quando solicitado |
 
 ---
 
-## ✨ Funcionalidades EM DESENVOLVIMENTO
-| Funcionalidade | Descrição |
-|---|---|
-| 💰 **Doação PIX** | QR Code + cópia de chave com feedback visual |
-| 🔒 **Painel Admin** | Login com Firebase Auth + edição de avisos e dados PIX |
-| ⚡ **Tempo Real** | Conteúdo do site atualizado via `onSnapshot` do Firestore |
+## 🔒 Painel Administrativo
+
+O painel administrativo está funcional e organizado para uso restrito.
+
+### O que já funciona
+
+- Login administrativo via Supabase Auth
+- Verificação de sessão e autorização por lista de administradores
+- Edição do conteúdo público compartilhado entre home e página PIX
+- Cadastro de novos administradores pelo próprio painel
+- Atualização de nome de exibição, e-mail e senha no perfil
+- Drawer lateral de perfil com backdrop e animação suave
+- Botão de encerrar sessão flutuante
+- Boas-vindas personalizadas com base no nome de exibição salvo
+- Modal de primeiro acesso para definir o nome de exibição
+
+### Estrutura de dados usada
+
+- `site_content`: conteúdo público do site, incluindo aviso paroquial e dados do PIX
+- `admin_users`: allowlist de e-mails com permissão administrativa
+- Supabase Auth: autenticação do usuário administrativo
+
+---
 
 ## 🛠 Tecnologias
 
 ### Frontend
 
-| Tecnologia | Versão | Uso |
-|---|---|---|
-| [HTML5](https://developer.mozilla.org/pt-BR/docs/Web/HTML) | — | Estrutura semântica das páginas |
-| [CSS3](https://developer.mozilla.org/pt-BR/docs/Web/CSS) | — | Estilo, animações, variáveis CSS |
-| [JavaScript (ES6+)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) | — | Lógica, interatividade, módulos |
-| [Bootstrap](https://getbootstrap.com/) | 5.3.8 | Grid, carrossel, utilitários |
-| [Bootstrap Icons](https://icons.getbootstrap.com/) | 1.13.1 | Ícones |
-| [Swiper.js](https://swiperjs.com/) | 11 | Carrossel dos cards de celebrações |
-| [Google Fonts](https://fonts.google.com/) | — | Playfair Display · Montserrat |
+| Tecnologia | Uso |
+|---|---|
+| [HTML5](https://developer.mozilla.org/pt-BR/docs/Web/HTML) | Estrutura semântica das páginas |
+| [CSS3](https://developer.mozilla.org/pt-BR/docs/Web/CSS) | Estilo, responsividade, animações e temas |
+| [JavaScript (ES6+)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) | Lógica, interatividade e módulos |
+| [Bootstrap](https://getbootstrap.com/) | Grid, utilitários e componentes pontuais |
+| [Bootstrap Icons](https://icons.getbootstrap.com/) | Ícones |
+| [Swiper.js](https://swiperjs.com/) | Carrossel dos cards de celebrações |
+| [Google Fonts](https://fonts.google.com/) | Playfair Display · Montserrat |
 
-### Backend / Infraestrutura
+### Integrações
 
 | Tecnologia | Uso |
 |---|---|
-| [Firebase Authentication](https://firebase.google.com/docs/auth) | Autenticação do painel administrativo |
-| [Cloud Firestore](https://firebase.google.com/docs/firestore) | Banco de dados em tempo real |
+| [Supabase Auth](https://supabase.com/docs/guides/auth) | Autenticação do painel administrativo |
+| [Supabase Database](https://supabase.com/docs/guides/database) | Conteúdo compartilhado e allowlist de administradores |
 | [API Litúrgica](https://liturgia.up.railway.app/) | Evangelho do dia |
 
 ---
@@ -101,24 +118,26 @@ sitepnsc/
 ├── liturgia.html       # Liturgia diária com leituras do dia
 ├── corais.html         # Escala de corais por mês
 ├── pix.html            # Página de doação via PIX
-├── login.html          # Login do painel administrativo
-├── admin.html          # Painel administrativo (protegido)
+├── login.html          # Acesso administrativo via Supabase
+├── admin.html          # Painel administrativo protegido
 │
 ├── CSS/
 │   ├── style.css       # Estilos globais + variáveis + responsividade
-│   ├── theme.css       # Overlays do tema claro/escuro e botão de alternância
+│   ├── theme.css       # Tema claro/escuro e botão de alternância
 │   ├── pix.css         # Estilos específicos da página de doação
 │   ├── login.css       # Estilos da página de login
 │   └── admin.css       # Estilos do painel administrativo
 │
 ├── JS/
-│   ├── main.js         # Firebase Firestore — escuta em tempo real
+│   ├── main.js         # Leitura do conteúdo público no Supabase
 │   ├── hamburger.js    # Menu hambúrguer mobile (abre/fecha/Escape)
 │   ├── evangelho.js    # Carrega o Evangelho do dia via API
 │   ├── liturgiadiaria.js # Carrega e formata o conteúdo da liturgia diária
 │   ├── theme-toggle.js  # Alterna entre dark e light com persistência local
 │   ├── animations.js   # Animações de scroll (IntersectionObserver)
-│   └── login.js        # Firebase Auth — login/logout
+│   ├── supabase-config.js # Configuração pública do Supabase para o cliente
+│   ├── login.js        # Supabase Auth — login/logout
+│   └── admin.js        # Sessão, perfil, conteúdo e cadastro de admins
 │
 ├── img/
 │   ├── bannergrande.png        # Banner desktop (carrossel)
@@ -140,8 +159,8 @@ sitepnsc/
 
 ### Pré-requisitos
 
-- Um editor de código (ex: [VS Code](https://code.visualstudio.com/))
-- Extensão [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) (recomendado) ou qualquer servidor HTTP local
+- Um editor de código, como [VS Code](https://code.visualstudio.com/)
+- Extensão [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) ou qualquer servidor HTTP local
 
 ### Instalação Local
 
@@ -152,12 +171,17 @@ git clone https://github.com/manoellob_/sitepnsc.git
 # 2. Entre na pasta
 cd sitepnsc
 
-# 3. Abra com Live Server (VS Code)
-# Clique com botão direito em index.html → "Open with Live Server"
+# 3. Abra com Live Server no VS Code
+# Clique com o botão direito em index.html → "Open with Live Server"
 ```
 
-> **Atenção:** Por usar módulos ES6 (`import`/`export`) e APIs externas, é necessário servir os arquivos via HTTP. Não abra o `index.html` direto pelo sistema de arquivos.
+> **Atenção:** como o projeto usa módulos ES6 e integrações externas, ele precisa ser servido por HTTP. Não abra os arquivos HTML diretamente pelo sistema de arquivos.
 
+### Observação de Segurança
+
+- A URL do projeto Supabase e a chave `anon` são usadas no navegador e podem ficar no frontend.
+- Nunca coloque `service_role`, senha do banco, tokens de servidor ou qualquer segredo administrativo em arquivos públicos do cliente.
+- Se for necessário ocultar valores sensíveis de verdade, a solução correta é mover essa parte para um backend ou etapa de build.
 
 ---
 
@@ -165,78 +189,96 @@ cd sitepnsc
 
 ### `index.html` — Página Inicial
 - Header fixo com navegação responsiva
-- Barra marquee com Evangelho do Dia (API externa)
+- Barra com Evangelho do Dia carregado por API externa
 - Carrossel Bootstrap com imagens responsivas (`srcset`)
-- Seção de Celebrações com Swiper.js (cards por dia da semana)
-- Seção de Doação (link para pix.html)
-- Seção de Endereço com Google Maps embed
+- Seção de celebrações com Swiper.js
+- Seção de doação com acesso à página PIX
+- Seção de endereço com Google Maps embed
 - Footer com informações e crédito do desenvolvedor
 - Botão WhatsApp flutuante
 
 ### `liturgia.html` — Liturgia Diária
-- Leituras do dia organizadas em cards premium com glassmorphism
+- Leituras do dia organizadas em cards com visual premium
 - Conteúdo carregado automaticamente ao abrir a página
-- Layout dedicado para leitura e oração, sem a seção de santo do dia
+- Layout dedicado para leitura e oração
 - Compatível com os temas dark e light do site
 
 ### `corais.html` — Escala de Corais
-- Destaque do próximo coral (calculado automaticamente)
+- Destaque do próximo coral calculado automaticamente
 - Tabela mensal de domingos com coral responsável
 - Navegação entre meses
-- Linha destacada indica o próximo domingo
+- Linha destacada para o próximo domingo
 
-### `pix.html` — Doação via PIX *(Em desenvolvimento)*
-- Layout de dois painéis (contextual + formulário)
+### `pix.html` — Doação via PIX
+- Layout de dois painéis com área contextual e área de PIX
 - QR Code para escaneamento
-- Chave PIX com botão de cópia (feedback visual de "Copiado!")
-- Dados do Firestore atualizados em tempo real
+- Chave PIX com botão de cópia e feedback visual
+- Dados dinâmicos vindos do Supabase
 
-### `login.html` — Acesso Administrativo *(Em desenvolvimento)*
-- Formulário com Firebase Authentication
-- Mensagens de erro amigáveis por código Firebase
-- Noindex/nofollow (oculto dos mecanismos de busca)
-- Animação de entrada
+### `login.html` — Acesso Administrativo
+- Formulário com Supabase Auth
+- Mensagens de erro amigáveis
+- Fundo dinâmico com identidade visual do site
+- `noindex`/`nofollow` para não aparecer nos buscadores
 
-### `admin.html` — Painel Administrativo *(protegido)* *(Em desenvolvimento)*
-- Verificação de autenticação (`onAuthStateChanged`)
-- Edição do aviso paroquial
-- Configuração da chave PIX e nome do beneficiário
-- Feedback visual de sucesso/erro ao salvar
-- Logout seguro
+### `admin.html` — Painel Administrativo
+- Verificação de autenticação com Supabase
+- Editor do aviso paroquial
+- Campo para nome e chave PIX
+- Cadastro de novos administradores
+- Configurações de perfil em drawer lateral
+- Primeiro acesso com modal para definir nome de exibição
+- Logout flutuante
 
 ---
 
 ## 📱 Responsividade
 
-O site é desenvolvido com abordagem **Mobile First** e funciona em:
+O site foi ajustado com foco em mobile e telas pequenas.
 
-| Dispositivo | Resolução | Comportamento |
-|---|---|---|
-| Mobile pequeno | < 480px | Cards empilhados, menu lateral, banner 180px |
-| Mobile | 480px–768px | Banner 220px, swiper 1 card |
-| Tablet | 768px–1024px | Swiper 2 cards, layout 2 colunas no PIX |
-| Desktop | > 1024px | Swiper 4 cards, layout completo |
+| Dispositivo | Comportamento |
+|---|---|
+| Mobile pequeno | Cards empilhados, sidebar adaptada, drawers compactos, botões em largura total |
+| Mobile | Espaçamentos reduzidos, tipografia compacta e overlays mais leves |
+| Tablet | Layout intermediário com melhor aproveitamento do espaço |
+| Desktop | Layout completo com navegação lateral e cards em largura confortável |
 
 ---
 
 ## ♿ Acessibilidade
 
-- **ARIA labels** em todos os botões e regiões importantes
-- **Roles semânticos**: `main`, `nav`, `aside`, `region`, `alert`, `marquee`
-- **Foco gerenciado** no menu hambúrguer (fecha com `Escape`, foco retorna ao botão)
-- **`aria-expanded`** atualizado dinamicamente no hambúrguer
-- **`prefers-reduced-motion`**: animações desativadas quando o usuário solicita
-- **Alt texts** descritivos em todas as imagens
+- **ARIA labels** em botões e regiões importantes
+- **Roles semânticos**: `main`, `nav`, `aside`, `region`, `alert`, `dialog`
+- **Foco gerenciado** no menu e nos overlays do painel
+- **`aria-expanded`** e estados visuais atualizados quando aplicável
+- **`prefers-reduced-motion`** respeitado nas animações
+- **Alt texts** descritivos nas imagens
 - **`lang="pt-br"`** no `<html>` para leitores de tela
-- **`autocomplete`** nos campos de formulário (login)
-- **`novalidate` + validação manual** com mensagens de erro acessíveis
-- **Tema alternável** entre dark e light, com preferência salva no navegador
+- **`autocomplete`** nos campos de formulário
+- **Validação manual** com mensagens claras e acessíveis
+- **Tema alternável** entre dark e light com preferência persistida
 
 ---
 
+## 🔐 Segurança e Dados Sensíveis
+
+- O frontend usa apenas a URL pública do Supabase e a chave `anon`.
+- As permissões reais ficam nas regras do Supabase e na tabela `admin_users`.
+- Não há credenciais de servidor, senha de banco ou `service_role` no código do cliente.
+- O painel administrativo depende de sessão autenticada e allowlist de e-mails.
+
+---
+
+## 🤝 Contribuindo
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua alteração
+3. Implemente e teste suas mudanças
+4. Abra um pull request com uma descrição objetiva
+
 ### Convenção de commits
 
-```
+```text
 feat:     nova funcionalidade
 fix:      correção de bug
 style:    alterações visuais/CSS
