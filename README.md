@@ -155,36 +155,6 @@ sitepnsc/
 
 ---
 
-## ⚙️ Configuração e Instalação
-
-### Pré-requisitos
-
-- Um editor de código, como [VS Code](https://code.visualstudio.com/)
-- Extensão [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) ou qualquer servidor HTTP local
-
-### Instalação Local
-
-```bash
-# 1. Clone o repositório
-git clone https://github.com/manoellob_/sitepnsc.git
-
-# 2. Entre na pasta
-cd sitepnsc
-
-# 3. Abra com Live Server no VS Code
-# Clique com o botão direito em index.html → "Open with Live Server"
-```
-
-> **Atenção:** como o projeto usa módulos ES6 e integrações externas, ele precisa ser servido por HTTP. Não abra os arquivos HTML diretamente pelo sistema de arquivos.
-
-### Observação de Segurança
-
-- A URL do projeto Supabase e a chave `anon` são usadas no navegador e podem ficar no frontend.
-- Nunca coloque `service_role`, senha do banco, tokens de servidor ou qualquer segredo administrativo em arquivos públicos do cliente.
-- Se for necessário ocultar valores sensíveis de verdade, a solução correta é mover essa parte para um backend ou etapa de build.
-
----
-
 ## 📄 Páginas
 
 ### `index.html` — Página Inicial
@@ -259,22 +229,6 @@ O site foi ajustado com foco em mobile e telas pequenas.
 - **Tema alternável** entre dark e light com preferência persistida
 
 ---
-
-## 🔐 Segurança e Dados Sensíveis
-
-- O frontend usa apenas a URL pública do Supabase e a chave `anon`.
-- As permissões reais ficam nas regras do Supabase e na tabela `admin_users`.
-- Não há credenciais de servidor, senha de banco ou `service_role` no código do cliente.
-- O painel administrativo depende de sessão autenticada e allowlist de e-mails.
-
----
-
-## 🤝 Contribuindo
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua alteração
-3. Implemente e teste suas mudanças
-4. Abra um pull request com uma descrição objetiva
 
 ### Convenção de commits
 
