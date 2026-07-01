@@ -173,7 +173,7 @@ function updateWelcome(sessionEmail = currentSessionEmail) {
   const displayName = savedName || sessionEmail.split("@")[0] || "administrador";
 
   if (welcomeBox) {
-    welcomeBox.textContent = `Bem-vindo, ${displayName}. Seu painel está pronto.`;
+    welcomeBox.textContent = `Bem-vindo(a), ${displayName}!`;
   }
 }
 
@@ -376,28 +376,41 @@ if (!SUPABASE_READY) {
     });
   }
 
-  if (onboardingForm) {
-    onboardingForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
+  const nomeSalvo = localStorage.getItem("nomeUsuario"); // Ajuste o nome da chave conforme seu código
 
-      const nextDisplayName = onboardingDisplayNameInput?.value.trim() ?? "";
+  if (nomeSalvo) {
+    // Se o nome existe, fecha o onboarding ou esconde o elemento
+    const form = document.getElementById("onboardingForm"); // Ou a referência que você usa
+    if (form) {
+      form.style.display = "none";
+    }
+    // Opcional: chamar a função que fecha o modal
+    closeOnboarding();
+  } else {
+    // Só adiciona o listener se o usuário ainda não tiver um nome
+    if (onboardingForm) {
+      onboardingForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
 
-      if (!nextDisplayName) {
-        setOnboardingStatus("Digite um nome de exibição para continuar.", "erro");
-        return;
-      }
+        const nextDisplayName = onboardingDisplayNameInput?.value.trim() ?? "";
 
-      saveDisplayName(nextDisplayName);
-      saveDisplayNameSeen();
+        if (!nextDisplayName) {
+          setOnboardingStatus("Digite um nome de exibição para continuar.", "erro");
+          return;
+        }
 
-      if (displayNameInput) {
-        displayNameInput.value = nextDisplayName;
-      }
+        saveDisplayName(nextDisplayName);
+        saveDisplayNameSeen();
 
-      updateWelcome();
-      setOnboardingStatus("Nome de exibição definido.", "sucesso");
-      closeOnboarding();
-    });
+        if (displayNameInput) {
+          displayNameInput.value = nextDisplayName;
+        }
+
+        updateWelcome();
+        setOnboardingStatus("Nome de exibição definido.", "sucesso");
+        closeOnboarding();
+      });
+    }
   }
 
   const applySession = async () => {
@@ -428,7 +441,7 @@ if (!SUPABASE_READY) {
       setStatus(adminCheck.fallback
         ? "Sessão ativa. A tabela admin_users ainda não existe, então o painel está funcionando em modo provisório."
         : "Sessão ativa e pronta para uso.",
-      adminCheck.fallback ? "erro" : "sucesso");
+        adminCheck.fallback ? "erro" : "sucesso");
 
       if (!loadDisplayName().trim() && !loadDisplayNameSeen()) {
         openOnboarding();
