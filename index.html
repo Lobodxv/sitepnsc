@@ -204,7 +204,7 @@
     </section>
 
     <!-- ── RESGATE HISTÓRICO ──────────────────────────────────────── -->
-    <section class="resgate-historico">
+    <section class="resgate-historico" id="historia">
       <div class="historico-container">
 
         <div class="historico-header">
@@ -220,21 +220,80 @@
             </div>
             <div class="historico-texto">
               <h3>Os Primeiros Passos</h3>
-              <p>A história da Igreja de Nossa Senhora do Carmo está profundamente ligada às origens do Distrito de
+              <p class="historico-resumo">
+                A história da Igreja de Nossa Senhora do Carmo está profundamente ligada às origens do Distrito de
                 Lagoa do Mato. Em meados de 1889, entre as fazendas Retiro, Malhada Real, Feijão, São Joaquim,
-                Sussuarana e Meirús, foi instalada a Fazenda Lagoa do Mato por Antônio Honorato da Silva..</p>
+                Sussuarana e Meirús, foi instalada a Fazenda Lagoa do Mato por Antônio Honorato da Silva...
+              </p>
+
+              <div class="historico-detalhes">
+                <button type="button" class="btn-expandir" onclick="toggleHistorico(this)">
+                  Ler história completa
+                </button>
+                <div class="conteudo-expandido-wrapper">
+                  <div class="conteudo-expandido">
+                    <p>O nome do lugar surgiu da grande lagoa formada durante o período chuvoso na área compreendida
+                      entre os riachos Santa Rosa e Meirús. Essa lagoa tornou-se uma das principais referências
+                      geográficas da região, dando origem ao nome que permanece até os dias atuais.</p>
+                    <p>Homem de profunda fé e devoto de Nossa Senhora do Carmo, Antônio Honorato da Silva decidiu
+                      oferecer parte de suas terras para a construção de uma capela dedicada à Virgem do Carmelo. Movido
+                      por uma promessa e pelo desejo de proporcionar assistência religiosa às famílias dos sertões
+                      vizinhos, iniciou a construção daquele que se tornaria o primeiro templo católico da comunidade.
+                    </p>
+                    <p>A pequena capela foi solenemente benzida no ano de 1901 pelo Reverendíssimo Padre Manoel
+                      Cordeiro, então vigário de Canindé. Além da edificação do templo, Antônio Honorato também doou o
+                      patrimônio da capela e o terreno onde posteriormente seria construído o atual Cemitério São
+                      Miguel, fortalecendo definitivamente as bases da futura comunidade cristã de Lagoa do Mato.</p>
+                    <p>Foi ao redor dessa capela que nasceram as primeiras casas, formando gradativamente o povoado. A
+                      fé foi, desde o início, o elemento que uniu as famílias e impulsionou o desenvolvimento social,
+                      cultural e religioso da região.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Bloco 2: Evolução (Invertido no CSS para um visual dinâmico) -->
+          <!-- Bloco 2: Evolução (Invertido) -->
           <div class="historico-item item-reverso">
             <div class="historico-img">
               <img src="caminho-da-sua-imagem-antiga-2.jpg" alt="Construção da Matriz antiga">
             </div>
             <div class="historico-texto">
               <h3>A Construção da Matriz</h3>
-              <p>Descreva o período de expansão, a arquitetura original, as reformas marcantes e como a comunidade se
-                uniu por meio de festas, doações e mutirões para erguer o templo que hoje conhecemos.</p>
+              <p class="historico-resumo">
+                A primeira Capela de Nossa Senhora do Carmo foi construída durante a administração dos Padres
+                Capuchinhos da Paróquia de Canindé e apresentava características arquitetônicas inspiradas no estilo
+                neogótico. Sua fachada possuía três portas simétricas, elementos em alto-relevo representando uma flor
+                central, cruzes ornamentais e pináculos que conferiam imponência ao pequeno templo...
+              </p>
+
+              <div class="historico-detalhes">
+                <button type="button" class="btn-expandir" onclick="toggleHistorico(this)">
+                  Ler história completa
+                </button>
+                <div class="conteudo-expandido-wrapper">
+                  <div class="conteudo-expandido">
+                    <p>Ao longo dos anos, a devoção à padroeira cresceu significativamente. A regulamentação das terras
+                      pertencentes ao patrimônio de Nossa Senhora do Carmo atraiu novos moradores para Lagoa do Mato, e
+                      a festa da padroeira passou a desempenhar importante papel religioso, social e econômico na vida
+                      da comunidade. Durante os festejos, famílias de diversas localidades reuniam-se para celebrar a
+                      fé, fortalecendo os vínculos entre os moradores e impulsionando o crescimento do povoado.</p>
+                    <p>Na década de 1970, diante do expressivo aumento do número de fiéis e peregrinos, a igreja passou
+                      por uma importante reforma estrutural e arquitetônica. A ampliação permitiu acomodar melhor a
+                      comunidade, preservando alguns dos elementos históricos da construção original, como o tradicional
+                      desenho em forma de flor na fachada, símbolo que permanece como marca da identidade da igreja.</p>
+                    <p>Já em 2008, durante a administração do Padre Abraão Correia Viana, foi realizada uma nova e
+                      significativa reforma da matriz. O projeto arquitetônico, desenvolvido pelo engenheiro civil
+                      Danúzio Sales Jucá, procurou harmonizar elementos históricos da antiga capela com características
+                      do estilo barroco, dando origem à atual fachada da Igreja Matriz de Nossa Senhora do Carmo,
+                      preservando sua beleza e valorizando sua rica herança histórica.</p>
+                    <p>Cada etapa dessa construção foi sustentada pela generosidade do povo. Ao longo das décadas,
+                      festas religiosas, doações, mutirões e inúmeras demonstrações de solidariedade tornaram possível
+                      conservar e ampliar a casa de Deus, transformando-a em um dos maiores patrimônios religiosos e
+                      culturais de Lagoa do Mato.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -245,12 +304,38 @@
             </div>
             <div class="historico-texto">
               <h3>Um Legado de Fé</h3>
-              <p>Conclua mostrando a importância da paróquia para as gerações passadas e presentes, destacando que a
-                história continua viva em cada paroquiano que passa por nossas portas.</p>
+              <p class="historico-resumo">
+                Mais de um século após a construção da primeira capela, a história da Igreja de Nossa Senhora do Carmo
+                continua sendo escrita por milhares de fiéis que mantêm viva a tradição recebida de seus antepassados...
+              </p>
+
+              <div class="historico-detalhes">
+                <button type="button" class="btn-expandir" onclick="toggleHistorico(this)">
+                  Ler história completa
+                </button>
+                <div class="conteudo-expandido-wrapper">
+                  <div class="conteudo-expandido">
+                    <p>Em 21 de novembro de 2004, a Diocese de Quixadá criou oficialmente a Paróquia Nossa Senhora do
+                      Carmo, elevando a antiga igreja à condição de matriz paroquial e iniciando uma nova etapa da
+                      missão evangelizadora. Desde então, a paróquia tornou-se referência espiritual para dezenas de
+                      comunidades rurais e urbanas, acolhendo diariamente crianças, jovens, adultos e idosos em seus
+                      diversos serviços pastorais.</p>
+                    <p>Ao longo de sua história, a Igreja Matriz acompanhou o crescimento de Lagoa do Mato. Sob seu teto
+                      foram celebrados batizados, casamentos, primeiras comunhões, crismas, ordenações, despedidas e
+                      incontáveis momentos de oração que marcaram a vida de gerações inteiras. A tradicional Festa de
+                      Nossa Senhora do Carmo permanece como o maior acontecimento religioso da comunidade, reunindo
+                      famílias, filhos da terra e peregrinos em um grande testemunho de fé.</p>
+                    <p>Hoje, mais do que preservar um patrimônio histórico, a Paróquia Nossa Senhora do Carmo mantém
+                      viva uma herança espiritual construída por homens e mulheres que confiaram em Deus e colocaram sua
+                      esperança sob o olhar materno da Virgem do Carmelo. Essa história continua sendo escrita todos os
+                      dias, por cada paroquiano que atravessa as portas da igreja, participa da vida comunitária e
+                      assume a missão de anunciar o Evangelho às futuras gerações.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -324,6 +409,22 @@
         1024: { slidesPerView: 4 }
       }
     });
+
+
+
+    function toggleHistorico(button) {
+      const detalhes = button.parentElement;
+      detalhes.classList.toggle('ativo');
+      const wrapper = detalhes.querySelector('.conteudo-expandido-wrapper');
+
+      if (wrapper.style.maxHeight) {
+        wrapper.style.maxHeight = null;
+        wrapper.style.opacity = 0;
+      } else {
+        wrapper.style.maxHeight = wrapper.scrollHeight + "px";
+        wrapper.style.opacity = 1;
+      }
+    }
   </script>
 
   <script src="JS/evangelho.js"></script>

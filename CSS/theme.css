@@ -464,6 +464,10 @@ html[data-layout='simple'] .theme-toggle {
 }
 
 @media (max-width: 768px) {
+  html.theme-light .nav-menu{
+    background: var(--cor-fundo-alt);
+  }
+
   .theme-toggle {
     right: 0.9rem;
     padding: 0.78rem;
