@@ -173,7 +173,7 @@ function updateWelcome(sessionEmail = currentSessionEmail) {
   const displayName = savedName || sessionEmail.split("@")[0] || "administrador";
 
   if (welcomeBox) {
-    welcomeBox.textContent = `Bem-vindo, ${displayName}. Seu painel está pronto.`;
+    welcomeBox.textContent = `Bem-vindo(a), ${displayName}!`;
   }
 }
 
@@ -259,15 +259,16 @@ async function isAllowedAdmin(supabase, email) {
   return { allowed: Boolean(data), fallback: false };
 }
 
-async function registerAdminEmail(supabase, email) {
-  const { error } = await supabase.from(ADMIN_USERS_TABLE).upsert({
-    email
-  }, { onConflict: "email" });
 
-  if (error && !error.message?.toLowerCase().includes("does not exist")) {
-    throw error;
-  }
-}
+// async function registerAdminEmail(supabase, email) {
+//   const { error } = await supabase.from(ADMIN_USERS_TABLE).upsert({
+//     email
+//   }, { onConflict: "email" });
+
+//   if (error && !error.message?.toLowerCase().includes("does not exist")) {
+//     throw error;
+//   }
+// }
 
 if (!SUPABASE_READY) {
   userLabel.textContent = "Configure as credenciais do Supabase em JS/supabase-config.js para habilitar a sessão.";
@@ -376,28 +377,41 @@ if (!SUPABASE_READY) {
     });
   }
 
-  if (onboardingForm) {
-    onboardingForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
+  const nomeSalvo = localStorage.getItem("nomeUsuario"); // Ajuste o nome da chave conforme seu código
 
-      const nextDisplayName = onboardingDisplayNameInput?.value.trim() ?? "";
+  if (nomeSalvo) {
+    // Se o nome existe, fecha o onboarding ou esconde o elemento
+    const form = document.getElementById("onboardingForm"); // Ou a referência que você usa
+    if (form) {
+      form.style.display = "none";
+    }
+    // Opcional: chamar a função que fecha o modal
+    closeOnboarding();
+  } else {
+    // Só adiciona o listener se o usuário ainda não tiver um nome
+    if (onboardingForm) {
+      onboardingForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
 
-      if (!nextDisplayName) {
-        setOnboardingStatus("Digite um nome de exibição para continuar.", "erro");
-        return;
-      }
+        const nextDisplayName = onboardingDisplayNameInput?.value.trim() ?? "";
 
-      saveDisplayName(nextDisplayName);
-      saveDisplayNameSeen();
+        if (!nextDisplayName) {
+          setOnboardingStatus("Digite um nome de exibição para continuar.", "erro");
+          return;
+        }
 
-      if (displayNameInput) {
-        displayNameInput.value = nextDisplayName;
-      }
+        saveDisplayName(nextDisplayName);
+        saveDisplayNameSeen();
 
-      updateWelcome();
-      setOnboardingStatus("Nome de exibição definido.", "sucesso");
-      closeOnboarding();
-    });
+        if (displayNameInput) {
+          displayNameInput.value = nextDisplayName;
+        }
+
+        updateWelcome();
+        setOnboardingStatus("Nome de exibição definido.", "sucesso");
+        closeOnboarding();
+      });
+    }
   }
 
   const applySession = async () => {
@@ -428,7 +442,7 @@ if (!SUPABASE_READY) {
       setStatus(adminCheck.fallback
         ? "Sessão ativa. A tabela admin_users ainda não existe, então o painel está funcionando em modo provisório."
         : "Sessão ativa e pronta para uso.",
-      adminCheck.fallback ? "erro" : "sucesso");
+        adminCheck.fallback ? "erro" : "sucesso");
 
       if (!loadDisplayName().trim() && !loadDisplayNameSeen()) {
         openOnboarding();
@@ -529,7 +543,18 @@ if (!SUPABASE_READY) {
       }
 
       try {
-        await registerAdminEmail(supabase, email);
+        const response = await fetch(`${SUPABASE_URL}/functions/v1/create-admin`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+          },
+          body: JSON.stringify({ email })
+        });
+
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "Erro ao registrar admin");
+
       } catch (registrationError) {
         setAdminCreateStatus(
           `Usuário criado, mas não foi possível registrar na lista de administradores: ${registrationError.message}`,

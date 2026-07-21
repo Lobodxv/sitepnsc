@@ -44,10 +44,6 @@
           <div class="stat-value" id="stat-status">Online</div>
         </article>
         <article class="stat-card">
-          <div class="stat-label">Sessão</div>
-          <div class="stat-value">Supabase</div>
-        </article>
-        <article class="stat-card">
           <div class="stat-label">Acesso</div>
           <div class="stat-value">Restrito</div>
         </article>
@@ -56,8 +52,7 @@
       <section class="admin-card">
         <h2><i class="bi bi-shield-check"></i> Sessão Administrativa</h2>
         <p class="admin-copy">
-          O login foi concluído com sucesso. Este espaço já está preparado para receber formulários de edição,
-          avisos paroquiais, conteúdo de PIX e demais configurações do site.
+          O login foi concluído com sucesso. Você já pode atualizar os avisos paroquiais, conteúdo do PIX e demais configurações.
         </p>
         <div class="msg-feedback" id="admin-status" role="alert" aria-live="polite"></div>
       </section>
@@ -127,8 +122,7 @@
       <section class="admin-card">
         <h2><i class="bi bi-person-plus-fill"></i> Cadastrar Novo Administrador</h2>
         <p class="admin-note">
-          Este formulário cria uma conta no Supabase Auth e, se a tabela <strong>admin_users</strong> existir, também
-          adiciona o e-mail dela à lista de administradores permitidos.
+          Este formulário cria um novo administrador com acesso ao painel. A senha é temporária e deve ser alterada no primeiro login.
         </p>
 
         <form id="admin-create-form">

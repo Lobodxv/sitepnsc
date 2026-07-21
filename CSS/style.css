@@ -897,6 +897,65 @@ header {
     }
 }
 
+/* ── CARDS EXPANSÍVEIS COM TRANSIÇÃO SUAVE (SANFONA) ── */
+.historico-detalhes {
+  margin-top: var(--s-3);
+}
+
+.btn-expandir {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  color: #e0b260;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  list-style: none;
+  user-select: none;
+  transition: var(--transicao);
+  margin-top: var(--s-2);
+}
+
+.btn-expandir::after {
+  content: '▼';
+  font-size: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Gira a setinha quando o card estiver ativo */
+.historico-detalhes.ativo .btn-expandir::after {
+  transform: rotate(180deg);
+}
+
+.btn-expandir:hover {
+  color: var(--cor-destaque-hov);
+}
+
+/* Área que faz o efeito de deslizar */
+.conteudo-expandido-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out;
+  opacity: 0;
+}
+
+.conteudo-expandido {
+  margin-top: var(--s-4);
+  padding-top: var(--s-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.conteudo-expandido p {
+  margin-bottom: var(--s-3);
+  font-size: var(--t-base);
+  line-height: 1.6;
+  color: rgba(255, 236, 215, 0.76);
+  text-align: justify;
+}
+
 /* ── 10 FOOTER ─────────────────────────────────────────────── */
 footer {
   background: linear-gradient(135deg, #180c07, #2a1810);
