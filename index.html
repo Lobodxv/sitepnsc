@@ -1,436 +1,554 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Paróquia Nossa Senhora do Carmo — Horários de celebrações, endereço, escala de corais e doações via PIX.">
-  <meta name="theme-color" content="#201109">
+  <meta name="description" content="Paróquia Nossa Senhora do Carmo — horários de missas, história, pastorais, localização e doações via PIX.">
+  <meta name="theme-color" content="#654321">
+  <title>Paróquia Nossa Senhora do Carmo | PNSC</title>
 
-  <title>Paróquia Nossa Senhora do Carmo — PNSC</title>
-
-  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
-    rel="stylesheet">
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
-  <!-- Bootstrap Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-
-  <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-
-  <!-- Estilos do site -->
   <link rel="stylesheet" href="CSS/style.css">
-  <link rel="stylesheet" href="CSS/theme.css">
-  <script src="JS/theme-toggle.js"></script>
 </head>
 
 <body>
-
-  <!-- Botão WhatsApp flutuante -->
-  <a href="https://wa.me/5588981996070" class="whatsapp-float" target="_blank" rel="noopener"
-    aria-label="Fale pelo WhatsApp">
+  <a href="https://wa.me/5588981996070" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
     <i class="bi bi-whatsapp"></i>
   </a>
 
-  <!-- ── HEADER ──────────────────────────────────────────────── -->
-  <header>
-    <a href="#inicio" class="logo" aria-label="PNSC — Página inicial">PNSC</a>
+  <header class="site-header" id="topo">
+    <div class="container nav-wrap">
+      <a href="#inicio" class="brand" aria-label="Paróquia Nossa Senhora do Carmo">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="img/logoIgrejaPNG.png" alt="Brasão da Paróquia Nossa Senhora do Carmo">
+        </span>
+        <span class="brand-text">PNSC</span>
+      </a>
 
-    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-    <nav aria-label="Navegação principal">
-      <ul class="nav-menu" id="nav-menu">
-        <li><a href="liturgia.html">Liturgia Diária</a></li>
-        <li><a href="#inicio">Início</a></li>
-        <li><a href="#missas">Celebrações</a></li>
-        <li><a href="#endereco">Endereço</a></li>
-        <!-- <li><a href="corais.html">Escala</a></li> -->
-        <li><a href="pix.html">Doação</a></li>
-        <li><a href="login.html" class="nav-admin-link"><i class="bi bi-shield-lock-fill"></i> Acesso Admin</a></li>
-      </ul>
-    </nav>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#horarios">Horários</a></li>
+          <li><a href="parocos.html">Párocos</a></li>
+          <li><a href="#historia">Nossa História</a></li>
+          <li><a href="#pastorais">Pastorais</a></li>
+          <li><a href="#liturgia">Liturgia</a></li>
+          <li><a href="#doacao">Doação</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- Barra do Evangelho do Dia -->
-  <div class="barra-evangelho" role="marquee" aria-live="polite" aria-label="Evangelho do dia">
-    <div class="marquee" id="texto-evangelho">
-      📖 Carregando o Evangelho do dia...
-    </div>
-  </div>
-
-  <!-- ── CARROSSEL / HERO ────────────────────────────────────── -->
   <main id="inicio">
-    <section class="hero-split">
-      <!-- Conteúdo Textual (Lado Esquerdo) -->
-      <div class="hero-split-content">
-        <span class="hero-tag">Paróquia Nossa Senhora do Carmo</span>
-        <h1 class="hero-title">Uma história de fé gravada em pedra e devoção</h1>
-        <p class="hero-desc">
-          Seja muito bem-vindo(a)! Junte-se a nós em oração, celebre conosco a Eucaristia e faça parte de uma comunidade
-          ativa que caminha unida na Graça do Pai.
-        </p>
-        <div class="hero-actions">
-          <a href="#horarios" class="btn btn-primary">
-            Horários de Celebrações
-          </a>
-          <a href="#historia" class="btn btn-secondary">
-            Conhecer Nossa História
-          </a>
-        </div>
-      </div>
-
-      <!-- Área da Imagem (Lado Direito) -->
-      <div class="hero-split-image">
-        <img src="img/imgaerea1.jpeg" alt="imagem da paróquia" class="hero-img-element">
-      </div>
-    </section>
-    <!-- <div class="carousel-wrapper">
-      <div id="carouselPNSC" class="carousel slide" data-bs-ride="carousel" aria-label="Galeria de imagens da Paróquia">
-
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselPNSC" data-bs-slide-to="0" class="active" aria-current="true"
-            aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselPNSC" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        </div>
-
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="4000">
-            <img id="imagem1" src="img/bannergrande.png" srcset="img/bannergrande.png 2000w, img/bannermobile.png 800w"
-              sizes="(max-width: 600px) 800px, 2000px" class="d-block w-100"
-              alt="Paróquia Nossa Senhora do Carmo — vista principal">
-          </div>
-          <div class="carousel-item" data-bs-interval="4000">
-            <img src="img/imgaerea2.jpeg" class="d-block w-100" alt="Vista aérea da Paróquia feita por drone">
-            <div class="carousel-caption">
-              <h5>Vista Aérea da Paróquia</h5>
-              <p>Registro por drone da Igreja Matriz de Nossa Senhora do Carmo.</p>
-            </div>
+    <section class="hero parallax-hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy fade-in">
+          <span class="eyebrow">Paróquia Nossa Senhora do Carmo</span>
+          <h1>Uma história de fé gravada em pedra e devoção</h1>
+          <p>
+            Bem-vindo(a) à comunidade de Lagoa do Mato. Aqui, a oração, a liturgia e a caridade se encontram na
+            alegria do Evangelho, fortalecendo a vida da nossa paróquia e da nossa família cristã.
+          </p>
+          <div class="hero-actions">
+            <a href="#horarios" class="btn btn-primary">Ver Horários de Missas</a>
+            <a href="#doacao" class="btn btn-secondary">Contribuição via PIX</a>
           </div>
         </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselPNSC" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselPNSC" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Próximo</span>
-        </button>
-      </div>
-    </div> -->
-
-    <!-- ── CELEBRAÇÕES ───────────────────────────────────────── -->
-    <section class="celebracoes" id="missas" aria-labelledby="titulo-celebracoes">
-      <span class="section-eyebrow">Agenda Litúrgica</span>
-      <h2 class="section-title" id="titulo-celebracoes">Horários de Celebrações</h2>
-      <p class="section-subtitle">Venha participar da nossa vida comunitária e crescer na fé.</p>
-
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-
-          <div class="swiper-slide">
-            <div class="card-missa fade-in">
-              <h3>Domingos</h3>
-              <span class="hora">09h00 &amp; 19h00</span>
-              <p>Santa Missa</p>
-            </div>
+        <div class="hero-stat fade-in">
+          <div class="hero-card">
+            <span class="label">Missas Dominicais</span>
+            <strong>09h00 & 19h00</strong>
+            <p>Celebrando a Eucaristia em comunidade, com acolhimento e música.</p>
           </div>
-
-          <div class="swiper-slide">
-            <div class="card-missa fade-in">
-              <h3>Segunda-feira</h3>
-              <span class="hora">18h00</span>
-              <p>Terço das Mulheres</p>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="card-missa fade-in">
-              <h3>Terça-feira</h3>
-              <span class="hora">18h00</span>
-              <p>Terço dos Homens</p>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="card-missa fade-in">
-              <h3>Quarta-feira</h3>
-              <span class="hora">18h00</span>
-              <p>Terço das Crianças</p>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="card-missa fade-in">
-              <h3>Quinta-feira</h3>
-              <span class="hora">18h00 &amp; 19h00</span>
-              <p>Adoração ao Santíssimo<br>Santa Missa</p>
-            </div>
-          </div>
-
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-next" aria-label="Próximo"></div>
-        <div class="swiper-button-prev" aria-label="Anterior"></div>
       </div>
     </section>
 
-    <!-- ── DOAÇÃO / PIX ──────────────────────────────────────── -->
-    <section class="pix-section" id="dizimo" aria-labelledby="titulo-dizimo">
-      <span class="section-eyebrow">Contribua</span>
-      <h2 class="section-title" id="titulo-dizimo">Seja um Doador</h2>
-      <p class="section-subtitle">
-        Contribua com a evangelização e manutenção da nossa paróquia.<br>
-        <em style="font-style:italic; color: rgba(255,255,255,0.55); font-size:0.9em;">
-          "Deus ama quem dá com alegria." — 2Cor 9,7
-        </em>
-      </p>
-      <a href="pix.html" class="btn-pix">
-        <i class="bi bi-qr-code"></i> Contribuir via PIX
-      </a>
+    <section class="paroquiano section-space">
+      <div class="container">
+        <div class="paroquiano-card fade-in">
+          <div class="paroquiano-foto" aria-label="Retrato do pároco atual">
+            <img src="img/logoIgrejaPNG.png" alt="Padre Adailson Nogueira">
+          </div>
+
+          <div class="paroquiano-body">
+            <span class="eyebrow eyebrow-dark">Pároco atual</span>
+            <h2>Pe. Adailson Nogueira</h2>
+            <p class="paroquiano-role">Paróco da Paróquia Nossa Senhora do Carmo</p>
+            <p>
+              Com dedicação pastoral, acolhimento e zelo missionário, o padre guia a comunidade em oração, catequese e serviço,
+              fortalecendo a vida espiritual da paróquia e da família cristã.
+            </p>
+            <div class="paroquiano-actions">
+              <a href="parocos.html" class="btn btn-primary">Conhecer o quadro</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- ── RESGATE HISTÓRICO ──────────────────────────────────────── -->
-    <section class="resgate-historico" id="historia">
-      <div class="historico-container">
-
-        <div class="historico-header">
-          <h2>Nossa História</h2>
-          <p>Conheça a trajetória, a fé e as memórias da nossa Igreja Matriz ao longo dos anos.</p>
+    <section class="liturgia-showcase section-space" id="liturgia">
+      <div class="container">
+        <div class="section-heading fade-in">
+          <span class="eyebrow eyebrow-dark">Liturgia Diária</span>
+          <h2>Evangelho e celebração do dia</h2>
         </div>
 
-        <div class="historico-linha">
-          <!-- Bloco 1: Origem -->
-          <div class="historico-item">
-            <div class="historico-img">
-              <img src="caminho-da-sua-imagem-antiga-1.jpg" alt="Fundação da Igreja Matriz">
+        <div class="liturgia-panel fade-in">
+          <div class="liturgia-header">
+            <div>
+              <span class="liturgia-label">Celebração do Dia</span>
+              <h3 id="liturgia-dia">Liturgia diária</h3>
             </div>
-            <div class="historico-texto">
-              <h3>Os Primeiros Passos</h3>
-              <p class="historico-resumo">
-                A história da Igreja de Nossa Senhora do Carmo está profundamente ligada às origens do Distrito de
-                Lagoa do Mato. Em meados de 1889, entre as fazendas Retiro, Malhada Real, Feijão, São Joaquim,
-                Sussuarana e Meirús, foi instalada a Fazenda Lagoa do Mato por Antônio Honorato da Silva...
-              </p>
+            <span class="liturgia-chip">PNSC</span>
+          </div>
 
-              <div class="historico-detalhes">
-                <button type="button" class="btn-expandir" onclick="toggleHistorico(this)">
-                  Ler história completa
-                </button>
-                <div class="conteudo-expandido-wrapper">
-                  <div class="conteudo-expandido">
-                    <p>O nome do lugar surgiu da grande lagoa formada durante o período chuvoso na área compreendida
-                      entre os riachos Santa Rosa e Meirús. Essa lagoa tornou-se uma das principais referências
-                      geográficas da região, dando origem ao nome que permanece até os dias atuais.</p>
-                    <p>Homem de profunda fé e devoto de Nossa Senhora do Carmo, Antônio Honorato da Silva decidiu
-                      oferecer parte de suas terras para a construção de uma capela dedicada à Virgem do Carmelo. Movido
-                      por uma promessa e pelo desejo de proporcionar assistência religiosa às famílias dos sertões
-                      vizinhos, iniciou a construção daquele que se tornaria o primeiro templo católico da comunidade.
-                    </p>
-                    <p>A pequena capela foi solenemente benzida no ano de 1901 pelo Reverendíssimo Padre Manoel
-                      Cordeiro, então vigário de Canindé. Além da edificação do templo, Antônio Honorato também doou o
-                      patrimônio da capela e o terreno onde posteriormente seria construído o atual Cemitério São
-                      Miguel, fortalecendo definitivamente as bases da futura comunidade cristã de Lagoa do Mato.</p>
-                    <p>Foi ao redor dessa capela que nasceram as primeiras casas, formando gradativamente o povoado. A
-                      fé foi, desde o início, o elemento que uniu as famílias e impulsionou o desenvolvimento social,
-                      cultural e religioso da região.</p>
-                  </div>
+          <div class="liturgia-grid">
+            <article class="liturgia-card">
+              <button class="liturgia-toggle" type="button" aria-expanded="false">
+                <span class="liturgia-type">Primeira Leitura</span>
+                <span class="liturgia-reference" id="liturgia-primeira-ref">Clique para ver</span>
+                <span class="liturgia-hint">Clique para ver</span>
+              </button>
+              <div class="liturgia-content">
+                <div class="liturgia-content-inner">
+                  <p class="liturgia-text" id="liturgia-primeira-texto">A liturgia do dia será exibida em breve.</p>
                 </div>
               </div>
-            </div>
-          </div>
+            </article>
 
-          <!-- Bloco 2: Evolução (Invertido) -->
-          <div class="historico-item item-reverso">
-            <div class="historico-img">
-              <img src="caminho-da-sua-imagem-antiga-2.jpg" alt="Construção da Matriz antiga">
-            </div>
-            <div class="historico-texto">
-              <h3>A Construção da Matriz</h3>
-              <p class="historico-resumo">
-                A primeira Capela de Nossa Senhora do Carmo foi construída durante a administração dos Padres
-                Capuchinhos da Paróquia de Canindé e apresentava características arquitetônicas inspiradas no estilo
-                neogótico. Sua fachada possuía três portas simétricas, elementos em alto-relevo representando uma flor
-                central, cruzes ornamentais e pináculos que conferiam imponência ao pequeno templo...
-              </p>
-
-              <div class="historico-detalhes">
-                <button type="button" class="btn-expandir" onclick="toggleHistorico(this)">
-                  Ler história completa
-                </button>
-                <div class="conteudo-expandido-wrapper">
-                  <div class="conteudo-expandido">
-                    <p>Ao longo dos anos, a devoção à padroeira cresceu significativamente. A regulamentação das terras
-                      pertencentes ao patrimônio de Nossa Senhora do Carmo atraiu novos moradores para Lagoa do Mato, e
-                      a festa da padroeira passou a desempenhar importante papel religioso, social e econômico na vida
-                      da comunidade. Durante os festejos, famílias de diversas localidades reuniam-se para celebrar a
-                      fé, fortalecendo os vínculos entre os moradores e impulsionando o crescimento do povoado.</p>
-                    <p>Na década de 1970, diante do expressivo aumento do número de fiéis e peregrinos, a igreja passou
-                      por uma importante reforma estrutural e arquitetônica. A ampliação permitiu acomodar melhor a
-                      comunidade, preservando alguns dos elementos históricos da construção original, como o tradicional
-                      desenho em forma de flor na fachada, símbolo que permanece como marca da identidade da igreja.</p>
-                    <p>Já em 2008, durante a administração do Padre Abraão Correia Viana, foi realizada uma nova e
-                      significativa reforma da matriz. O projeto arquitetônico, desenvolvido pelo engenheiro civil
-                      Danúzio Sales Jucá, procurou harmonizar elementos históricos da antiga capela com características
-                      do estilo barroco, dando origem à atual fachada da Igreja Matriz de Nossa Senhora do Carmo,
-                      preservando sua beleza e valorizando sua rica herança histórica.</p>
-                    <p>Cada etapa dessa construção foi sustentada pela generosidade do povo. Ao longo das décadas,
-                      festas religiosas, doações, mutirões e inúmeras demonstrações de solidariedade tornaram possível
-                      conservar e ampliar a casa de Deus, transformando-a em um dos maiores patrimônios religiosos e
-                      culturais de Lagoa do Mato.</p>
-                  </div>
+            <article class="liturgia-card">
+              <button class="liturgia-toggle" type="button" aria-expanded="false">
+                <span class="liturgia-type">Salmo</span>
+                <span class="liturgia-reference" id="liturgia-salmo-ref">Clique para ver</span>
+                <span class="liturgia-hint">Clique para ver</span>
+              </button>
+              <div class="liturgia-content">
+                <div class="liturgia-content-inner">
+                  <p class="liturgia-text" id="liturgia-salmo-texto">A liturgia do dia será exibida em breve.</p>
                 </div>
               </div>
-            </div>
-          </div>
+            </article>
 
-          <!-- Bloco 3: Legado -->
-          <div class="historico-item">
-            <div class="historico-img">
-              <img src="caminho-da-sua-imagem-antiga-3.jpg" alt="Comunidade ao longo dos anos">
-            </div>
-            <div class="historico-texto">
-              <h3>Um Legado de Fé</h3>
-              <p class="historico-resumo">
-                Mais de um século após a construção da primeira capela, a história da Igreja de Nossa Senhora do Carmo
-                continua sendo escrita por milhares de fiéis que mantêm viva a tradição recebida de seus antepassados...
-              </p>
-
-              <div class="historico-detalhes">
-                <button type="button" class="btn-expandir" onclick="toggleHistorico(this)">
-                  Ler história completa
-                </button>
-                <div class="conteudo-expandido-wrapper">
-                  <div class="conteudo-expandido">
-                    <p>Em 21 de novembro de 2004, a Diocese de Quixadá criou oficialmente a Paróquia Nossa Senhora do
-                      Carmo, elevando a antiga igreja à condição de matriz paroquial e iniciando uma nova etapa da
-                      missão evangelizadora. Desde então, a paróquia tornou-se referência espiritual para dezenas de
-                      comunidades rurais e urbanas, acolhendo diariamente crianças, jovens, adultos e idosos em seus
-                      diversos serviços pastorais.</p>
-                    <p>Ao longo de sua história, a Igreja Matriz acompanhou o crescimento de Lagoa do Mato. Sob seu teto
-                      foram celebrados batizados, casamentos, primeiras comunhões, crismas, ordenações, despedidas e
-                      incontáveis momentos de oração que marcaram a vida de gerações inteiras. A tradicional Festa de
-                      Nossa Senhora do Carmo permanece como o maior acontecimento religioso da comunidade, reunindo
-                      famílias, filhos da terra e peregrinos em um grande testemunho de fé.</p>
-                    <p>Hoje, mais do que preservar um patrimônio histórico, a Paróquia Nossa Senhora do Carmo mantém
-                      viva uma herança espiritual construída por homens e mulheres que confiaram em Deus e colocaram sua
-                      esperança sob o olhar materno da Virgem do Carmelo. Essa história continua sendo escrita todos os
-                      dias, por cada paroquiano que atravessa as portas da igreja, participa da vida comunitária e
-                      assume a missão de anunciar o Evangelho às futuras gerações.</p>
-                  </div>
+            <article class="liturgia-card liturgia-card-featured">
+              <button class="liturgia-toggle" type="button" aria-expanded="false">
+                <span class="liturgia-type">Evangelho</span>
+                <span class="liturgia-reference" id="liturgia-evangelho-ref">Clique para ver</span>
+                <span class="liturgia-hint">Clique para ver</span>
+              </button>
+              <div class="liturgia-content">
+                <div class="liturgia-content-inner">
+                  <p class="liturgia-text" id="liturgia-evangelho-texto">A liturgia do dia será exibida em breve.</p>
                 </div>
               </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="agenda section-space" id="horarios">
+      <div class="container">
+        <div class="section-heading fade-in">
+          <span class="eyebrow eyebrow-dark">Agenda Litúrgica</span>
+          <h2>Horários de celebrações</h2>
+        </div>
+
+        <div class="agenda-grid">
+          <article class="agenda-card fade-in">
+            <span class="agenda-dia">Domingos</span>
+            <strong>09h00 & 19h00</strong>
+            <p>Santa Missa</p>
+          </article>
+
+          <article class="agenda-card fade-in">
+            <span class="agenda-dia">Segunda-feira</span>
+            <strong>18h00</strong>
+            <p>Terço das Mulheres</p>
+          </article>
+
+          <article class="agenda-card fade-in">
+            <span class="agenda-dia">Terça-feira</span>
+            <strong>18h00</strong>
+            <p>Terço dos Homens</p>
+          </article>
+
+          <article class="agenda-card fade-in">
+            <span class="agenda-dia">Quarta-feira</span>
+            <strong>18h00</strong>
+            <p>Terço das Crianças</p>
+          </article>
+
+          <article class="agenda-card fade-in">
+            <span class="agenda-dia">Quinta-feira</span>
+            <strong>18h00</strong>
+            <p>Adoração ao Santíssimo</p>
+          </article>
+
+          <article class="agenda-card fade-in">
+            <span class="agenda-dia">Secretaria</span>
+            <strong>Segunda a Sexta</strong>
+            <p>Atendimento paroquial e confissões</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="paroco-story-cta section-space">
+      <div class="container">
+        <div class="cta-panel fade-in">
+          <div class="cta-copy">
+            <span class="eyebrow eyebrow-dark">Nossa identidade</span>
+            <h2>Uma comunidade guiada pela fé, pela tradição e pelo amor ao próximo.</h2>
+            <p>
+              Desde os primeiros passos da comunidade até os dias atuais, a Paróquia Nossa Senhora do Carmo guarda uma história
+              rica, marcada por sacerdotes dedicados e por um povo que vive a missão evangelizadora em cada celebração, serviço e gesto de acolhimento.
+            </p>
+          </div>
+
+          <div class="cta-actions">
+            <a href="parocos.html" class="btn btn-primary">Nossa história</a>
+            <a href="parocos.html" class="btn btn-secondary">Quadro de párocos</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="history section-space" id="historia">
+      <div class="container">
+        <div class="section-heading fade-in">
+          <span class="eyebrow eyebrow-dark">Nossa História</span>
+          <h2>Uma comunidade de fé e memória</h2>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item fade-in">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <span class="year">1889</span>
+              <h3>Origens de Lagoa do Mato</h3>
+              <p>
+                O povoado nasce junto à antiga lagoa que deu nome à região, e a fé dos primeiros moradores começa a se
+                organizar em torno da devoção a Nossa Senhora do Carmo.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item fade-in">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <span class="year">1901</span>
+              <h3>Capela de Nossa Senhora</h3>
+              <p>
+                Antônio Honorato da Silva doa terras e inicia a construção da primeira capela, depois benzida em uma
+                celebração que marca a semente da comunidade paroquial.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item fade-in">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <span class="year">2004</span>
+              <h3>Criação da Paróquia</h3>
+              <p>
+                Pela Diocese de Quixadá, a comunidade passa a ser oficialmente paróquia, fortalecendo a evangelização e a
+                vida sacramental em toda a região.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item fade-in">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <span class="year">Hoje</span>
+              <h3>Presente vivo do Evangelho</h3>
+              <p>
+                A Paróquia mantém viva a tradição, acolhendo famílias, jovens, catequistas e fiéis em celebrações,
+                pastorais e ações de serviço à comunidade.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="donate section-space parallax-give" id="doacao">
+      <div class="container donate-wrap">
+        <div class="donate-copy fade-in">
+          <span class="eyebrow">Dízimo e Doações</span>
+          <h2>Deus ama quem dá com alegria</h2>
+          <p>
+            Sua contribuição sustenta a comunidade, a catequese, a liturgia, a manutenção da igreja e os serviços
+            pastorais que acolhem famílias em oração e caridade.
+          </p>
+          <blockquote>“Deus ama quem dá com alegria.” — 2 Cor 9,7</blockquote>
+        </div>
+
+        <div class="pix-card fade-in">
+          <div class="pix-topbar">
+            <span>Chave PIX</span>
+            <button type="button" class="copy-btn" id="copy-pix">Copiar Chave PIX</button>
+          </div>
+
+          <div class="pix-content">
+            <div class="qr-box">
+              <img src="img/qrcode.jpeg" alt="QR Code da chave PIX da paróquia" />
+            </div>
+            <div class="pix-meta">
+              <label>Beneficiário</label>
+              <strong id="pix-nome">Paróquia Nossa Senhora do Carmo</strong>
+
+              <label class="mt-16">Chave PIX</label>
+              <strong class="pix-key" id="pix-chave">07.721.749/0020-30</strong>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── ENDEREÇO ──────────────────────────────────────────── -->
-    <section class="endereco-section" id="endereco" aria-labelledby="titulo-endereco">
-      <span class="section-eyebrow">Onde Estamos</span>
-      <h2 class="section-title" id="titulo-endereco">Nossa Localização</h2>
-
-      <div class="mapa-wrapper fade-in">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.687052958556!2d-39.6781979267365!3d-4.649792543782279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7be3fa3d8ede62b%3A0xd6bae7c3d8119ec0!2sIgreja%20de%20Nossa%20Senhora%20do%20Carmo!5e0!3m2!1spt-BR!2sbr!4v1768949287045!5m2!1spt-BR!2sbr"
-          title="Localização da Paróquia Nossa Senhora do Carmo no Google Maps" allowfullscreen loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-
-      <div class="endereco-info">
-        <div class="endereco-item">
-          <i class="bi bi-geo-alt-fill"></i>
-          <span>Av. Trajano Honorato — Lagoa do Mato, Centro</span>
+    <section class="pastorais section-space" id="pastorais">
+      <div class="container">
+        <div class="section-heading fade-in">
+          <span class="eyebrow eyebrow-dark">Pastorais e Movimentos</span>
+          <h2>Uma comunidade em movimento</h2>
         </div>
-        <div class="endereco-item">
-          <i class="bi bi-telephone-fill"></i>
-          <span>(88) 98199-6070</span>
+
+        <div class="pastoral-grid">
+          <article class="pastoral-card fade-in">
+            <i class="bi bi-heart-fill"></i>
+            <h3>Dízimo</h3>
+            <p>Contribuição solidária que sustenta a vida paroquial e a missão evangelizadora.</p>
+          </article>
+
+          <article class="pastoral-card fade-in">
+            <i class="bi bi-book-half"></i>
+            <h3>Catequese</h3>
+            <p>Formação de crianças, jovens e adultos na fé, na liturgia e na vida cristã.</p>
+          </article>
+
+          <article class="pastoral-card fade-in">
+            <i class="bi bi-moon-stars"></i>
+            <h3>Liturgia</h3>
+            <p>Celebrações centradas na Palavra, na Eucaristia e na vida sacramental da comunidade.</p>
+          </article>
+
+          <article class="pastoral-card fade-in">
+            <i class="bi bi-flower1"></i>
+            <h3>Terço dos Homens</h3>
+            <p>Oração, fraternidade e testemunho de fé no percurso diário com Maria.</p>
+          </article>
+
+          <article class="pastoral-card fade-in">
+            <i class="bi bi-people-fill"></i>
+            <h3>Juventude</h3>
+            <p>Espaço de acolhimento, formação e serviço para jovens e adolescentes da paróquia.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contato section-space" id="contato">
+      <div class="container contato-wrap">
+        <div class="contact-copy fade-in">
+          <span class="eyebrow eyebrow-dark">Contato</span>
+          <h2>Venha nos visitar</h2>
+          <div class="contact-list">
+            <div class="contact-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <span>Av. Trajano Honorato — Lagoa do Mato, Centro</span>
+            </div>
+            <div class="contact-item">
+              <i class="bi bi-telephone-fill"></i>
+              <span>(88) 98199-6070</span>
+            </div>
+            <div class="contact-item">
+              <i class="bi bi-envelope-fill"></i>
+              <span>paroquia@pnsc.com.br</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mapa-wrapper fade-in">
+          <iframe
+            src="https://www.google.com/maps?q=Igreja%20de%20Nossa%20Senhora%20do%20Carmo%20Lagoa%20do%20Mato&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localização da Paróquia Nossa Senhora do Carmo">
+          </iframe>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ── FOOTER ────────────────────────────────────────────── -->
-  <footer id="direitos">
-    <div class="footer-logo">PNSC</div>
-    <div>
-      <p>&copy; 2026 Paróquia N. Sra. do Carmo — Todos os direitos reservados.</p>
-      <p><i class="bi bi-geo-alt-fill" style="color:var(--cor-destaque);margin-right:4px;"></i> Av. Trajano Honorato —
-        Lagoa do Mato, Centro</p>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand" aria-label="Brasão da Paróquia Nossa Senhora do Carmo">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="img/logoIgrejaPNG.png" alt="Brasão da Paróquia Nossa Senhora do Carmo">
+          </span>
+        </div>
+        <p>Paróquia Nossa Senhora do Carmo</p>
+      </div>
+
+      <div>
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#horarios">Horários</a></li>
+          <li><a href="#historia">Nossa História</a></li>
+          <li><a href="#doacao">Doação</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li>Av. Trajano Honorato</li>
+          <li>Lagoa do Mato, Centro</li>
+          <li>(88) 98199-6070</li>
+        </ul>
+      </div>
     </div>
-    <a class="dev" title="Desenvolvido por Manoel Lobo" href="https://instagram.com/manoellob_" target="_blank"
-      rel="noopener">
-      <i class="bi bi-code-slash"></i> por Manoel Lobo
-    </a>
+
+    <div class="footer-bottom">
+      <p>© 2026 Paróquia N. Sra. do Carmo — Todos os direitos reservados.</p>
+    </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-    crossorigin="anonymous"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="JS/hamburger.js"></script>
+  <script src="JS/evangelho.js"></script>
+  <script src="JS/animations.js"></script>
   <script>
-    const swiper = new Swiper(".mySwiper", {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      loop: true,
-      speed: 600,
-      autoplay: {
-        delay: 2200,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      },
-      breakpoints: {
-        640: { slidesPerView: 2 },
-        1024: { slidesPerView: 4 }
+    const header = document.querySelector('.site-header');
+    const shrinkOnScroll = () => {
+      if (window.scrollY > 28) {
+        header.classList.add('is-scrolled');
+      } else {
+        header.classList.remove('is-scrolled');
+      }
+    };
+    window.addEventListener('scroll', shrinkOnScroll, { passive: true });
+    shrinkOnScroll();
+
+    const copyButton = document.getElementById('copy-pix');
+    const pixKey = document.getElementById('pix-chave');
+    if (copyButton && pixKey) {
+      copyButton.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(pixKey.textContent.trim());
+          const original = copyButton.textContent;
+          copyButton.textContent = 'Chave copiada!';
+          copyButton.classList.add('copied');
+          setTimeout(() => {
+            copyButton.textContent = original;
+            copyButton.classList.remove('copied');
+          }, 1400);
+        } catch (error) {
+          copyButton.textContent = 'Não foi possível copiar';
+          setTimeout(() => {
+            copyButton.textContent = 'Copiar Chave PIX';
+          }, 1600);
+        }
+      });
+    }
+
+    const fillLiturgia = async () => {
+      const fallback = {
+        primeiraLeitura: { referencia: 'Ez 16,1-15.60.63', texto: 'A Palavra de Deus nos convida à conversão e ao cuidado do povo de Deus.' },
+        salmo: { referencia: 'Sl 104,1-2.3-4', texto: 'Louvai o Senhor, porque ele é bom e fiel em suas promessas.' },
+        evangelho: { referencia: 'Mt 9,14-15', texto: 'A vida de Cristo nos chama a anunciar a Boa Nova com alegria e serviço.' }
+      };
+
+      const setCard = (key, title, refId, textId) => {
+        const refEl = document.getElementById(refId);
+        const textEl = document.getElementById(textId);
+
+        if (!refEl || !textEl) return;
+
+        const src = fallback[key] || { referencia: 'Clique para ver', texto: 'A liturgia do dia será exibida em breve.' };
+        refEl.textContent = src.referencia || 'Clique para ver';
+        textEl.textContent = src.texto || 'A liturgia do dia será exibida em breve.';
+      };
+
+      const setDefaults = () => {
+        document.getElementById('liturgia-dia').textContent = `Liturgia de ${new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })}`;
+        setCard('primeiraLeitura', 'Primeira Leitura', 'liturgia-primeira-ref', 'liturgia-primeira-texto');
+        setCard('salmo', 'Salmo', 'liturgia-salmo-ref', 'liturgia-salmo-texto');
+        setCard('evangelho', 'Evangelho', 'liturgia-evangelho-ref', 'liturgia-evangelho-texto');
+      };
+
+      try {
+        const response = await fetch('https://liturgia.up.railway.app/');
+        if (!response.ok) throw new Error('Erro ao carregar liturgia');
+        const data = await response.json();
+
+        const primeira = data?.primeiraLeitura || fallback.primeiraLeitura;
+        const salmo = data?.salmo || fallback.salmo;
+        const evangelho = data?.evangelho || fallback.evangelho;
+
+        document.getElementById('liturgia-dia').textContent = `Liturgia de ${new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })}`;
+        document.getElementById('liturgia-primeira-ref').textContent = primeira.referencia || 'Clique para ver';
+        document.getElementById('liturgia-primeira-texto').textContent = primeira.texto || 'A Palavra de Deus nos convida à oração.';
+        document.getElementById('liturgia-salmo-ref').textContent = salmo.referencia || 'Clique para ver';
+        document.getElementById('liturgia-salmo-texto').textContent = salmo.texto || 'O Senhor é o nosso refúgio.';
+        document.getElementById('liturgia-evangelho-ref').textContent = evangelho.referencia || 'Clique para ver';
+        document.getElementById('liturgia-evangelho-texto').textContent = evangelho.texto || 'A vida de Cristo nos chama a anunciar a Boa Nova.';
+      } catch (error) {
+        setDefaults();
+      }
+    };
+
+    const setLiturgiaCardState = (card, isOpen) => {
+      card.classList.toggle('is-open', isOpen);
+      const button = card.querySelector('.liturgia-toggle');
+      const hint = card.querySelector('.liturgia-hint');
+      if (button) button.setAttribute('aria-expanded', String(isOpen));
+      if (hint) hint.textContent = isOpen ? 'Clique para esconder' : 'Clique para ver';
+    };
+
+    document.querySelectorAll('.liturgia-card').forEach((card) => {
+      setLiturgiaCardState(card, false);
+      const button = card.querySelector('.liturgia-toggle');
+      if (button) {
+        button.addEventListener('click', () => {
+          const isOpen = !card.classList.contains('is-open');
+          setLiturgiaCardState(card, isOpen);
+        });
       }
     });
 
+    const resetLiturgiaCardsOnScroll = () => {
+      document.querySelectorAll('.liturgia-card').forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!isInView) {
+          setLiturgiaCardState(card, false);
+        }
+      });
+    };
 
+    window.addEventListener('scroll', () => {
+      resetLiturgiaCardsOnScroll();
+    }, { passive: true });
 
-    function toggleHistorico(button) {
-      const detalhes = button.parentElement;
-      detalhes.classList.toggle('ativo');
-      const wrapper = detalhes.querySelector('.conteudo-expandido-wrapper');
-
-      if (wrapper.style.maxHeight) {
-        wrapper.style.maxHeight = null;
-        wrapper.style.opacity = 0;
-      } else {
-        wrapper.style.maxHeight = wrapper.scrollHeight + "px";
-        wrapper.style.opacity = 1;
-      }
-    }
+    fillLiturgia();
   </script>
-
-  <script src="JS/evangelho.js"></script>
-  <script src="JS/hamburger.js"></script>
-  <script type="module" src="JS/main.js"></script>
-  <script src="JS/animations.js"></script>
 </body>
-
 </html>
