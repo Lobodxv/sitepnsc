@@ -1,0 +1,298 @@
+/* ==========================================================================
+   PNSC — Paróquia Nossa Senhora do Carmo
+   parocos.css — Galeria de Párocos
+   ========================================================================== */
+
+/* ── 01. ESPAÇAMENTO PRINCIPAL DO CONTEÚDO ─────────────────── */
+html, 
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #1a0d07 !important; /* Cor de reserva sólida */
+  background-image: linear-gradient(180deg, #1d0f09 0%, #2a1810 50%, #180c07 100%) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+}
+
+.main-content {
+  padding-top: var(--s-20, 5rem);
+  min-height: 100vh;
+}
+
+.secao-parocos {
+  padding: var(--s-16, 4rem) 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.historico-container {
+  width: 100%;
+}
+
+/* ── 02. CABEÇALHO DA GALERIA ──────────────────────────────── */
+.historico-header {
+  text-align: center;
+  margin-bottom: var(--s-12, 3rem);
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0 1rem;
+}
+
+.historico-header h2 {
+  font-family: var(--fonte-display, 'Cinzel', 'Playfair Display', serif);
+  font-size: var(--t-2xl, 2.25rem);
+  font-weight: 700;
+  color: #201109;
+  margin-bottom: var(--s-3, 0.75rem);
+  position: relative;
+}
+
+/* Linha de destaque dourada abaixo do título */
+.historico-header h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--cor-destaque, #c58a35);
+  margin: var(--s-2, 0.5rem) auto 0;
+  border-radius: var(--radius-sm, 6px);
+}
+
+.historico-header p {
+  font-family: var(--fonte-corpo, 'Plus Jakarta Sans', system-ui, sans-serif);
+  font-size: var(--t-md, 1.05rem);
+  color: #523b2b;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-shadow: none !important;
+}
+
+
+html:not(.theme-light) .historico-header h2 {
+  color: rgba(255, 244, 232, 0.96);
+}
+
+html:not(.theme-light) .historico-header p {
+  color: rgba(255, 236, 215, 0.82);
+}
+
+/* ── 03. GRID DOS PÁROCOS ──────────────────────────────────── */
+.grid-parocos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.paroco-foto {
+  height: 300px;
+}
+
+/* ── 04. CARD NO MODO ESCURO (PADRÃO) ──────────────────────── */
+.card-paroco {
+  background: linear-gradient(145deg, rgba(32, 17, 9, 0.85), rgba(45, 27, 17, 0.90));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg, 20px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 18px 42px rgba(16, 9, 5, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: var(--transicao, all 0.35s cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.card-paroco:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--sombra-lg, 0 20px 50px rgba(45, 27, 4, 0.18));
+  border-color: rgba(197, 138, 53, 0.4);
+}
+
+/* Foto do Pároco */
+.paroco-foto {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background-color: rgba(20, 10, 5, 0.6);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paroco-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transicao, all 0.35s ease);
+}
+
+.card-paroco:hover .paroco-foto img {
+  transform: scale(1.04);
+}
+
+/* Informações internas do Card */
+.paroco-info {
+  padding: var(--s-6, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.paroco-info h3 {
+  font-family: var(--fonte-display, 'Playfair Display', Georgia, serif);
+  font-size: var(--t-xl, 1.75rem);
+  margin-bottom: var(--s-1, 0.25rem);
+  color: rgba(255, 244, 232, 0.96);
+}
+
+.periodo-gestao {
+  font-size: var(--t-sm, 0.875rem);
+  font-weight: 700;
+  color: #e0b260;
+  margin-bottom: var(--s-4, 1rem);
+  display: block;
+}
+
+.paroco-bio {
+  font-size: var(--t-base, 1rem);
+  line-height: 1.6;
+  color: rgba(255, 236, 215, 0.76);
+}
+
+/* ── 05. DESTAQUE PARA O PÁROCO ATUAL ─────────────────────── */
+.card-paroco.destaque-atual {
+  border: 2px solid var(--cor-destaque, #c58a35);
+  position: relative;
+}
+
+.badge-atual {
+  align-self: flex-start;
+  background: linear-gradient(135deg, var(--cor-destaque, #c58a35), var(--cor-destaque-hov, #dfac5b));
+  color: var(--cor-primaria, #201109);
+  font-size: var(--t-xs, 0.75rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: var(--s-1, 0.25rem) var(--s-3, 0.75rem);
+  border-radius: var(--radius-pill, 9999px);
+  margin-bottom: var(--s-3, 0.75rem);
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 12px rgba(197, 138, 53, 0.3);
+}
+
+/* ── 06. COMPATIBILIDADE COM MODO CLARO (theme-light) ──────── */
+html.theme-light, 
+html.theme-light body {
+  background-color: #f8f3eb !important; /* Cor de reserva sólida */
+  background-image: linear-gradient(180deg, #fbf8f3 0%, #f1e6d8 50%, #e5d4c0 100%) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+}
+
+html.theme-light .historico-header h2 {
+  color: #201109;
+}
+
+html.theme-light .historico-header p {
+  color: #523b2b;
+  font-weight: 500;
+}
+
+html.theme-light .card-paroco {
+  background: #ffffff; 
+  border: 1px solid rgba(197, 138, 53, 0.25);
+  box-shadow: 0 10px 30px rgba(32, 17, 9, 0.08);
+}
+
+html.theme-light .paroco-foto {
+  background-color: #f1e7d8;
+  border-bottom: 1px solid rgba(197, 138, 53, 0.15);
+  color: #7a604d;
+}
+
+html.theme-light .paroco-info h3 {
+  color: #201109;
+}
+
+html.theme-light .periodo-gestao {
+  color: #a36b1d;
+}
+
+html.theme-light .paroco-bio {
+  color: #4a3728;
+}
+
+/* ── 07. RESPONSIVIDADE ────────────────────────────────────── */
+@media (max-width: 768px) {
+  .secao-parocos {
+    padding: var(--s-12, 3rem) 4%;
+  }
+
+  .historico-header h2 {
+    font-size: var(--t-xl, 1.75rem);
+  }
+
+  .grid-parocos {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .paroco-foto {
+    height: 260px;
+  }
+}
+
+
+/* ── 08. FOOTER ────────────────────────────────────── */
+footer, 
+footer *, 
+.footer, 
+.footer *, 
+.copyright, 
+.copyright * {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Garante o alinhamento centralizado e espaçamento limpo */
+footer, .footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: auto;
+}
+
+/* Ajusta a cor do texto para o modo claro e escuro */
+footer p, .footer p, .copyright p {
+  color: #523b2b !important;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+html:not(.theme-light) footer p,
+html:not(.theme-light) .footer p,
+html:not(.theme-light) .copyright p {
+  color: rgba(255, 236, 215, 0.75) !important;
+}
+
+
+/* XX. REMOVE FUNDOS REPETIDOS DE CONTAINERS QUE POSSAM ESTAR CRIANDO FAIXAS */
+.main-content,
+.secao-parocos,
+.historico-container {
+  background: transparent !important;
+  background-image: none !important;
+}
