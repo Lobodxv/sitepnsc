@@ -6,6 +6,8 @@
   <meta name="description" content="Párocos da Paróquia Nossa Senhora do Carmo.">
   <meta name="theme-color" content="#654321">
   <title>Párocos — Paróquia Nossa Senhora do Carmo</title>
+  <link rel="icon" type="image/png" href="img/logoIgrejaPNG.png">
+  <link rel="shortcut icon" type="image/png" href="img/logoIgrejaPNG.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,10 +117,61 @@
       line-height: 1.7;
     }
 
+    .galeria-historica {
+      margin: 2rem 0 2.5rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247, 241, 233, 0.96));
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 2rem;
+      box-shadow: 0 18px 32px rgba(38, 24, 16, 0.05);
+    }
+
+    .galeria-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .galeria-header h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin: 0.6rem 0 0;
+      line-height: 1.2;
+    }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .foto-historica {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid rgba(114, 83, 53, 0.12);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 14px 28px rgba(35, 20, 11, 0.05);
+    }
+
+    .foto-historica img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .foto-historica figcaption {
+      padding: 0.9rem 1rem 1rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+      font-size: 0.98rem;
+    }
+
     @media (max-width: 780px) {
       .paroco-grid { grid-template-columns: 1fr; }
       .paroco-card { grid-template-columns: 1fr; }
       .paroco-photo { min-height: 220px; }
+      .galeria-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -175,6 +228,30 @@
         </div>
       </section>
 
+      <section class="galeria-historica fade-in" aria-labelledby="galeria-historica-titulo">
+        <div class="galeria-header">
+          <span class="paroco-badge">Memória paroquial</span>
+          <h2 id="galeria-historica-titulo">Imagens do passado da paróquia</h2>
+        </div>
+
+        <div class="galeria-grid">
+          <figure class="foto-historica">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80" alt="Antiga celebração na igreja da paróquia">
+            <figcaption>Primeiras celebrações e momentos de fé que marcaram os primeiros anos da comunidade.</figcaption>
+          </figure>
+
+          <figure class="foto-historica">
+            <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=900&q=80" alt="Grupo de fiéis e padres em procissão da paróquia">
+            <figcaption>Procissões, oração e encontros comunitários que fortaleceram a vida paroquial ao longo das décadas.</figcaption>
+          </figure>
+
+          <figure class="foto-historica">
+            <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=900&q=80" alt="Igreja e altar em momento de culto religioso antigo">
+            <figcaption>Memórias de fé, catequese e serviço, preservadas em imagens que contam a história da paróquia.</figcaption>
+          </figure>
+        </div>
+      </section>
+
       <div style="margin-bottom: 1.2rem; text-align: center;">
         <span class="eyebrow eyebrow-dark">Quadro de párocos</span>
       </div>
@@ -182,10 +259,10 @@
       <div class="paroco-grid">
         <article class="paroco-card fade-in">
           <div class="paroco-photo">
-            <img src="img/caminho-da-foto-padre-1.jpg" alt="Padre Joaquim Dalmir">
+            <img src="https://cdn.diocesedecrato.org/wp-content/uploads/2019/05/freidalmir.jpg" alt="Padre Joaquim Dalmir">
           </div>
           <div class="paroco-body">
-            <span class="paroco-badge">Gestão</span>
+            <span class="paroco-badge">Primeiro pároco</span>
             <h3>Pe. Joaquim Dalmir</h3>
             <span class="paroco-period">2004 — 2011</span>
             <p>Foi um importante guia na consolidação da vida pastoral da paróquia, fortalecendo a liturgia, a formação espiritual e o cuidado com o povo.</p>
@@ -194,10 +271,10 @@
 
         <article class="paroco-card fade-in">
           <div class="paroco-photo">
-            <img src="img/caminho-da-foto-padre-2.jpg" alt="Padre Abraão Correia">
+            <img src="https://diocesedequixada.org.br/wp-content/uploads/2019/11/62f9a606-2955-450b-a2fc-f78d270c9c93-1-247x300.jpg" alt="Padre Abraão Correia">
           </div>
           <div class="paroco-body">
-            <span class="paroco-badge">Gestão</span>
+            <span class="paroco-badge">Segundo pároco</span>
             <h3>Pe. Abraão Correia</h3>
             <span class="paroco-period">2011 — 2016</span>
             <p>Inspirou a comunidade por seu cuidado pastoral, valorizando a oração, a catequese e o compromisso com a vida paroquial.</p>
@@ -206,10 +283,10 @@
 
         <article class="paroco-card fade-in">
           <div class="paroco-photo">
-            <img src="img/caminho-da-foto-padre-3.jpg" alt="Padre Firmino Bezerra">
+            <img src="https://diocesedequixada.org.br/wp-content/uploads/2019/11/Pe.-Firmino-250x300.jpg" alt="Padre Firmino Bezerra">
           </div>
           <div class="paroco-body">
-            <span class="paroco-badge">Gestão</span>
+            <span class="paroco-badge">terceiro pároco</span>
             <h3>Pe. Firmino Bezerra</h3>
             <span class="paroco-period">2016 — 2024</span>
             <p>Contribuiu para ampliar a vida litúrgica, os movimentos pastorais e os serviços essenciais para a comunidade local.</p>
@@ -218,7 +295,7 @@
 
         <article class="paroco-card fade-in">
           <div class="paroco-photo">
-            <img src="img/caminho-da-foto-padre-atual.jpg" alt="Pároco atual">
+            <img src="https://diocesedequixada.org.br/wp-content/uploads/2024/01/WhatsApp-Image-2022-07-09-at-17.42.12-1-231x300.jpeg" alt="Pároco atual">
           </div>
           <div class="paroco-body">
             <span class="paroco-badge">Atual</span>

@@ -10,7 +10,7 @@
 ![Bootstrap](https://img.shields.io/badge/Bootstrap_5-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
 ![License](https://img.shields.io/badge/licença-MIT-blue?style=flat-square)
 
-**Site institucional da Paróquia Nossa Senhora do Carmo**, com liturgia diária, agenda de celebrações, escala de corais, doação via PIX e painel administrativo com Supabase Auth.
+**Site institucional da Paróquia Nossa Senhora do Carmo**, com liturgia diária, agenda de celebrações, escala de corais e doação via PIX.
 
 [🌐 Ver Site](#) · [🐛 Reportar Bug](https://github.com/manoellob_/sitepnsc/issues) · [✨ Solicitar Funcionalidade](https://github.com/manoellob_/sitepnsc/issues)
 
@@ -55,33 +55,19 @@ O projeto foi estruturado como um site estático com HTML, CSS e JavaScript, usa
 | 🌓 **Tema Claro/Escuro** | Alternância de tema com preferência salva no navegador |
 | 🗺️ **Mapa** | Google Maps embed com a localização da igreja |
 | 💰 **Doação PIX** | QR Code + chave PIX com botão de cópia e feedback visual |
-| 🔒 **Painel Admin** | Login com Supabase Auth, edição de conteúdo e cadastro de administradores |
-| 📱 **Responsivo** | Layout adaptado para mobile, tablet e desktop |
+|  **Responsivo** | Layout adaptado para mobile, tablet e desktop |
 | ♿ **Acessível** | ARIA labels, foco gerenciado, roles semânticos e redução de animações quando solicitado |
 
 ---
 
-## 🔒 Painel Administrativo
+## � Conteúdo público e integração
 
-O painel administrativo está funcional e organizado para uso restrito.
-
-### O que já funciona
-
-- Login administrativo via Supabase Auth
-- Verificação de sessão e autorização por lista de administradores
-- Edição do conteúdo público compartilhado entre home e página PIX
-- Cadastro de novos administradores pelo próprio painel
-- Atualização de nome de exibição, e-mail e senha no perfil
-- Drawer lateral de perfil com backdrop e animação suave
-- Botão de encerrar sessão flutuante
-- Boas-vindas personalizadas com base no nome de exibição salvo
-- Modal de primeiro acesso para definir o nome de exibição
+O site usa Supabase como base de conteúdo público para itens como aviso paroquial, dados do PIX e informações da home.
 
 ### Estrutura de dados usada
 
-- `site_content`: conteúdo público do site, incluindo aviso paroquial e dados do PIX
-- `admin_users`: allowlist de e-mails com permissão administrativa
-- Supabase Auth: autenticação do usuário administrativo
+- `site_content`: conteúdo público do site, incluindo aviso paroquial, dados do PIX e destaques da home
+- Supabase Edge Function: busca a mídia mais recente do Instagram e entrega um payload seguro para o frontend
 
 ---
 
@@ -103,8 +89,7 @@ O painel administrativo está funcional e organizado para uso restrito.
 
 | Tecnologia | Uso |
 |---|---|
-| [Supabase Auth](https://supabase.com/docs/guides/auth) | Autenticação do painel administrativo |
-| [Supabase Database](https://supabase.com/docs/guides/database) | Conteúdo compartilhado e allowlist de administradores |
+| [Supabase Database](https://supabase.com/docs/guides/database) | Conteúdo compartilhado do site e dados públicos |
 | [API Litúrgica](https://liturgia.up.railway.app/) | Evangelho do dia |
 
 ---
@@ -118,15 +103,11 @@ sitepnsc/
 ├── liturgia.html       # Liturgia diária com leituras do dia
 ├── corais.html         # Escala de corais por mês
 ├── pix.html            # Página de doação via PIX
-├── login.html          # Acesso administrativo via Supabase
-├── admin.html          # Painel administrativo protegido
-│
 ├── CSS/
 │   ├── style.css       # Estilos globais + variáveis + responsividade
 │   ├── theme.css       # Tema claro/escuro e botão de alternância
 │   ├── pix.css         # Estilos específicos da página de doação
-│   ├── login.css       # Estilos da página de login
-│   └── admin.css       # Estilos do painel administrativo
+│   └── admin.css       # Arquivo removido, já que não há painel administrativo ativo
 │
 ├── JS/
 │   ├── main.js         # Leitura do conteúdo público no Supabase
@@ -136,8 +117,7 @@ sitepnsc/
 │   ├── theme-toggle.js  # Alterna entre dark e light com persistência local
 │   ├── animations.js   # Animações de scroll (IntersectionObserver)
 │   ├── supabase-config.js # Configuração pública do Supabase para o cliente
-│   ├── login.js        # Supabase Auth — login/logout
-│   └── admin.js        # Sessão, perfil, conteúdo e cadastro de admins
+│   └── animations.js    # Animações e efeito visual da página
 │
 ├── img/
 │   ├── bannergrande.png        # Banner desktop (carrossel)
@@ -185,20 +165,10 @@ sitepnsc/
 - Chave PIX com botão de cópia e feedback visual
 - Dados dinâmicos vindos do Supabase
 
-### `login.html` — Acesso Administrativo
-- Formulário com Supabase Auth
-- Mensagens de erro amigáveis
-- Fundo dinâmico com identidade visual do site
-- `noindex`/`nofollow` para não aparecer nos buscadores
-
-### `admin.html` — Painel Administrativo
-- Verificação de autenticação com Supabase
-- Editor do aviso paroquial
-- Campo para nome e chave PIX
-- Cadastro de novos administradores
-- Configurações de perfil em drawer lateral
-- Primeiro acesso com modal para definir nome de exibição
-- Logout flutuante
+### `index.html` — Página Inicial
+- Destaques da comunidade com conteúdo editorial estático
+- Chamada para doação via PIX, horários e informações paroquiais
+- Layout responsivo e identidade visual da paróquia
 
 ---
 
