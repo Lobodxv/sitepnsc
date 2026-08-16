@@ -388,13 +388,13 @@ main { padding-top: 0; }
   position: relative;
 }
 .destaque-igreja {
-  background-image: linear-gradient(rgba(27, 17, 12, 0.15), rgba(27, 17, 12, 0.15)), url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=900&q=80');
+  background-image: linear-gradient(rgba(27, 17, 12, 0.15), rgba(27, 17, 12, 0.15)), url('../img/contents/quaresma.png');
 }
 .destaque-juvenil {
-  background-image: linear-gradient(rgba(27, 17, 12, 0.15), rgba(27, 17, 12, 0.15)), url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80');
+  background-image: linear-gradient(rgba(27, 17, 12, 0.15), rgba(27, 17, 12, 0.15)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXk5v8jKXTjwgs7XycBds62wHmws9IjGouQ5F5PFREJHnO2TvKdxdYWTaK&s=10');
 }
 .destaque-caridade {
-  background-image: linear-gradient(rgba(27, 17, 12, 0.15), rgba(27, 17, 12, 0.15)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80');
+  background-image: linear-gradient(rgba(27, 17, 12, 0.15), rgba(27, 17, 12, 0.15)), url('../img/contents/festejo.jpg');
 }
 .destaque-body {
   padding: 1.3rem 1.2rem 1.5rem;
@@ -424,7 +424,7 @@ main { padding-top: 0; }
   font-size: 0.98rem;
 }
 .destaque-instagram-placeholder {
-  background-image: linear-gradient(rgba(26, 17, 10, 0.2), rgba(26, 17, 10, 0.2)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80');
+  background-image: linear-gradient(rgba(26, 17, 10, 0.2), rgba(26, 17, 10, 0.2)), url('../img/contents/quaresma.png');
 }
 .instagram-link {
   display: inline-flex;
