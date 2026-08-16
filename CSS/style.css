@@ -497,6 +497,9 @@ main { padding-top: 0; }
   background: linear-gradient(180deg, #f7f1ea 0%, #fff 100%);
 }
 .galeria-home-grid {
+  position: relative;
+}
+.galeria-home-wrapper {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
@@ -727,16 +730,16 @@ main { padding-top: 0; }
   color: var(--secondary-soft);
 }
 .liturgia-content {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.42s ease, opacity 0.32s ease;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.42s ease, opacity 0.32s ease;
   opacity: 0;
 }
 .liturgia-content-inner {
-  overflow: hidden;
+  overflow: visible;
 }
 .liturgia-card.is-open .liturgia-content {
-  grid-template-rows: 1fr;
+  max-height: 1200px;
   opacity: 1;
 }
 .liturgia-card.is-open .liturgia-text {
@@ -1267,6 +1270,19 @@ main { padding-top: 0; }
 }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+.galeria-nav {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(41, 24, 13, 0.76);
+  color: #fff;
+  cursor: pointer;
+}
+
 @media (max-width: 980px) {
   .agenda-grid, .pastoral-grid, .liturgia-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .contato-wrap, .donate-wrap, .hero-grid { grid-template-columns: 1fr; }
@@ -1406,6 +1422,61 @@ main { padding-top: 0; }
   .section-heading h2 {
     font-size: clamp(1.8rem, 8vw, 2.5rem);
   }
+  .destaques-grid,
+  .noticias-grid,
+  .participar-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .destaque-principal {
+    grid-template-rows: 190px 1fr;
+  }
+  .destaque-thumb,
+  .noticia-card img,
+  .galeria-item img {
+    height: 200px;
+  }
+  .participar-card h3,
+  .participar-card p,
+  .destaque-body h3,
+  .destaque-body p,
+  .noticia-body h3,
+  .noticia-body p {
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+  .galeria-home-grid {
+    overflow: hidden;
+    padding: 0 0.2rem;
+  }
+  .galeria-home-grid.is-mobile-carousel .galeria-home-wrapper {
+    display: flex;
+    gap: 0;
+    transition-timing-function: linear;
+  }
+  .galeria-home-grid.is-mobile-carousel .galeria-item {
+    flex: 0 0 100%;
+    width: 100%;
+    margin: 0;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .galeria-home-grid.is-mobile-carousel .galeria-item figcaption {
+    min-height: 86px;
+  }
+  .galeria-home-grid.is-mobile-carousel .galeria-nav {
+    display: inline-flex;
+    position: absolute;
+    top: 44%;
+    transform: translateY(-50%);
+    z-index: 6;
+  }
+  .galeria-home-grid.is-mobile-carousel .galeria-nav.prev {
+    left: 0.55rem;
+  }
+  .galeria-home-grid.is-mobile-carousel .galeria-nav.next {
+    right: 0.55rem;
+  }
   .liturgia-header {
     flex-direction: column;
     align-items: flex-start;
@@ -1418,7 +1489,7 @@ main { padding-top: 0; }
     padding: 0.8rem;
   }
   .liturgia-card {
-    min-height: 100%;
+    min-height: 0;
   }
   .liturgia-toggle {
     padding: 0.9rem 0.8rem;
@@ -1496,6 +1567,34 @@ main { padding-top: 0; }
   .footer-brand .brand-mark {
     width: 54px;
     height: 54px;
+  }
+  .privacy-banner {
+    left: 0.65rem;
+    right: 0.65rem;
+    bottom: 0.7rem;
+  }
+  .privacy-banner__content {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    padding: 1rem;
+    text-align: center;
+  }
+  .privacy-banner__text {
+    text-align: center;
+  }
+  .privacy-banner__text p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+  .privacy-banner__actions {
+    width: 100%;
+    justify-content: center;
+    gap: 0.55rem;
+  }
+  .privacy-banner__actions button,
+  .privacy-banner__actions a {
+    flex: 1 1 44%;
+    min-width: 120px;
   }
   .btn { width: 100%; }
 }

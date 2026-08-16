@@ -186,26 +186,35 @@
           <h2>Memórias que celebram a fé em nosso bairro</h2>
         </div>
 
-        <div class="galeria-home-grid">
-          <figure class="galeria-item fade-in">
+        <div class="galeria-home-grid" id="galeria-carousel" aria-label="Carrossel da galeria da comunidade">
+          <div class="galeria-home-wrapper swiper-wrapper">
+          <figure class="galeria-item fade-in swiper-slide">
             <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80" alt="Missa em família da paróquia">
             <figcaption>Momento de celebração e oração comunitária.</figcaption>
           </figure>
 
-          <figure class="galeria-item fade-in">
+          <figure class="galeria-item fade-in swiper-slide">
             <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=900&q=80" alt="Procissão da paróquia">
             <figcaption>Procissões e encontros que unem a comunidade na fé.</figcaption>
           </figure>
 
-          <figure class="galeria-item fade-in">
+          <figure class="galeria-item fade-in swiper-slide">
             <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80" alt="Ações de caridade da paróquia">
             <figcaption>Serviço e solidariedade em favor de todos.</figcaption>
           </figure>
 
-          <figure class="galeria-item fade-in">
+          <figure class="galeria-item fade-in swiper-slide">
             <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=900&q=80" alt="Celebração na igreja da paróquia">
             <figcaption>Liturgia e acolhimento em cada domingo.</figcaption>
           </figure>
+          </div>
+
+          <button class="galeria-nav prev" type="button" aria-label="Imagem anterior">
+            <i class="bi bi-chevron-left" aria-hidden="true"></i>
+          </button>
+          <button class="galeria-nav next" type="button" aria-label="Próxima imagem">
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
     </section>
@@ -679,8 +688,12 @@
       card.classList.toggle('is-open', isOpen);
       const button = card.querySelector('.liturgia-toggle');
       const hint = card.querySelector('.liturgia-hint');
+      const content = card.querySelector('.liturgia-content');
       if (button) button.setAttribute('aria-expanded', String(isOpen));
       if (hint) hint.textContent = isOpen ? 'Clique para esconder' : 'Clique para ver';
+      if (content) {
+        content.style.maxHeight = isOpen ? `${content.scrollHeight}px` : '0px';
+      }
     };
 
     document.querySelectorAll('.liturgia-card').forEach((card) => {
@@ -707,6 +720,100 @@
     window.addEventListener('scroll', () => {
       resetLiturgiaCardsOnScroll();
     }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      document.querySelectorAll('.liturgia-card.is-open').forEach((card) => {
+        const content = card.querySelector('.liturgia-content');
+        if (content) {
+          content.style.maxHeight = `${content.scrollHeight}px`;
+        }
+      });
+    });
+
+    const initGalleryCarousel = () => {
+      const galleryRoot = document.getElementById('galeria-carousel');
+      if (!galleryRoot || typeof Swiper === 'undefined') return;
+
+      const isMobile = window.matchMedia('(max-width: 780px)').matches;
+
+      if (!isMobile) {
+        if (galleryRoot._carouselCleanup) {
+          galleryRoot._carouselCleanup();
+          galleryRoot._carouselCleanup = null;
+        }
+        if (galleryRoot._swiperInstance) {
+          galleryRoot._swiperInstance.destroy(true, true);
+          galleryRoot._swiperInstance = null;
+        }
+        galleryRoot.classList.remove('is-mobile-carousel');
+        return;
+      }
+
+      if (galleryRoot._swiperInstance) return;
+
+      galleryRoot.classList.add('is-mobile-carousel');
+
+      const swiper = new Swiper(galleryRoot, {
+        slidesPerView: 1,
+        spaceBetween: 12,
+        loop: true,
+        speed: 2200,
+        grabCursor: true,
+        autoplay: {
+          delay: 1,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true
+        },
+        navigation: {
+          nextEl: '.galeria-nav.next',
+          prevEl: '.galeria-nav.prev'
+        }
+      });
+
+      galleryRoot._swiperInstance = swiper;
+
+      let idleTimer = null;
+      const isGalleryInView = () => {
+        const rect = galleryRoot.getBoundingClientRect();
+        return rect.top < window.innerHeight * 0.92 && rect.bottom > window.innerHeight * 0.08;
+      };
+
+      const handleScrollActivity = () => {
+        if (!isGalleryInView()) return;
+        swiper.autoplay.start();
+        window.clearTimeout(idleTimer);
+        idleTimer = window.setTimeout(() => {
+          if (isGalleryInView()) {
+            swiper.autoplay.stop();
+          }
+        }, 220);
+      };
+
+      window.addEventListener('scroll', handleScrollActivity, { passive: true });
+      window.addEventListener('touchmove', handleScrollActivity, { passive: true });
+
+      swiper.on('touchStart', () => swiper.autoplay.stop());
+      swiper.on('touchEnd', () => {
+        if (isGalleryInView()) {
+          swiper.autoplay.start();
+        }
+      });
+
+      window.setTimeout(() => {
+        if (isGalleryInView()) {
+          swiper.autoplay.stop();
+        }
+      }, 300);
+
+      galleryRoot._carouselCleanup = () => {
+        window.removeEventListener('scroll', handleScrollActivity);
+        window.removeEventListener('touchmove', handleScrollActivity);
+        window.clearTimeout(idleTimer);
+      };
+    };
+
+    initGalleryCarousel();
+    window.addEventListener('resize', initGalleryCarousel);
 
     fillLiturgia();
   </script>
