@@ -171,7 +171,13 @@
     }
 
     @media (max-width: 1100px) {
+      .foto-historica {
+        width: 100%;
+      }
       .galeria-grid {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
         grid-template-columns: 1fr;
       }
 
@@ -181,9 +187,12 @@
     }
 
     @media (max-width: 780px) {
-      .paroco-grid { grid-template-columns: 1fr; }
+      .paroco-grid {
+        grid-template-columns: 18rem;
+        justify-content: center;
+      }
       .paroco-card { grid-template-columns: 1fr; }
-      .paroco-photo { min-height: 210px; }
+      .paroco-photo { min-height: 210px; max-height: 300px;}
       .galeria-grid { grid-template-columns: 1fr; }
       .foto-historica img { height: 260px; }
     }
@@ -238,6 +247,16 @@
 
           <p style="margin: 0; color: var(--text-soft); line-height: 1.8; font-size: 1.04rem;">
             Com a presença de sacerdotes dedicados, a comunidade cresceu espiritualmente, fortalecendo a vida litúrgica, os movimentos pastorais, os grupos de oração e a atuação na caridade. A paróquia continua sendo um lugar de encontro entre a fé, a família e a missão de anunciar o Evangelho em cada gesto de amor e solidariedade.
+          </p>
+
+          <p style="margin: 0; color: var(--text-soft); line-height: 1.8; font-size: 1.04rem;">
+            Por muitas décadas, a comunidade funcionou como uma capela dependente, recebendo visitas periódicas de sacerdotes de paróquias vizinhas para a celebração de batizados, casamentos e missas.
+            <b><br><br>A Elevação:</b> O crescimento demográfico e o fervor pastoral motivaram a Diocese de Quixadá a emancipar a comunidade. A Paróquia foi oficialmente instalada em 21 de novembro de 2005.
+          </p>
+
+          <p style="margin: 0; color: var(--text-soft); line-height: 1.8; font-size: 1.04rem;">
+            Embora a estrutura administrativa paroquial tenha sido criada apenas em 2005, a história da manifestação e devoção pública à Virgem do Carmo na comunidade é centenária.
+             No mês de julho de 2026, a comunidade atingiu o ápice de sua história ao celebrar o <b>Jubileu de 125 anos de Fé, Amor e Devoção</b> à Mãe de Deus, a Senhora do Carmo, que tem sido a guardiã da fé e da esperança de toda a comunidade.
           </p>
         </div>
       </section>

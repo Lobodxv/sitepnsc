@@ -1,240 +1,122 @@
-# ✦ PNSC — Site Oficial da Paróquia Nossa Senhora do Carmo
+# PNSC - Site Oficial da Paroquia Nossa Senhora do Carmo
 
-<div align="center">
+Site institucional da Paroquia Nossa Senhora do Carmo, com foco em comunicacao paroquial, horarios, liturgia diaria, noticias, galeria, contato e doacao via PIX.
 
-![Status](https://img.shields.io/badge/status-produção-brightgreen?style=flat-square)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap_5-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
-![License](https://img.shields.io/badge/licença-MIT-blue?style=flat-square)
+## Visao Geral
 
-**Site institucional da Paróquia Nossa Senhora do Carmo**, com liturgia diária, agenda de celebrações, escala de corais e doação via PIX.
+O projeto e um site estatico em HTML, CSS e JavaScript, com algumas integracoes externas para conteudo dinamico:
 
-[🌐 Ver Site](#) · [🐛 Reportar Bug](https://github.com/manoellob_/sitepnsc/issues) · [✨ Solicitar Funcionalidade](https://github.com/manoellob_/sitepnsc/issues)
+1. API liturgica para leituras diarias.
+2. Supabase para conteudo publico (ex.: aviso e dados de PIX).
+3. Google Maps embed para localizacao.
 
-</div>
+## Funcionalidades
 
----
+1. Home com secoes institucionais, destaques, noticias e galeria.
+2. Liturgia diaria com cards expansivos.
+3. Agenda de celebracoes e informacoes de pastorais.
+4. Doacao via PIX com botao para copiar chave.
+5. Botao flutuante de WhatsApp.
+6. Banner de privacidade com aceite local (localStorage).
+7. Layout responsivo otimizado para mobile, tablet e desktop.
 
-## 📋 Índice
-
-- [Sobre o Projeto](#-sobre-o-projeto)
-- [Funcionalidades Atuais](#-funcionalidades-atuais)
-- [Painel Administrativo](#-painel-administrativo)
-- [Tecnologias](#-tecnologias)
-- [Estrutura de Pastas](#-estrutura-de-pastas)
-- [Configuração e Instalação](#-configuração-e-instalação)
-- [Páginas](#-páginas)
-- [Segurança e Dados Sensíveis](#-segurança-e-dados-sensíveis)
-- [Responsividade](#-responsividade)
-- [Acessibilidade](#-acessibilidade)
-- [Contribuindo](#-contribuindo)
-- [Desenvolvedor](#-desenvolvedor)
-- [Licença](#-licença)
-
----
-
-## 📖 Sobre o Projeto
-
-O site da **Paróquia Nossa Senhora do Carmo** é uma plataforma web institucional desenvolvida para apresentar informações da comunidade, disponibilizar a liturgia diária, organizar a escala de corais, exibir conteúdo litúrgico em tempo real e permitir a administração de conteúdo do site com autenticação.
-
-O projeto foi estruturado como um site estático com HTML, CSS e JavaScript, usando Supabase para autenticação e armazenamento do conteúdo compartilhado entre as páginas públicas e o painel administrativo.
-
----
-
-## ✅ Funcionalidades Atuais
-
-| Funcionalidade | Descrição |
-|---|---|
-| 📅 **Agenda Litúrgica** | Cards com horários de missas, terços e adoração por dia da semana |
-| 📖 **Liturgia Diária** | Página dedicada às leituras do dia, com visual premium e conteúdo atualizado automaticamente |
-| 🎵 **Escala de Corais** | Cálculo automático por domingo do mês; navegação entre meses |
-| 📖 **Evangelho do Dia** | Barra com o texto litúrgico carregado de API externa |
-| 🌓 **Tema Claro/Escuro** | Alternância de tema com preferência salva no navegador |
-| 🗺️ **Mapa** | Google Maps embed com a localização da igreja |
-| 💰 **Doação PIX** | QR Code + chave PIX com botão de cópia e feedback visual |
-|  **Responsivo** | Layout adaptado para mobile, tablet e desktop |
-| ♿ **Acessível** | ARIA labels, foco gerenciado, roles semânticos e redução de animações quando solicitado |
-
----
-
-## � Conteúdo público e integração
-
-O site usa Supabase como base de conteúdo público para itens como aviso paroquial, dados do PIX e informações da home.
-
-### Estrutura de dados usada
-
-- `site_content`: conteúdo público do site, incluindo aviso paroquial, dados do PIX e destaques da home
-- Supabase Edge Function: busca a mídia mais recente do Instagram e entrega um payload seguro para o frontend
-
----
-
-## 🛠 Tecnologias
-
-### Frontend
-
-| Tecnologia | Uso |
-|---|---|
-| [HTML5](https://developer.mozilla.org/pt-BR/docs/Web/HTML) | Estrutura semântica das páginas |
-| [CSS3](https://developer.mozilla.org/pt-BR/docs/Web/CSS) | Estilo, responsividade, animações e temas |
-| [JavaScript (ES6+)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) | Lógica, interatividade e módulos |
-| [Bootstrap](https://getbootstrap.com/) | Grid, utilitários e componentes pontuais |
-| [Bootstrap Icons](https://icons.getbootstrap.com/) | Ícones |
-| [Swiper.js](https://swiperjs.com/) | Carrossel dos cards de celebrações |
-| [Google Fonts](https://fonts.google.com/) | Playfair Display · Montserrat |
-
-### Integrações
-
-| Tecnologia | Uso |
-|---|---|
-| [Supabase Database](https://supabase.com/docs/guides/database) | Conteúdo compartilhado do site e dados públicos |
-| [API Litúrgica](https://liturgia.up.railway.app/) | Evangelho do dia |
-
----
-
-## 📁 Estrutura de Pastas
-
-```
-sitepnsc/
-│
-├── index.html          # Página inicial (hero, celebrações, PIX, endereço)
-├── liturgia.html       # Liturgia diária com leituras do dia
-├── corais.html         # Escala de corais por mês
-├── pix.html            # Página de doação via PIX
-├── CSS/
-│   ├── style.css       # Estilos globais + variáveis + responsividade
-│   ├── theme.css       # Tema claro/escuro e botão de alternância
-│   ├── pix.css         # Estilos específicos da página de doação
-│   └── admin.css       # Arquivo removido, já que não há painel administrativo ativo
-│
-├── JS/
-│   ├── main.js         # Leitura do conteúdo público no Supabase
-│   ├── hamburger.js    # Menu hambúrguer mobile (abre/fecha/Escape)
-│   ├── evangelho.js    # Carrega o Evangelho do dia via API
-│   ├── liturgiadiaria.js # Carrega e formata o conteúdo da liturgia diária
-│   ├── theme-toggle.js  # Alterna entre dark e light com persistência local
-│   ├── animations.js   # Animações de scroll (IntersectionObserver)
-│   ├── supabase-config.js # Configuração pública do Supabase para o cliente
-│   └── animations.js    # Animações e efeito visual da página
-│
-├── img/
-│   ├── bannergrande.png        # Banner desktop (carrossel)
-│   ├── bannermobile.png        # Banner mobile (carrossel, srcset)
-│   ├── bannerpequeno.png       # Variante do banner
-│   ├── imgaerea1.jpeg          # Foto aérea 1
-│   ├── imgaerea2.jpeg          # Foto aérea 2 (desktop)
-│   ├── imgaerea2-mob.jpeg      # Foto aérea 2 (mobile)
-│   ├── logoIgrejaPNG.png       # Logo da Igreja
-│   └── qrcode.jpeg             # QR Code para doação PIX
-│
-├── README.md
-└── LICENSE
-```
-
----
-
-## 📄 Páginas
-
-### `index.html` — Página Inicial
-- Header fixo com navegação responsiva
-- Barra com Evangelho do Dia carregado por API externa
-- Carrossel Bootstrap com imagens responsivas (`srcset`)
-- Seção de celebrações com Swiper.js
-- Seção de doação com acesso à página PIX
-- Seção de endereço com Google Maps embed
-- Footer com informações e crédito do desenvolvedor
-- Botão WhatsApp flutuante
-
-### `liturgia.html` — Liturgia Diária
-- Leituras do dia organizadas em cards com visual premium
-- Conteúdo carregado automaticamente ao abrir a página
-- Layout dedicado para leitura e oração
-- Compatível com os temas dark e light do site
-
-### `corais.html` — Escala de Corais
-- Destaque do próximo coral calculado automaticamente
-- Tabela mensal de domingos com coral responsável
-- Navegação entre meses
-- Linha destacada para o próximo domingo
-
-### `pix.html` — Doação via PIX
-- Layout de dois painéis com área contextual e área de PIX
-- QR Code para escaneamento
-- Chave PIX com botão de cópia e feedback visual
-- Dados dinâmicos vindos do Supabase
-
-### `index.html` — Página Inicial
-- Destaques da comunidade com conteúdo editorial estático
-- Chamada para doação via PIX, horários e informações paroquiais
-- Layout responsivo e identidade visual da paróquia
-
----
-
-## 📱 Responsividade
-
-O site foi ajustado com foco em mobile e telas pequenas.
-
-| Dispositivo | Comportamento |
-|---|---|
-| Mobile pequeno | Cards empilhados, sidebar adaptada, drawers compactos, botões em largura total |
-| Mobile | Espaçamentos reduzidos, tipografia compacta e overlays mais leves |
-| Tablet | Layout intermediário com melhor aproveitamento do espaço |
-| Desktop | Layout completo com navegação lateral e cards em largura confortável |
-
----
-
-## ♿ Acessibilidade
-
-- **ARIA labels** em botões e regiões importantes
-- **Roles semânticos**: `main`, `nav`, `aside`, `region`, `alert`, `dialog`
-- **Foco gerenciado** no menu e nos overlays do painel
-- **`aria-expanded`** e estados visuais atualizados quando aplicável
-- **`prefers-reduced-motion`** respeitado nas animações
-- **Alt texts** descritivos nas imagens
-- **`lang="pt-br"`** no `<html>` para leitores de tela
-- **`autocomplete`** nos campos de formulário
-- **Validação manual** com mensagens claras e acessíveis
-- **Tema alternável** entre dark e light com preferência persistida
-
----
-
-### Convenção de commits
+## Estrutura do Projeto
 
 ```text
-feat:     nova funcionalidade
-fix:      correção de bug
-style:    alterações visuais/CSS
-refactor: refatoração sem mudança de comportamento
-docs:     alterações na documentação
-chore:    tarefas de manutenção
+sitepnsc/
+	index.html
+	parocos.html
+	liturgia.html
+	corais.html
+	pix.html
+	privacidade.html
+	robots.txt
+	sitemap.xml
+	CSS/
+		style.css
+		theme.css
+		parocos.css
+		pix.css
+	JS/
+		animations.js
+		evangelho.js
+		hamburger.js
+		liturgiadiaria.js
+		main.js
+		privacy-consent.js
+		supabase-config.js
+		theme-toggle.js
+	img/
+		logoIgrejaPNG.png
+		qrcode.jpeg
+		imgaerea1.jpeg
+		contents/
+			IMG_2848.png
 ```
 
----
+## Como Rodar Localmente
 
-## 👨‍💻 Desenvolvedor
+Como e um site estatico, basta abrir o arquivo index.html no navegador.
 
-<div align="center">
+Para desenvolvimento com recarga mais confiavel (recomendado):
 
-**Manoel Lobo**
+1. Use uma extensao como Live Server no VS Code.
+2. Ou rode um servidor HTTP simples na pasta do projeto.
 
-[![Instagram](https://img.shields.io/badge/@manoellob__-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://instagram.com/manoellob_)
+## Guia Rapido: Alterar Imagens dos Cards de Destaques
 
-*Desenvolvido com dedicação para a comunidade da Paróquia Nossa Senhora do Carmo.*
+As imagens da secao Destaques Paroquiais na home sao definidas no CSS com background-image.
 
-</div>
+Arquivos principais:
 
----
+1. Estrutura dos cards: index.html
+2. Imagens dos cards: CSS/style.css
 
-## 📄 Licença
+Classes usadas atualmente na home:
 
-Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+1. .destaque-instagram-placeholder
+2. .destaque-juvenil
+3. .destaque-caridade
 
----
+Exemplo de uso com imagem local:
 
-<div align="center">
+```css
+.destaque-instagram-placeholder {
+	background-image:
+		linear-gradient(rgba(26, 17, 10, 0.2), rgba(26, 17, 10, 0.2)),
+		url('../img/contents/IMG_2848.png');
+}
+```
 
-✦ *Feito com fé e código para a comunidade paroquial* ✦
+Importante:
 
-</div>
+1. Em arquivos dentro de CSS/, o caminho para img/ deve subir um nivel: ../img/...
+2. Evite usar barra invertida no CSS (\\). Use sempre barra normal (/).
+3. Se a imagem nao atualizar, faca hard refresh no navegador (Ctrl+F5).
+
+## Responsividade
+
+O layout foi ajustado para manter legibilidade e boa navegacao em telas menores.
+
+Exemplos de ajustes recentes:
+
+1. Cards de liturgia com abrir/fechar consistente no mobile.
+2. Secoes de cards (destaques, noticias e participe) em coluna unica no mobile.
+3. Galeria da comunidade com carrossel no mobile, swipe e botoes laterais.
+4. Banner de privacidade reorganizado para texto acima e acoes abaixo em telas pequenas.
+
+## Acessibilidade e UX
+
+1. Uso de estrutura semantica nas paginas principais.
+2. Labels e atributos ARIA em componentes interativos.
+3. Respeito a prefers-reduced-motion em animacoes.
+4. Contraste e hierarquia visual orientados para leitura em mobile.
+
+## Integracoes
+
+1. API liturgica: https://liturgia.up.railway.app/
+2. Supabase (configurado via JS/supabase-config.js)
+
+## Licenca
+
+Este projeto esta sob a licenca MIT. Consulte o arquivo LICENSE.
