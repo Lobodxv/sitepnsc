@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://paroquiapnsc.vercel.app/sitemap.xml
+Sitemap: https://sitepnsc.vercel.app/sitemap.xml
