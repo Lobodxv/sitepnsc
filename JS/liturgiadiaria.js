@@ -17,15 +17,28 @@ document.addEventListener("DOMContentLoaded", function () {
             // Primeira Leitura
             if (data.primeiraLeitura) {
                 // Mantém o capítulo e versículos de referência intactos no título (h3)
-                atualizarElemento(".card-liturgia .liturgia-item:nth-child(1) h3", data.primeiraLeitura.referencia);
+                atualizarElemento("#primeira-leitura-item h3, .card-liturgia .liturgia-item:nth-child(1) h3", data.primeiraLeitura.referencia);
                 // Limpa os números apenas de dentro do texto corrido
-                atualizarTextoLeitura(".card-liturgia .liturgia-item:nth-child(1) .leitura-texto", data.primeiraLeitura.texto);
+                atualizarTextoLeitura("#primeira-leitura-item .leitura-texto, .card-liturgia .liturgia-item:nth-child(1) .leitura-texto", data.primeiraLeitura.texto);
+            }
+
+            const segundaLeitura = data.segundaLeitura || data.segunda_leitura;
+            const segundaItem = document.getElementById("segunda-leitura-item");
+            if (segundaItem) {
+                if (segundaLeitura && (segundaLeitura.referencia || segundaLeitura.texto)) {
+                    const titulo = segundaItem.querySelector("h3");
+                    if (titulo) titulo.innerText = segundaLeitura.referencia || "Segunda Leitura";
+                    atualizarTextoLeitura("#segunda-leitura-item .leitura-texto", segundaLeitura.texto);
+                    segundaItem.hidden = false;
+                } else {
+                    segundaItem.hidden = true;
+                }
             }
 
             // Salmo Responsorial
             if (data.salmo) {
-                atualizarElemento(".card-liturgia .liturgia-item:nth-child(2) h3", data.salmo.referencia);
-                const campoSalmo = document.querySelector(".card-liturgia .liturgia-item:nth-child(2) .leitura-texto");
+                atualizarElemento("#salmo-item h3", data.salmo.referencia);
+                const campoSalmo = document.querySelector("#salmo-item .leitura-texto");
                 if (campoSalmo) {
                     const refrao = data.salmo.refrao ? `<strong>Refrão: ${data.salmo.refrao}</strong><br><br>` : '';
                     campoSalmo.innerHTML = `${refrao}${data.salmo.texto.replace(/\n/g, '<br>')}`;
@@ -35,14 +48,14 @@ document.addEventListener("DOMContentLoaded", function () {
             // Evangelho
             if (data.evangelho) {
                 // Mantém o capítulo e referência intactos no título (h3)
-                atualizarElemento(".card-liturgia .liturgia-item:nth-child(3) h3", `Evangelho (${data.evangelho.referencia})`);
+                atualizarElemento("#evangelho-item h3", `Evangelho (${data.evangelho.referencia})`);
                 // Limpa os números apenas de dentro do texto do evangelho
-                atualizarTextoLeitura(".card-liturgia .liturgia-item:nth-child(3) .leitura-texto", data.evangelho.texto);
+                atualizarTextoLeitura("#evangelho-item .leitura-texto", data.evangelho.texto);
             }
         })
         .catch(error => {
             console.error("Erro ao buscar liturgia:", error);
-            const containerLiturgia = document.querySelector(".card-liturgia .liturgia-conteudo");
+            const containerLiturgia = document.querySelector(".card-liturgia .liturgia-conteudo, .liturgia-container");
             if (containerLiturgia) {
                 containerLiturgia.innerHTML = "<p class='leitura-texto'>Liturgia indisponível no momento. Por favor, tente mais tarde.</p>";
             }

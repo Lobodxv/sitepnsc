@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Liturgia diária da Paróquia Nossa Senhora do Carmo.">
-  <meta name="theme-color" content="#654321">
+  <meta name="theme-color" content="#3f281d">
   <title>Liturgia Diária — PNSC</title>
   <link rel="icon" type="image/png" href="img/logoIgrejaPNG.png">
   <link rel="shortcut icon" type="image/png" href="img/logoIgrejaPNG.png">
@@ -27,27 +27,63 @@
     .liturgia-page { display: grid; gap: 1.8rem; }
 
     .liturgia-page .section-heading {
+      padding: clamp(2rem, 5vw, 3.8rem);
+      border: 1px solid rgba(184, 137, 60, 0.25);
+      border-radius: 30px;
+      background:
+        linear-gradient(115deg, rgba(63, 40, 29, 0.97), rgba(90, 57, 40, 0.92)),
+        url("img/imgaerea1.jpeg") center / cover;
+      box-shadow: 0 22px 44px rgba(49, 32, 22, 0.14);
       margin-bottom: 0;
+    }
+
+    .liturgia-page .section-heading h2 {
+      color: #fff;
+    }
+
+    .liturgia-page .section-heading .eyebrow {
+      color: #f0c875;
+    }
+
+    .liturgia-page .liturgia-subtitulo {
+      color: rgba(255, 255, 255, 0.82);
     }
 
     .liturgia-container {
       display: grid;
-      gap: 1.3rem;
+      gap: 1.1rem;
     }
 
     .liturgia-card-page {
+      position: relative;
+      overflow: hidden;
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 28px;
       padding: 1.6rem;
-      box-shadow: 0 18px 32px rgba(38, 24, 16, 0.05);
+      box-shadow: 0 18px 32px rgba(49, 32, 22, 0.05);
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .liturgia-card-page::before {
+      content: "";
+      display: block;
+      width: 3rem;
+      height: 0.28rem;
+      margin-bottom: 1.2rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--secondary), #e2bd72);
+    }
+
+    .liturgia-card-page:last-child {
+      border-color: rgba(184, 137, 60, 0.5);
+      background: linear-gradient(145deg, #fff, #f8f0e5);
     }
 
     .liturgia-card-page:hover {
       transform: translateY(-6px);
       border-color: rgba(212, 175, 55, 0.5);
-      box-shadow: 0 22px 42px rgba(38, 24, 16, 0.08);
+      box-shadow: 0 22px 42px rgba(49, 32, 22, 0.08);
     }
 
     .liturgia-card-page .tag {
@@ -73,6 +109,13 @@
     .liturgia-card-page strong {
       color: var(--primary);
     }
+
+    @media (max-width: 700px) {
+      .liturgia-page .section-heading {
+        padding: 1.8rem 1.35rem;
+        border-radius: 22px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -96,8 +139,8 @@
           <li><a href="index.html">Início</a></li>
           <li><a href="parocos.html">Párocos</a></li>
           <li><a href="liturgia.html">Liturgia</a></li>
-          <li><a href="corais.html">Corais</a></li>
-          <li><a href="pix.html">Doação</a></li>
+          <li><a href="index.html#pastorais">Pastorais</a></li>
+          <li><a href="index.html#doacao">Doação</a></li>
         </ul>
       </nav>
     </div>
@@ -108,25 +151,32 @@
       <div class="section-heading fade-in">
         <span class="eyebrow eyebrow-dark">Liturgia diária</span>
         <h2>Evangelho e leitura do dia</h2>
+        <p class="liturgia-subtitulo">Carregando a data e o conteúdo litúrgico de hoje.</p>
       </div>
 
       <div class="liturgia-container fade-in">
-        <article class="liturgia-card-page">
+        <article class="liturgia-card-page" id="primeira-leitura-item">
           <span class="tag">Primeira Leitura</span>
           <h3>Livro de Isaías</h3>
-          <p><strong>Is 58,6-11</strong> — “O jejum que eu escolhi é este: soltar as cadeias injustas... Dar pão ao faminto, acolher os pobres...”</p>
+          <p><strong>Is 58,6-11</strong> — <span class="leitura-texto">“O jejum que eu escolhi é este: soltar as cadeias injustas... Dar pão ao faminto, acolher os pobres...”</span></p>
         </article>
 
-        <article class="liturgia-card-page">
+        <article class="liturgia-card-page" id="segunda-leitura-item" hidden>
+          <span class="tag">Segunda Leitura</span>
+          <h3>Segunda Leitura</h3>
+          <p class="leitura-texto"></p>
+        </article>
+
+        <article class="liturgia-card-page" id="salmo-item">
           <span class="tag">Salmo</span>
           <h3>Salmo 116</h3>
-          <p><strong>Sl 116,1-2.12-19</strong> — “Eu amo o Senhor, porque escutou minha voz; em meu desespero, ele me ouviu.”</p>
+          <p><strong>Sl 116,1-2.12-19</strong> — <span class="leitura-texto">“Eu amo o Senhor, porque escutou minha voz; em meu desespero, ele me ouviu.”</span></p>
         </article>
 
-        <article class="liturgia-card-page">
+        <article class="liturgia-card-page" id="evangelho-item">
           <span class="tag">Evangelho</span>
           <h3>Mateus 9,14-15</h3>
-          <p><strong>Mt 9,14-15</strong> — “Os discípulos de João vieram perguntar a Jesus: por que nós e os fariseus jejuamos, mas teus discípulos não jejuam?”</p>
+          <p><strong>Mt 9,14-15</strong> — <span class="leitura-texto">“Os discípulos de João vieram perguntar a Jesus: por que nós e os fariseus jejuamos, mas teus discípulos não jejuam?”</span></p>
         </article>
       </div>
     </div>
@@ -147,7 +197,7 @@
         <ul>
           <li><a href="index.html">Início</a></li>
           <li><a href="parocos.html">Párocos</a></li>
-          <li><a href="corais.html">Corais</a></li>
+          <li><a href="index.html#pastorais">Pastorais</a></li>
         </ul>
       </div>
       <div>
@@ -164,157 +214,9 @@
     </div>
   </footer>
 
+  <script src="JS/site-nav.js"></script>
   <script src="JS/hamburger.js"></script>
   <script src="JS/animations.js"></script>
-</body>
-</html>
-      align-items: center;
-      gap: var(--s-2);
-      padding: var(--s-2) var(--s-4);
-      border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: rgba(255, 236, 215, 0.72);
-      font-size: var(--t-sm);
-    }
-
-    .liturgia-nota i {
-      color: var(--cor-destaque);
-    }
-
-    /* Responsividade */
-    @media (max-width: 992px) {
-      .liturgia-header {
-        margin-bottom: var(--s-8);
-      }
-
-      .liturgia-titulo {
-        font-size: var(--t-2xl);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .pagina-liturgia {
-        padding-top: 6.25rem;
-      }
-
-      .liturgia-header {
-        padding: var(--s-4);
-        border-radius: 22px;
-      }
-
-      .card-header-liturgia {
-        padding: var(--s-4);
-      }
-
-      .liturgia-conteudo {
-        gap: var(--s-6);
-      }
-
-      .leitura-texto {
-        text-indent: 1.2em;
-      }
-    }
-  </style>
-
-  <link rel="stylesheet" href="CSS/theme.css">
-</head>
-
-<body>
-  <header>
-    <a href="#inicio" class="logo" aria-label="PNSC — Página inicial">PNSC</a>
-
-    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav aria-label="Navegação principal">
-      <ul class="nav-menu" id="nav-menu">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="index.html#missas">Celebrações</a></li>
-        <li><a href="index.html#endereco">Endereço</a></li>
-        <!-- <li><a href="corais.html">Escala</a></li> -->
-        <li><a href="pix.html">Doação</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="pagina-liturgia">
-    <div class="liturgia-container">
-
-      <section class="liturgia-header">
-        <span class="liturgia-tag">Liturgia do dia</span>
-        <h1 class="liturgia-titulo">Leituras para oração e reflexão</h1>
-        <p class="liturgia-subtitulo">Carregando a data e o conteúdo litúrgico de hoje.</p>
-      </section>
-
-      <div class="liturgia-grid">
-
-        <section class="card-liturgia">
-          <div class="card-header-liturgia">
-            <i class="fa-solid fa-book-bible"></i>
-            <h2>Liturgia Diária</h2>
-          </div>
-
-          <div class="liturgia-conteudo">
-            <div class="liturgia-item">
-              <span class="leitura-tag">Primeira Leitura</span>
-              <h3>Primeira Leitura (Atos dos Apóstolos)</h3>
-              <p class="leitura-texto">
-                Aqui entrará o texto sagrado correspondente à primeira leitura do dia. A tipografia foi ajustada para
-                uma leitura confortável e imersiva, ideal para momentos de reflexão e oração individual ou comunitária.
-              </p>
-            </div>
-
-            <div class="liturgia-item">
-              <span class="leitura-tag">Salmo</span>
-              <h3>Salmo Responsorial</h3>
-              <p class="leitura-texto salmo-estilo">
-                — O Senhor é o meu pastor e nada me faltará.<br>
-                — O Senhor é o meu pastor e nada me faltará.<br><br>
-                Ele me guia por caminhos seguros, por amor do seu nome. Ainda que eu caminhe por vales escuros, nada
-                temerei, pois estais comigo.
-              </p>
-            </div>
-
-            <div class="liturgia-item">
-              <span class="leitura-tag">Evangelho</span>
-              <h3>Evangelho segundo João</h3>
-              <p class="leitura-texto">
-                Aqui ficará o texto do Evangelho do dia. O espaçamento entre linhas e o tamanho da fonte foram pensados
-                com base nos seus padrões de design para garantir total clareza visual tanto em computadores quanto em
-                smartphones.
-              </p>
-            </div>
-          </div>
-        </section>
-
-
-        <div class="liturgia-nota">
-          <i class="fa-solid fa-wand-magic-sparkles"></i>
-          Conteúdo atualizado automaticamente ao abrir a página.
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <footer id="direitos">
-    <div class="footer-logo">PNSC</div>
-    <div>
-      <p>&copy; 2026 Paróquia N. Sra. do Carmo — Todos os direitos reservados.</p>
-      <p><i class="bi bi-geo-alt-fill" style="color:var(--cor-destaque);margin-right:4px;"></i> Av. Trajano Honorato —
-        Lagoa do Mato, Centro</p>
-    </div>
-    <a class="dev" title="Desenvolvido por Manoel Lobo" href="https://instagram.com/manoellob_" target="_blank"
-      rel="noopener">
-      <i class="bi bi-code-slash"></i> por Manoel Lobo
-    </a>
-  </footer>
-
-  <script src="JS/hamburger.js"></script>
   <script src="JS/liturgiadiaria.js"></script>
 </body>
-
 </html>

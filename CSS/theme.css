@@ -1,23 +1,23 @@
 :root {
-  --theme-toggle-bg: rgba(32, 17, 9, 0.8);
+  --theme-toggle-bg: rgba(63, 40, 29, 0.94);
   --theme-toggle-border: rgba(255, 255, 255, 0.12);
-  --theme-toggle-text: rgba(255, 239, 220, 0.96);
+  --theme-toggle-text: rgba(255, 255, 255, 0.94);
   --theme-surface-light: rgba(255, 255, 255, 0.72);
   --theme-surface-soft: rgba(248, 240, 230, 0.9);
 }
 
 html.theme-light {
-  --cor-primaria: #6f4630;
-  --cor-secundaria: #9d7350;
-  --cor-destaque: #b3772f;
-  --cor-destaque-hov: #cca15f;
-  --cor-fundo: #f6efe6;
-  --cor-fundo-alt: #eadfce;
-  --cor-texto: #2f1f14;
-  --cor-texto-sub: #6e5848;
-  --cor-texto-alt: rgba(80, 59, 45, 0.82);
-  --cor-branco: rgba(255, 255, 255, 0.92);
-  --cor-sombra: rgba(88, 61, 38, 0.14);
+  --cor-primaria: #5a3928;
+  --cor-secundaria: #806047;
+  --cor-destaque: #b8893c;
+  --cor-destaque-hov: #9b7132;
+  --cor-fundo: #fbfaf8;
+  --cor-fundo-alt: #f5f1eb;
+  --cor-texto: #2b211b;
+  --cor-texto-sub: #6b625a;
+  --cor-texto-alt: rgba(107, 98, 90, 0.88);
+  --cor-branco: #ffffff;
+  --cor-sombra: rgba(49, 32, 22, 0.1);
 }
 
 html.theme-light body {

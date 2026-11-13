@@ -1,7 +1,7 @@
 (function () {
   const STORAGE_KEY = 'pnsc-theme';
-  const LIGHT_THEME_COLOR = '#f4ede4';
-  const DARK_THEME_COLOR = '#201109';
+  const LIGHT_THEME_COLOR = '#fbfaf8';
+  const DARK_THEME_COLOR = '#3f281d';
   const root = document.documentElement;
 
   function readTheme() {

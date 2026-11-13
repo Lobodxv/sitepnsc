@@ -12,13 +12,18 @@ O projeto e um site estatico em HTML, CSS e JavaScript, com algumas integracoes 
 
 ## Funcionalidades
 
-1. Home com secoes institucionais, destaques, noticias e galeria.
+1. Home com secoes institucionais, destaques e noticias.
 2. Liturgia diaria com cards expansivos.
-3. Agenda de celebracoes e informacoes de pastorais.
+3. Agenda de celebracoes, informacoes de pastorais e galeria.
 4. Doacao via PIX com botao para copiar chave.
 5. Botao flutuante de WhatsApp.
 6. Banner de privacidade com aceite local (localStorage).
 7. Layout responsivo otimizado para mobile, tablet e desktop.
+8. Programacao sazonal de aniversario da paroquia e Advento.
+9. Video opcional no hero com fallback para imagem e suporte a reduced motion.
+10. Secao explicativa sobre o Advento, sua simbologia e praticas de preparacao.
+11. Instagram oficial da paróquia disponível na seção de contato.
+12. Pagina dedicada ao Advento, com historia, simbolos, semanas e praticas para a comunidade.
 
 ## Estrutura do Projeto
 
@@ -27,8 +32,14 @@ sitepnsc/
 	index.html
 	parocos.html
 	liturgia.html
-	corais.html
-	pix.html
+	advento.html
+	celebracoes.html
+	pastorais.html
+	sacramentos.html
+	noticias.html
+	contribua.html
+	contato.html
+
 	privacidade.html
 	robots.txt
 	sitemap.xml
@@ -44,6 +55,7 @@ sitepnsc/
 		liturgiadiaria.js
 		main.js
 		privacy-consent.js
+		site-nav.js
 		supabase-config.js
 		theme-toggle.js
 	img/
@@ -102,8 +114,20 @@ Exemplos de ajustes recentes:
 
 1. Cards de liturgia com abrir/fechar consistente no mobile.
 2. Secoes de cards (destaques, noticias e participe) em coluna unica no mobile.
-3. Galeria da comunidade com carrossel no mobile, swipe e botoes laterais.
+3. Secoes de noticias e demais conteudos ajustadas para leitura responsiva.
 4. Banner de privacidade reorganizado para texto acima e acoes abaixo em telas pequenas.
+
+## Video do hero
+
+O hero aceita um video local opcional em `img/hero-pnsc.mp4`.
+
+Recomendacoes:
+
+1. Use um video horizontal de aproximadamente 10 segundos.
+2. Mantenha o arquivo sem audio para permitir autoplay silencioso.
+3. Comprima o arquivo, preferencialmente para ate 5–8 MB.
+4. A imagem `img/imgaerea1.jpeg` permanece como poster e fallback.
+5. Em celulares e quando `prefers-reduced-motion` estiver ativo, o video fica desativado para preservar desempenho e acessibilidade.
 
 ## Acessibilidade e UX
 

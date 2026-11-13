@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Paróquia Nossa Senhora do Carmo — horários de missas, história, pastorais, localização e doações via PIX.">
-  <meta name="theme-color" content="#654321">
+  <meta name="theme-color" content="#3f281d">
   <title>Paróquia Nossa Senhora do Carmo | PNSC</title>
   <link rel="icon" type="image/png" href="img/logoIgrejaPNG.png">
   <link rel="shortcut icon" type="image/png" href="img/logoIgrejaPNG.png">
@@ -19,11 +19,6 @@
 </head>
 
 <body>
-  <a href="https://wa.me/5588981996070?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20par%C3%B3quia%20e%20as%20celebra%C3%A7%C3%B5es." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar com a paróquia pelo WhatsApp">
-    <i class="bi bi-whatsapp"></i>
-    <span>Falar com a paróquia</span>
-  </a>
-
   <header class="site-header" id="topo">
     <div class="container nav-wrap">
       <a href="#inicio" class="brand" aria-label="Paróquia Nossa Senhora do Carmo">
@@ -42,12 +37,14 @@
       <nav class="main-nav" aria-label="Navegação principal">
         <ul class="nav-menu" id="nav-menu">
           <li><a href="#inicio">Início</a></li>
-          <li><a href="#horarios">Horários</a></li>
-          <li><a href="parocos.html">Nossa História</a></li>
-          <li><a href="#pastorais">Pastorais</a></li>
+          <li><a href="celebracoes.html">Celebrações</a></li>
+          <li><a href="parocos.html">Paróquia</a></li>
+          <li><a href="pastorais.html">Pastorais</a></li>
           <li><a href="#liturgia">Liturgia</a></li>
-          <li><a href="#doacao">Doação</a></li>
-          <li><a href="#contato">Contato</a></li>
+          <li><a href="sacramentos.html">Sacramentos</a></li>
+          <li><a href="noticias.html">Notícias</a></li>
+          <li><a href="contribua.html">Contribua</a></li>
+          <li><a class="nav-contact-link" href="contato.html">Entrar em contato</a></li>
         </ul>
       </nav>
     </div>
@@ -55,6 +52,9 @@
 
   <main id="inicio">
     <section class="hero parallax-hero">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="img/imgaerea1.jpeg" aria-hidden="true">
+        <source src="img/hero-pnsc.mp4" type="video/mp4">
+      </video>
       <div class="hero-overlay"></div>
       <div class="container hero-grid">
         <div class="hero-copy fade-in">
@@ -71,34 +71,110 @@
         </div>
 
         <div class="hero-stat fade-in">
-          <div class="hero-card">
+          <a class="hero-card" href="#horarios" aria-label="Ver horários das missas dominicais">
             <span class="label">Missas Dominicais</span>
             <strong>09h00 & 19h00</strong>
             <p>Celebrando a Eucaristia em comunidade, com acolhimento e música.</p>
-          </div>
+            <span class="hero-card-action">Ver horários <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
+          </a>
         </div>
+      </div>
+      <div class="hero-quick-links" aria-label="Acessos rápidos">
+        <a href="#liturgia"><i class="bi bi-book-half" aria-hidden="true"></i><span>Liturgia do dia</span></a>
+        <a href="#horarios"><i class="bi bi-calendar3" aria-hidden="true"></i><span>Horários</span></a>
+        <a href="contato.html"><i class="bi bi-chat-dots" aria-hidden="true"></i><span>Falar com a secretaria</span></a>
+      </div>
+      <a class="hero-scroll-cue" href="#programacao" aria-label="Rolar para conhecer a programação">
+        <span>Conheça nossa comunidade</span>
+        <i class="bi bi-arrow-down" aria-hidden="true"></i>
+      </a>
+    </section>
+
+    <section class="seasonal-program section-space" id="programacao">
+      <div class="container">
+        <div class="section-heading fade-in">
+          <span class="eyebrow eyebrow-dark">Programação especial</span>
+          <h2>Fim de ano em nossa comunidade</h2>
+          <p class="section-lead">
+            Reserve estas datas para celebrar conosco o aniversário da paróquia e o tempo do Advento.
+          </p>
+        </div>
+
+        <div class="seasonal-grid">
+          <article class="seasonal-card seasonal-card-highlight fade-in">
+            <span class="seasonal-date">21 de novembro de 2026</span>
+            <span class="seasonal-label">Aniversário da paróquia</span>
+            <h3>Celebramos nossa história de fé</h3>
+            <p>Unidos em comunidade, agradecemos a Deus por mais um ano de caminhada paroquial.</p>
+          </article>
+
+          <article class="seasonal-card fade-in">
+            <span class="seasonal-date">29 de novembro de 2026</span>
+            <span class="seasonal-label">1º Domingo do Advento</span>
+            <h3>Começo de um novo tempo</h3>
+            <p>Iniciamos a preparação do coração para o Natal do Senhor.</p>
+          </article>
+
+          <article class="seasonal-card fade-in">
+            <span class="seasonal-date">6 de dezembro de 2026</span>
+            <span class="seasonal-label">2º Domingo do Advento</span>
+            <h3>Preparai o caminho</h3>
+            <p>Seguimos nossa caminhada de esperança e oração rumo ao Natal.</p>
+          </article>
+
+          <article class="seasonal-card fade-in">
+            <span class="seasonal-date">13 de dezembro de 2026</span>
+            <span class="seasonal-label">3º Domingo do Advento</span>
+            <h3>Domingo da alegria</h3>
+            <p>Celebramos a alegria que nasce da esperança e da presença de Deus.</p>
+          </article>
+
+          <article class="seasonal-card fade-in">
+            <span class="seasonal-date">20 de dezembro de 2026</span>
+            <span class="seasonal-label">4º Domingo do Advento</span>
+            <h3>Às portas do Natal</h3>
+            <p>Concluímos a preparação para acolher o nascimento de Jesus.</p>
+          </article>
+
+          <article class="seasonal-card seasonal-card-final fade-in">
+            <span class="seasonal-date">24 de dezembro de 2026</span>
+            <span class="seasonal-label">Véspera de Natal</span>
+            <h3>Encerramento do Advento</h3>
+            <p>O Advento termina na véspera do Natal, quando nos reunimos para celebrar a esperança.</p>
+          </article>
+        </div>
+        <button class="seasonal-expand-toggle" type="button" aria-expanded="false">
+          <span>Ver todas as datas</span>
+          <i class="bi bi-chevron-down" aria-hidden="true"></i>
+        </button>
       </div>
     </section>
 
-    <section class="paroquiano section-space">
+    <section class="advent-section section-space" id="advento">
       <div class="container">
-        <div class="paroquiano-card fade-in">
-          <div class="paroquiano-foto" aria-label="Retrato do pároco atual">
-            <img src="https://diocesedequixada.org.br/wp-content/uploads/2024/01/WhatsApp-Image-2022-07-09-at-17.42.12-1-231x300.jpeg" alt="Padre Adailson Nogueira">
+        <div class="advent-panel fade-in">
+          <div class="advent-intro">
+            <span class="eyebrow eyebrow-dark">Tempo de espera e esperança</span>
+            <h2>O que é o Advento?</h2>
+            <p>
+              Um tempo de espera, esperança e preparação para acolher Cristo.
+            </p>
           </div>
 
-          <div class="paroquiano-body">
-            <span class="eyebrow eyebrow-dark">Pároco atual</span>
-            <h2>Pe. Adailson Nogueira</h2>
-            <p class="paroquiano-role">Pároco da Paróquia Nossa Senhora do Carmo</p>
+          <div class="advent-note">
+            <span class="advent-label">Um caminho de preparação</span>
             <p>
-              Com dedicação pastoral, acolhimento e zelo missionário, o padre guia a comunidade em oração, catequese e serviço,
-              fortalecendo a vida espiritual da paróquia e da família cristã.
+              Quatro semanas para renovar a fé e preparar o coração para o Natal.
             </p>
-            <div class="paroquiano-actions">
-              <a href="parocos.html" class="btn btn-primary">Conhecer os párocos anteriores</a>
-            </div>
           </div>
+        </div>
+
+        <div class="advent-home-link">
+          <div>
+            <span class="eyebrow eyebrow-dark">Conheça este tempo litúrgico</span>
+            <p>História, símbolos e formas de viver o Advento.</p>
+          </div>
+          <a class="action-link" href="advento.html">Explorar o Advento</a>
         </div>
       </div>
     </section>
@@ -111,37 +187,34 @@
         </div>
 
         <div class="destaques-grid">
-          <article class="destaque-card destaque-principal fade-in">
-            <div class="destaque-thumb destaque-instagram-placeholder"></div>
+          <article class="destaque-card fade-in">
+            <div class="destaque-thumb destaque-aniversario">
+              <img src="img/contents/imgIgreja.jpg" alt="Igreja da Paróquia Nossa Senhora do Carmo">
+            </div>
             <div class="destaque-body">
               <span class="destaque-tag">Paróquia</span>
-              <h3>Quaresma de São Miguel Arcanjo</h3>
-              <p>Celebramos a fé, a devoção à São Miguel Arcanjo e combatemos o mal com a força da oração e do serviço.</p>
+              <h3>Aniversário da Paróquia</h3>
+              <p>Neste ano, comemoramos o aniversário de <strong>22 anos</strong> da Paróquia Nossa Senhora do Carmo com alegria e gratidão.</p>
+              <a class="destaque-link" href="parocos.html">Conhecer nossa história <span aria-hidden="true">→</span></a>
             </div>
           </article>
 
           <article class="destaque-card fade-in">
-            <div class="destaque-thumb destaque-juvenil"></div>
-            <div class="destaque-body">
-              <span class="destaque-tag">Juventude</span>
-              <h3>Preparação para o Dia Nacional da Juventude</h3>
-              <p>Encontros, convivências e atividades voltadas para o desenvolvimento da juventude na fé.</p>
+            <div class="destaque-thumb destaque-advento">
+              <img src="img/contents/IMG_2848.png" alt="Comunidade reunida em celebração durante o Advento">
             </div>
-          </article>
-
-          <article class="destaque-card fade-in">
-            <div class="destaque-thumb destaque-caridade"></div>
             <div class="destaque-body">
-              <span class="destaque-tag">Padroeira</span>
-              <h3>Jubileu de 125 anos</h3>
-              <p>Comemoramos com fé e alegria os 125 anos de história e devoção à Nossa Senhora do Carmo.</p>
+              <span class="destaque-tag">Advento</span>
+              <h3>Preparação para o Advento</h3>
+              <p>A comunidade é convidada a preparar o coração para acolher Cristo com esperança, oração e gestos concretos de amor.</p>
+              <a class="destaque-link" href="advento.html">Explorar o Advento <span aria-hidden="true">→</span></a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="noticias section-space">
+    <section class="noticias section-space" id="noticias" hidden>
       <div class="container">
         <div class="section-heading fade-in">
           <span class="eyebrow eyebrow-dark">Notícias e avisos</span>
@@ -150,7 +223,7 @@
 
         <div class="noticias-grid">
           <article class="noticia-card">
-            <img src="../img/contents/IMG_2848.png" alt="Missa em família deste domingo">
+            <img src="img/contents/IMG_2848.png" alt="Missa em família deste domingo">
             <div class="noticia-body">
               <span class="noticia-tag">Acolhida</span>
               <h3>Missa em família deste domingo</h3>
@@ -158,112 +231,6 @@
             </div>
           </article>
 
-          <article class="noticia-card">
-            <img src="../img/contents/catequese.jpeg" alt="Inscrições abertas para a catequese">
-            <div class="noticia-body">
-              <span class="noticia-tag">Catequese</span>
-              <h3>Retorno da Catequese</h3>
-              <p>A catequese está de volta com novas atividades e encontros para o desenvolvimento da fé.</p>
-            </div>
-          </article>
-
-          <article class="noticia-card">
-            <img src="../img/contents/daniel.jpg" alt="Ação de solidariedade da paróquia">
-            <div class="noticia-body">
-              <span class="noticia-tag">paróquia</span>
-              <h3>novo colaborador paroquial</h3>
-              <p>Pe. Daniel Barreto é o novo colaborador da paróquia.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="galeria-home section-space">
-      <div class="container">
-        <div class="section-heading fade-in">
-          <span class="eyebrow eyebrow-dark">Galeria da comunidade</span>
-          <h2>Memórias que celebram a fé em nossa paróquia</h2>
-        </div>
-
-        <div class="galeria-home-grid" id="galeria-carousel" aria-label="Carrossel da galeria da comunidade">
-          <div class="galeria-home-wrapper swiper-wrapper">
-          <figure class="galeria-item fade-in swiper-slide">
-            <img src="../img/contents/fieis.jpg" alt="Missa em família da paróquia">
-            <figcaption>Momento de celebração e oração comunitária.</figcaption>
-          </figure>
-
-          <figure class="galeria-item fade-in swiper-slide">
-            <img src="../img/contents/procissão.jpg" alt="Procissão da paróquia">
-            <figcaption>Procissões e encontros que unem a comunidade na fé.</figcaption>
-          </figure>
-
-          <figure class="galeria-item fade-in swiper-slide">
-            <img src="../img/contents/serviço.jpg" alt="Ações de caridade da paróquia">
-            <figcaption>Serviço e solidariedade em favor de todos.</figcaption>
-          </figure>
-
-          <figure class="galeria-item fade-in swiper-slide">
-            <img src="../img/contents/adoração.jpg" alt="Celebração na igreja da paróquia">
-            <figcaption>Liturgia e acolhimento em cada momento.</figcaption>
-          </figure>
-          </div>
-
-          <button class="galeria-nav prev" type="button" aria-label="Imagem anterior">
-            <i class="bi bi-chevron-left" aria-hidden="true"></i>
-          </button>
-          <button class="galeria-nav next" type="button" aria-label="Próxima imagem">
-            <i class="bi bi-chevron-right" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section class="participar section-space">
-      <div class="container">
-        <div class="section-heading fade-in">
-          <span class="eyebrow eyebrow-dark">Participe</span>
-          <h2>Como fazer parte da nossa comunidade</h2>
-        </div>
-
-        <div class="participar-grid">
-          <article class="participar-card fade-in">
-            <i class="bi bi-people-fill"></i>
-            <h3>Catequese</h3>
-            <p>Uma caminhada de fé para crianças, jovens e adultos em formação para a vida cristã.</p>
-          </article>
-
-          <article class="participar-card fade-in">
-            <i class="bi bi-music-note-beamed"></i>
-            <h3>Grupos e pastorais</h3>
-            <p>Espaços de oração, música, convivência e serviço em favor da comunidade paroquial.</p>
-          </article>
-
-          <article class="participar-card fade-in">
-            <i class="bi bi-heart-fill"></i>
-            <h3>Voluntariado</h3>
-            <p>Faça parte das ações de acolhida, cuidado e solidariedade que atendem a família paroquial.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="presence-cta section-space">
-      <div class="container">
-        <div class="presence-cta-panel fade-in">
-          <div class="presence-copy">
-            <span class="eyebrow eyebrow-dark">Presença e participação</span>
-            <h2>Venha fazer parte da vida da nossa comunidade</h2>
-            <p>
-              Na paróquia, a fé se vive em comunidade: na oração, no trabalho, na catequese, na música, no acolhimento e no serviço.
-              Você é convidado(a) a acompanhar, participar e dar sua contribuição para que a missão de Cristo continue sendo vivida aqui.
-            </p>
-          </div>
-
-          <div class="presence-actions">
-            <a href="#horarios" class="btn btn-primary">Participar das celebrações</a>
-            <a href="https://wa.me/5588981996070?text=Ol%C3%A1%2C%20quero%20participar%20mais%20da%20vida%20da%20par%C3%B3quia%20e%20saber%20como%20me%20envolver." class="btn btn-secondary" target="_blank" rel="noopener">Falar com a comunidade</a>
-          </div>
         </div>
       </div>
     </section>
@@ -275,13 +242,14 @@
           <h2>Evangelho e celebração do dia</h2>
         </div>
 
-        <div class="liturgia-panel fade-in">
+        <div class="liturgia-panel liturgia-panel-featured fade-in">
           <div class="liturgia-header">
             <div>
               <span class="liturgia-label">Celebração do Dia</span>
               <h3 id="liturgia-dia">Liturgia diária</h3>
+              <p class="liturgia-subtitle">A Palavra que acompanha a comunidade hoje.</p>
             </div>
-            <span class="liturgia-chip">PNSC</span>
+            <a class="liturgia-chip" href="liturgia.html"><i class="bi bi-arrow-up-right" aria-hidden="true"></i> Abrir liturgia completa</a>
           </div>
 
           <div class="liturgia-grid">
@@ -294,6 +262,19 @@
               <div class="liturgia-content">
                 <div class="liturgia-content-inner">
                   <p class="liturgia-text" id="liturgia-primeira-texto">A liturgia do dia será exibida em breve.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="liturgia-card" id="liturgia-segunda-card" hidden>
+              <button class="liturgia-toggle" type="button" aria-expanded="false">
+                <span class="liturgia-type">Segunda Leitura</span>
+                <span class="liturgia-reference" id="liturgia-segunda-ref">Clique para ver</span>
+                <span class="liturgia-hint">Clique para ver</span>
+              </button>
+              <div class="liturgia-content">
+                <div class="liturgia-content-inner">
+                  <p class="liturgia-text" id="liturgia-segunda-texto">A liturgia do dia será exibida em breve.</p>
                 </div>
               </div>
             </article>
@@ -324,78 +305,73 @@
               </div>
             </article>
           </div>
+          <div class="liturgia-footer">
+            <span><i class="bi bi-hand-index-thumb" aria-hidden="true"></i> Toque em uma leitura para abrir</span>
+            <a href="liturgia.html">Aprofundar na liturgia <span aria-hidden="true">→</span></a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="agenda section-space" id="horarios">
+    <section class="agenda section-space section-band" id="horarios">
       <div class="container">
         <div class="section-heading fade-in">
           <span class="eyebrow eyebrow-dark">Agenda Litúrgica</span>
           <h2>Horários de celebrações</h2>
         </div>
 
+        <div class="agenda-filters" role="group" aria-label="Filtrar horários">
+          <button class="agenda-filter is-active" type="button" data-filter="all" aria-pressed="true">Tudo</button>
+          <button class="agenda-filter" type="button" data-filter="celebracao" aria-pressed="false">Celebrações</button>
+          <button class="agenda-filter" type="button" data-filter="comunidade" aria-pressed="false">Comunidade</button>
+          <button class="agenda-filter" type="button" data-filter="secretaria" aria-pressed="false">Secretaria</button>
+        </div>
+
         <div class="agenda-grid">
-          <article class="agenda-card fade-in">
+          <article class="agenda-card fade-in" data-category="celebracao">
             <span class="agenda-dia">Domingos</span>
             <strong>09h00 & 19h00</strong>
             <p>Santa Missa</p>
           </article>
 
-          <article class="agenda-card fade-in">
+          <article class="agenda-card fade-in" data-category="comunidade">
             <span class="agenda-dia">Segunda-feira</span>
             <strong>18h00</strong>
             <p>Terço das Mulheres</p>
           </article>
 
-          <article class="agenda-card fade-in">
+          <article class="agenda-card fade-in" data-category="comunidade">
             <span class="agenda-dia">Terça-feira</span>
             <strong>18h00</strong>
             <p>Terço dos Homens</p>
           </article>
 
-          <article class="agenda-card fade-in">
+          <article class="agenda-card fade-in" data-category="comunidade">
             <span class="agenda-dia">Quarta-feira</span>
             <strong>18h00</strong>
             <p>Terço das Crianças</p>
           </article>
 
-          <article class="agenda-card fade-in">
+          <article class="agenda-card fade-in" data-category="comunidade">
             <span class="agenda-dia">Quinta-feira</span>
             <strong>18h00</strong>
             <p>Adoração ao Santíssimo</p>
           </article>
 
-          <article class="agenda-card fade-in">
+          <article class="agenda-card fade-in" data-category="secretaria">
             <span class="agenda-dia">Secretaria</span>
             <strong>Segunda a Sexta</strong>
             <p>Atendimento paroquial</p>
           </article>
         </div>
+        <button class="agenda-expand-toggle" type="button" aria-expanded="false">
+          <span>Ver toda a programação</span>
+          <i class="bi bi-chevron-down" aria-hidden="true"></i>
+        </button>
       </div>
     </section>
 
-    <section class="paroco-story-cta section-space">
-      <div class="container">
-        <div class="cta-panel fade-in">
-          <div class="cta-copy">
-            <span class="eyebrow eyebrow-dark">Nossa identidade</span>
-            <h2>Uma comunidade guiada pela fé, pela tradição e pelo amor ao próximo.</h2>
-            <p>
-              Desde os primeiros passos da comunidade até os dias atuais, a Paróquia Nossa Senhora do Carmo guarda uma história
-              rica, marcada por sacerdotes dedicados e por um povo que vive a missão evangelizadora em cada celebração, serviço e gesto de acolhimento.
-            </p>
-          </div>
-
-          <div class="cta-actions">
-            <a href="parocos.html" class="btn btn-primary">Nossa história</a>
-            <a href="parocos.html" class="btn btn-secondary">Quadro de párocos</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="history section-space" id="historia">
+    <section class="history section-space section-photo" id="historia">
       <div class="container">
         <div class="section-heading fade-in">
           <span class="eyebrow eyebrow-dark">Nossa História</span>
@@ -454,6 +430,48 @@
       </div>
     </section>
 
+    <section class="paroco-story-cta section-space">
+      <div class="container">
+        <div class="cta-panel fade-in">
+          <div class="cta-copy">
+            <span class="eyebrow eyebrow-dark">Nossa identidade</span>
+            <h2>Uma comunidade guiada pela fé, pela tradição e pelo amor ao próximo.</h2>
+            <p>
+              Conheça os párocos e as pessoas que ajudaram a construir a história da Paróquia Nossa Senhora do Carmo.
+            </p>
+          </div>
+
+          <div class="cta-actions">
+            <a href="parocos.html" class="btn btn-primary">Conhecer nossa história</a>
+            <a href="parocos.html" class="btn btn-secondary">Quadro de párocos</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="paroquiano section-space">
+      <div class="container">
+        <div class="paroquiano-card fade-in">
+          <div class="paroquiano-foto" aria-label="Retrato do pároco atual">
+            <img src="https://diocesedequixada.org.br/wp-content/uploads/2024/01/WhatsApp-Image-2022-07-09-at-17.42.12-1-231x300.jpeg" alt="Padre Adailson Nogueira">
+          </div>
+
+          <div class="paroquiano-body">
+            <span class="eyebrow eyebrow-dark">Pároco atual</span>
+            <h2>Pe. Adailson Nogueira</h2>
+            <p class="paroquiano-role">Pároco da Paróquia Nossa Senhora do Carmo</p>
+            <p>
+              Com dedicação pastoral, acolhimento e zelo missionário, o padre guia a comunidade em oração, catequese e serviço,
+              fortalecendo a vida espiritual da paróquia e da família cristã.
+            </p>
+            <div class="paroquiano-actions">
+              <a href="parocos.html" class="btn btn-primary">Conhecer os párocos anteriores</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="donate section-space parallax-give" id="doacao">
       <div class="container donate-wrap">
         <div class="donate-copy fade-in">
@@ -464,6 +482,10 @@
             pastorais que acolhem famílias em oração e caridade.
           </p>
           <blockquote>“Deus ama quem dá com alegria.” — 2 Cor 9,7</blockquote>
+          <button class="expand-toggle" type="button" aria-expanded="false">
+            <span>Saiba por que contribuir</span>
+            <i class="bi bi-chevron-down" aria-hidden="true"></i>
+          </button>
         </div>
 
         <div class="pix-card fade-in">
@@ -488,7 +510,7 @@
       </div>
     </section>
 
-    <section class="pastorais section-space" id="pastorais">
+    <section class="pastorais section-space section-band-soft" id="pastorais">
       <div class="container">
         <div class="section-heading fade-in">
           <span class="eyebrow eyebrow-dark">Pastorais e Movimentos</span>
@@ -500,30 +522,35 @@
             <i class="bi bi-heart-fill"></i>
             <h3>Dízimo</h3>
             <p>Contribuição solidária que sustenta a vida paroquial e a missão evangelizadora.</p>
+            <button class="expand-toggle" type="button" aria-expanded="false"><span>Ver mais</span><i class="bi bi-chevron-down" aria-hidden="true"></i></button>
           </article>
 
           <article class="pastoral-card fade-in">
             <i class="bi bi-book-half"></i>
             <h3>Catequese</h3>
             <p>Formação de crianças, jovens e adultos na fé, na liturgia e na vida cristã.</p>
+            <button class="expand-toggle" type="button" aria-expanded="false"><span>Ver mais</span><i class="bi bi-chevron-down" aria-hidden="true"></i></button>
           </article>
 
           <article class="pastoral-card fade-in">
             <i class="bi bi-moon-stars"></i>
             <h3>Liturgia</h3>
             <p>Celebrações centradas na Palavra, na Eucaristia e na vida sacramental da comunidade.</p>
+            <button class="expand-toggle" type="button" aria-expanded="false"><span>Ver mais</span><i class="bi bi-chevron-down" aria-hidden="true"></i></button>
           </article>
 
           <article class="pastoral-card fade-in">
             <i class="bi bi-flower1"></i>
             <h3>Terço dos Homens</h3>
             <p>Oração, fraternidade e testemunho de fé no percurso diário com Maria.</p>
+            <button class="expand-toggle" type="button" aria-expanded="false"><span>Ver mais</span><i class="bi bi-chevron-down" aria-hidden="true"></i></button>
           </article>
 
           <article class="pastoral-card fade-in">
             <i class="bi bi-people-fill"></i>
             <h3>Juventude</h3>
             <p>Espaço de acolhimento, formação e serviço para jovens e adolescentes da paróquia.</p>
+            <button class="expand-toggle" type="button" aria-expanded="false"><span>Ver mais</span><i class="bi bi-chevron-down" aria-hidden="true"></i></button>
           </article>
         </div>
       </div>
@@ -546,6 +573,10 @@
             <div class="contact-item">
               <i class="bi bi-envelope-fill"></i>
               <span>senhora_docarmo@hotmail.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="bi bi-instagram"></i>
+              <a href="https://instagram.com/paroquiansdocarmo_" target="_blank" rel="noopener noreferrer">@paroquiansdocarmo_</a>
             </div>
           </div>
         </div>
@@ -578,7 +609,7 @@
         <ul>
           <li><a href="#inicio">Início</a></li>
           <li><a href="#horarios">Horários</a></li>
-          <li><a href="#historia">Nossa História</a></li>
+          <li><a href="parocos.html">Nossa História</a></li>
           <li><a href="#doacao">Doação</a></li>
           <li><a href="privacidade.html">Privacidade</a></li>
         </ul>
@@ -602,6 +633,7 @@
 
   <script src="JS/privacy-consent.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="JS/site-nav.js"></script>
   <script src="JS/hamburger.js"></script>
   <script src="JS/evangelho.js"></script>
   <script src="JS/animations.js"></script>
@@ -646,7 +678,7 @@
         evangelho: { referencia: 'Mt 9,14-15', texto: 'A vida de Cristo nos chama a anunciar a Boa Nova com alegria e serviço.' }
       };
 
-      const setCard = (key, title, refId, textId) => {
+      const setCard = (key, refId, textId) => {
         const refEl = document.getElementById(refId);
         const textEl = document.getElementById(textId);
 
@@ -657,11 +689,28 @@
         textEl.textContent = src.texto || 'A liturgia do dia será exibida em breve.';
       };
 
+      const setSecondReading = (reading) => {
+        const card = document.getElementById('liturgia-segunda-card');
+        const refEl = document.getElementById('liturgia-segunda-ref');
+        const textEl = document.getElementById('liturgia-segunda-texto');
+
+        if (!card || !refEl || !textEl) return;
+
+        if (reading && (reading.referencia || reading.texto)) {
+          refEl.textContent = reading.referencia || 'Clique para ver';
+          textEl.textContent = reading.texto || 'A Segunda Leitura será exibida em breve.';
+          card.hidden = false;
+        } else {
+          card.hidden = true;
+        }
+      };
+
       const setDefaults = () => {
         document.getElementById('liturgia-dia').textContent = `Liturgia de ${new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })}`;
-        setCard('primeiraLeitura', 'Primeira Leitura', 'liturgia-primeira-ref', 'liturgia-primeira-texto');
-        setCard('salmo', 'Salmo', 'liturgia-salmo-ref', 'liturgia-salmo-texto');
-        setCard('evangelho', 'Evangelho', 'liturgia-evangelho-ref', 'liturgia-evangelho-texto');
+        setCard('primeiraLeitura', 'liturgia-primeira-ref', 'liturgia-primeira-texto');
+        setSecondReading(null);
+        setCard('salmo', 'liturgia-salmo-ref', 'liturgia-salmo-texto');
+        setCard('evangelho', 'liturgia-evangelho-ref', 'liturgia-evangelho-texto');
       };
 
       try {
@@ -670,12 +719,14 @@
         const data = await response.json();
 
         const primeira = data?.primeiraLeitura || fallback.primeiraLeitura;
+        const segunda = data?.segundaLeitura || data?.segunda_leitura;
         const salmo = data?.salmo || fallback.salmo;
         const evangelho = data?.evangelho || fallback.evangelho;
 
         document.getElementById('liturgia-dia').textContent = `Liturgia de ${new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })}`;
         document.getElementById('liturgia-primeira-ref').textContent = primeira.referencia || 'Clique para ver';
         document.getElementById('liturgia-primeira-texto').textContent = primeira.texto || 'A Palavra de Deus nos convida à oração.';
+        setSecondReading(segunda);
         document.getElementById('liturgia-salmo-ref').textContent = salmo.referencia || 'Clique para ver';
         document.getElementById('liturgia-salmo-texto').textContent = salmo.texto || 'O Senhor é o nosso refúgio.';
         document.getElementById('liturgia-evangelho-ref').textContent = evangelho.referencia || 'Clique para ver';
@@ -727,6 +778,73 @@
         const content = card.querySelector('.liturgia-content');
         if (content) {
           content.style.maxHeight = `${content.scrollHeight}px`;
+        }
+      });
+    });
+
+    document.querySelectorAll('.agenda-filter').forEach((filterButton) => {
+      filterButton.addEventListener('click', () => {
+        const selectedFilter = filterButton.dataset.filter;
+        const agenda = filterButton.closest('.agenda');
+        const agendaExpandToggle = agenda ? agenda.querySelector('.agenda-expand-toggle') : null;
+
+        document.querySelectorAll('.agenda-filter').forEach((button) => {
+          const isActive = button === filterButton;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-pressed', String(isActive));
+        });
+
+        document.querySelectorAll('.agenda-card').forEach((card) => {
+          const shouldHide = selectedFilter !== 'all' && card.dataset.category !== selectedFilter;
+          card.classList.toggle('is-filtered', shouldHide);
+        });
+        if (agenda && selectedFilter !== 'all') {
+          agenda.classList.add('is-expanded');
+          if (agendaExpandToggle) {
+            agendaExpandToggle.setAttribute('aria-expanded', 'true');
+            const label = agendaExpandToggle.querySelector('span');
+            if (label) label.textContent = 'Ocultar programação';
+          }
+        }
+      });
+    });
+
+    document.querySelectorAll('.agenda-expand-toggle').forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const agenda = toggle.closest('.agenda');
+        if (!agenda) return;
+
+        const isExpanded = agenda.classList.toggle('is-expanded');
+        toggle.setAttribute('aria-expanded', String(isExpanded));
+        const label = toggle.querySelector('span');
+        if (label) label.textContent = isExpanded ? 'Ocultar programação' : 'Ver toda a programação';
+      });
+    });
+
+    document.querySelectorAll('.seasonal-expand-toggle').forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const section = toggle.closest('.seasonal-program');
+        if (!section) return;
+
+        const isExpanded = section.classList.toggle('is-expanded');
+        toggle.setAttribute('aria-expanded', String(isExpanded));
+        const label = toggle.querySelector('span');
+        if (label) label.textContent = isExpanded ? 'Ocultar datas' : 'Ver todas as datas';
+      });
+    });
+
+    document.querySelectorAll('.expand-toggle').forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const expandable = toggle.closest('.pastoral-card, .donate-copy');
+        if (!expandable) return;
+
+        const isExpanded = expandable.classList.toggle('is-expanded');
+        toggle.setAttribute('aria-expanded', String(isExpanded));
+        const label = toggle.querySelector('span');
+        if (label) {
+          label.textContent = isExpanded
+            ? (expandable.classList.contains('donate-copy') ? 'Ocultar detalhes' : 'Ver menos')
+            : (expandable.classList.contains('donate-copy') ? 'Saiba por que contribuir' : 'Ver mais');
         }
       });
     });
